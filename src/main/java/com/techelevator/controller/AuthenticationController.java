@@ -23,7 +23,7 @@ public class AuthenticationController {
 
 	@RequestMapping(path="/login", method=RequestMethod.GET)
 	public String displayLoginForm() {
-		return "login";
+		return "Login/login";
 	}
 	
 	@RequestMapping(path="/login", method=RequestMethod.POST)
@@ -40,7 +40,7 @@ public class AuthenticationController {
 				return "redirect:/users/"+userName;
 			}
 		} else {
-			return "redirect:/login";
+			return "Login/login";
 		}
 	}
 
