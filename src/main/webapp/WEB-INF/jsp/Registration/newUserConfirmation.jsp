@@ -10,7 +10,7 @@
 
 <c:url var="formAction" value="/newUserConfirmation" />
 
-<div><h1>Confirmation</h1></div>
+<div><h1>Welcome ${sessionScope.currentUser} </h1></div>
 <div><p>You have successfully registered!</p></div>
 
 <div>

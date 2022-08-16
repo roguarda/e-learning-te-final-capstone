@@ -37,12 +37,14 @@ public class AuthenticationController {
 			if(destination != null && ! destination.isEmpty()) {
 				return "redirect:" + destination;
 			} else {
-				return "redirect:/users/"+userName;
+				return "redirect:/users/loginConfirmation";
+//						+userName;
 			}
 		} else {
 			return "Login/login";
 		}
 	}
+
 
 	@RequestMapping(path="/logout", method=RequestMethod.POST)
 	public String logout(ModelMap model, HttpSession session) {
@@ -50,4 +52,6 @@ public class AuthenticationController {
 		session.invalidate();
 		return "redirect:/";
 	}
+
+
 }
