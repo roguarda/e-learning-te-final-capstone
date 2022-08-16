@@ -1,16 +1,20 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Student
-  Date: 16/08/2022
-  Time: 11:44 a. m.
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
-</html>
+
+<%@include file="../common/header.jsp" %>
+
+<c:url var="formAction" value="/courseConfirmation" />
+
+<div><h1>Confirmation</h1></div>
+<div><p>You have successfully registered Your Course!</p></div>
+
+<div>
+    <button
+            onclick="window.location.href = '/users/login';">
+        Login
+    </button>
+
+
+</div>
+
+<%@include file="../common/footer.jsp" %>

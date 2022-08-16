@@ -1,16 +1,29 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Student
-  Date: 16/08/2022
-  Time: 12:37 p. m.
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
-</html>
+
+<c:set var="pageTitle" value="Registrations"/>
+
+<h2>Create a Curricula</h2>
+
+<c:url value="/CreateCurricula" var="curricula Registration" />
+<form:form action="${register}" method="POST" modelAttribute="registrationCurricula">
+
+    <div>
+            <%--@declare id="introduction"--%><label for="Introduction"> Introduction</label>
+        <form:input  path="introduction" class="form-control"/>
+        <form:errors path="introduction" cssClass="error"/>
+    </div>
+    <div>
+            <%--@declare id="daily homework"--%><label for="Daily Homework">Daily Homework</label>
+        <form:input  path="dailyHomework" class="form-control" />
+        <form:errors path="dailyHomework" cssClass="error"/>
+    </div>
+
+    <div>
+        <input type="submit" value="Register"/>
+    </div>
+</form:form>
+
+

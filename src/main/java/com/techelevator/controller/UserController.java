@@ -74,4 +74,7 @@ public class UserController {
 	public String loginConfirmation() {
 		return "/Login/loginConfirmation";
 	}
+
+
+
 }
