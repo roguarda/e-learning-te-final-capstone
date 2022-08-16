@@ -12,6 +12,7 @@
 <h1>Confirmation</h1>
 <p>You have successfully logged in!</p>
 
-<button href="/home">Go to Main Page</button>
+<%--add user homepage to this button--%>
+<button><a >Go to Main Page</a></button>
 
 <%@include file="../common/footer.jsp"%>

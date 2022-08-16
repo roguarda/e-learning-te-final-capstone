@@ -13,6 +13,15 @@
 		<div class="col-sm-4"></div>
 		<div class="col-sm-4">
 			<div class="form-group">
+				<label for="firstName">First Name: </label>
+				<input type="text" id="firstName" name="firstName" placeHolder="Name" class="form-control" />
+			</div>
+			<div class="form-group">
+				<label for="lastName">Last Name: </label>
+				<input type="text" id="lastName" name="lastName" placeHolder="Last Name" class="form-control" />
+			</div>
+
+			<div class="form-group">
 				<label for="userName">User Name: </label>
 				<input type="text" id="userName" name="userName" placeHolder="User Name" class="form-control" />
 			</div>
