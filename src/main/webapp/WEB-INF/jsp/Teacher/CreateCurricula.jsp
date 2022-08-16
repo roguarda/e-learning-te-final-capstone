@@ -15,6 +15,13 @@
         <form:input  path="introduction" class="form-control"/>
         <form:errors path="introduction" cssClass="error"/>
     </div>
+
+    <div>
+            <%--@declare id="daily instruction"--%><label for="Daily Instruction">Daily Instruction</label>
+        <form:input  path="dailyInstruction" class="form-control" />
+        <form:errors path="dailyInstruction" cssClass="error"/>
+    </div>
+
     <div>
             <%--@declare id="daily homework"--%><label for="Daily Homework">Daily Homework</label>
         <form:input  path="dailyHomework" class="form-control" />

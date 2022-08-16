@@ -13,6 +13,14 @@ public class RegistrationCurricula {
         this.Introduction = introduction;
     }
 
+    @NotBlank(message="Daily Instruction is required")
+    private String DailyInstruction;
+    public String getDailyInstruction() { return DailyHomework;}
+    public void setDailyInstruction(String dailyInstruction) {
+        this.DailyInstruction = dailyInstruction;
+    }
+
+
     @NotBlank(message="Daily Homework is required")
     private String DailyHomework;
     public String getDailyHomework() {
