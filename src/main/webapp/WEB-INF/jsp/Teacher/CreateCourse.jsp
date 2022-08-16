@@ -8,7 +8,7 @@
 
 <h2>Create a Course</h2>
 
-<c:url value="/CreateCourse" var="course Registration" />
+<c:url value="/CreateCourse" var="courseRegistration" />
 <form:form action="${register}" method="POST" modelAttribute="registrationCourse">
 
     <div>
