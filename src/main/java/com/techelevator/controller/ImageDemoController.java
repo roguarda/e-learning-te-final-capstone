@@ -35,7 +35,7 @@ public class ImageDemoController
             try
             {
                 //come up with a file name first
-                String defaultFileName = "1";// should be the resaurant id
+                String defaultFileName = "1";// should be the resaurant user_id
 
 
                 //save the file with the chosen name
