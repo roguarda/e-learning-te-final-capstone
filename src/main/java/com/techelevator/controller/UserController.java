@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import javax.validation.Valid;
 
+import com.techelevator.model.dto.Login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -41,8 +42,36 @@ public class UserController {
 		}
 		
 		userDAO.saveUser(user.getUserName(), user.getPassword());
+		return "redirect:/Registration/newUserConfirmation" ;
+	}
+
+	@RequestMapping(path = "/Registration/newUserConfirmation", method = RequestMethod.GET)
+	public String newUserConfirmation() {
+		return "/Registration/newUserConfirmation";
+	}
+
+
+
+	@RequestMapping(path="users/login", method=RequestMethod.GET)
+	public String getLoginForm(ModelMap modelMap) {
+		modelMap.put("login", new Login());
 		return "Login/login";
 	}
-	
-	
+
+	@RequestMapping(path="users/login", method=RequestMethod.POST)
+	public String login(@Valid Login login
+			, BindingResult result) {
+
+		if (result.hasErrors()) {
+			return "/login/login";
+		}
+
+		return "redirect:/login/loginConfirmation";
+
+	}
+
+	@RequestMapping(path = "/users/loginConfirmation", method = RequestMethod.GET)
+	public String loginConfirmation() {
+		return "/Login/loginConfirmation";
+	}
 }
