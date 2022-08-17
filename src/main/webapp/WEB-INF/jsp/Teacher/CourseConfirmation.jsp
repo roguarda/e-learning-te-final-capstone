@@ -3,7 +3,7 @@
 
 <%@include file="../common/header.jsp" %>
 
-<c:url var="formAction" value="/courseConfirmation" />
+<c:url var="formAction" value="/CreateCourse/courseConfirmation" />
 
 <div><h1>Confirmation</h1></div>
 <div><p>You have successfully registered Your Course!</p></div>

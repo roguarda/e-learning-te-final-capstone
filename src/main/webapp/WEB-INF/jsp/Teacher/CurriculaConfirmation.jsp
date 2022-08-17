@@ -4,15 +4,16 @@
 
 <%@include file="../common/header.jsp" %>
 
-<c:url var="curricula Confirmation" value="/CurriculaConfirmation" />
+<c:url var="curriculaConfirmation" value="/CurriculaConfirmation" />
 
 
 
 
 
 <div><h1>Confirmation</h1></div>
-<div><p>You have successfully registered Your Curricula!</p></div>
+<div><p>You have successfully created Your Curricula! </p></div>
 
-<button href="/home">Go to Main Page</button>
+<%--este boton debería ir a la página del profesor... IDEALMENTE DEBERIA SER UN POP UP DE JS. --%>
+<button  class="btn btn-primary" href="/home">Go to Teacher Main Page</button>
 
 <%@include file="../common/footer.jsp"%>

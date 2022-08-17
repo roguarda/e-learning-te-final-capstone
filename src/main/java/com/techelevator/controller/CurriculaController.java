@@ -41,5 +41,10 @@ public class CurriculaController {
 
         return "redirect:/CourseConfirmation";
     }
+
+    @RequestMapping(path = "/CreateCurricula/CurriculaConfirmation", method = RequestMethod.GET)
+    public String createCurriculaConfirmation() {
+        return "/Teacher/CurriculaConfirmation";
+    }
 }
 

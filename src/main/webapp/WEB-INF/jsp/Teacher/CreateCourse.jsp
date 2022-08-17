@@ -4,6 +4,8 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<c:import url="/WEB-INF/jsp/common/header.jsp"/>
+
 <c:set var="pageTitle" value="Registrations"/>
 
 <h2>Create a Course</h2>
@@ -34,7 +36,9 @@
     </div>
 
     <div>
-        <input type="submit" value="Register"/>
+        <input type="submit" class="btn btn-primary" value="Submit"/>
     </div>
 </form:form>
+
+<%@include file="../common/footer.jsp" %>
 

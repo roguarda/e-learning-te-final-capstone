@@ -41,6 +41,7 @@ CREATE TABLE student
 CREATE TABLE curricula
 (
     curricula_id      SERIAL        NOT NULL UNIQUE PRIMARY KEY,
+    curricula_name    VARCHAR(55)   not null,
     daily_instruction VARCHAR(1000) NOT NULL,
     daily_homework    VARCHAR(1000) NOT NULL
 

@@ -74,10 +74,7 @@ public class UserController {
 //
 //	}
 
-	@RequestMapping(path = "/users/loginConfirmation", method = RequestMethod.GET)
-	public String loginConfirmation() {
-		return "/Login/loginConfirmation";
-	}
+
 
 
 
