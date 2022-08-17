@@ -45,6 +45,11 @@ public class AuthenticationController {
 		}
 	}
 
+	@RequestMapping(path = "/users/loginConfirmation", method = RequestMethod.GET)
+	public String loginConfirmation() {
+		return "/Login/loginConfirmation";
+	}
+
 
 	@RequestMapping(path="/logout", method=RequestMethod.POST)
 	public String logout(ModelMap model, HttpSession session) {
