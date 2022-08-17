@@ -13,15 +13,6 @@
 		<div class="col-sm-4"></div>
 		<div class="col-sm-4">
 			<div class="form-group">
-				<label for="firstName">First Name: </label>
-				<input type="text" id="firstName" name="firstName" placeHolder="Name" class="form-control" />
-			</div>
-			<div class="form-group">
-				<label for="lastName">Last Name: </label>
-				<input type="text" id="lastName" name="lastName" placeHolder="Last Name" class="form-control" />
-			</div>
-
-			<div class="form-group">
 				<label for="userName">User Name: </label>
 				<input type="text" id="userName" name="userName" placeHolder="User Name" class="form-control" />
 			</div>
@@ -31,13 +22,22 @@
 			</div>
 			<div class="form-group">
 				<label for="confirmPassword">Confirm Password: </label>
-				<input type="password" id="confirmPassword" name="confirmPassword" placeHolder="Re-Type Password" class="form-control" />	
+				<input type="password" id="confirmPassword" name="confirmPassword" placeHolder="Re-Type Password" class="form-control" />
+			</div>
+			<div class="form-group">
+				<label for="firstName">First Name: </label>
+				<input type="text" id="firstName" name="firstName" placeHolder="Name" class="form-control" />
+			</div>
+			<div class="form-group">
+				<label for="lastName">Last Name: </label>
+				<input type="text" id="lastName" name="lastName" placeHolder="Last Name" class="form-control" />
 			</div>
 			<div class="form-group">
 				<label for="role">Role: </label>
 				<select  id="role" name="role"  class="form-control">
-					<option>Teacher</option>
-					<option>Student</option>
+					<option value="" selected disabled>Please select a role</option>
+					<option value="teacher">Teacher</option>
+					<option value="student">Student</option>
 
 				</select>
 			</div>

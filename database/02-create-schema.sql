@@ -6,8 +6,6 @@ BEGIN;
 
 -- CREATE statements go here
 DROP TABLE IF EXISTS app_user;
-DROP TABLE IF EXISTS teacher;
-DROP TABLE IF EXISTS student;
 DROP TABLE IF EXISTS course;
 DROP TABLE IF EXISTS curricula;
 DROP TABLE IF EXISTS homework;
@@ -21,22 +19,12 @@ CREATE TABLE app_user
     first_name varchar(32)  NOT NULL,
     last_name  varchar(32)  NOT NULL,
     role       varchar(32)  NOT NULL,
+    is_teacher boolean,
+    is_student boolean,
     salt       varchar(255) NOT NULL
 );
 
-CREATE TABLE teacher
-(
-    teacher_id SERIAL NOT NULL UNIQUE PRIMARY KEY,
-    user_id    INT,
-    FOREIGN KEY (user_id) REFERENCES app_user (user_id)
-);
 
-CREATE TABLE student
-(
-    student_id SERIAL NOT NULL UNIQUE PRIMARY KEY,
-    user_id    INT,
-    FOREIGN KEY (user_id) REFERENCES app_user (user_id)
-);
 
 CREATE TABLE curricula
 (
@@ -58,8 +46,8 @@ CREATE TABLE course
     cost               DECIMAL,
     student_id         INT,
     curricula_id       INT,
-    FOREIGN KEY (teacher_id) REFERENCES teacher (teacher_id),
-    FOREIGN KEY (student_id) REFERENCES student (student_id),
+    FOREIGN KEY (teacher_id) REFERENCES app_user (user_id),
+    FOREIGN KEY (student_id) REFERENCES app_user (user_id),
     foreign key (curricula_id) REFERENCES curricula (curricula_id)
 
 );
@@ -75,8 +63,8 @@ CREATE TABLE homework
     GRADE            INT,
     teacher_feedback VARCHAR(1000),
 
-    FOREIGN KEY (teacher_id) REFERENCES teacher (teacher_id),
-    FOREIGN KEY (student_id) REFERENCES student (student_id),
+    FOREIGN KEY (teacher_id) REFERENCES app_user (user_id),
+    FOREIGN KEY (student_id) REFERENCES app_user (user_id),
     FOREIGN KEY (curricula_id) REFERENCES curricula (curricula_id),
     FOREIGN KEY (course_id) REFERENCES course (course_id)
 
