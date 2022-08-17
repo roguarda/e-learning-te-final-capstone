@@ -12,16 +12,16 @@ public class JDBCCurriculaDAO implements CurriculaDAO {
 
     JdbcTemplate jdbcTemplate;
 
-    private Employee mapRowToEmployee(SqlRowSet rowSet) {
-        Employee employee = new Employee();
-        employee.setId((long) rowSet.getInt("employee_id"));
-        employee.setDepartmentId((long) rowSet.getInt("department_id"));
-        employee.setFirstName(rowSet.getString("first_name"));
-        employee.setLastName(rowSet.getString("last_name"));
-        employee.setBirthDate(rowSet.getDate("birth_date").toLocalDate());
-        employee.setHireDate(rowSet.getDate("hire_date").toLocalDate());
-        return employee;
+    private Curricula mapRowToCurricula(SqlRowSet rowSet) {
+        Curricula curricula = new Curricula();
+        curricula.setId(rowSet.getInt("curricula_id"));
+        curricula.setCurriculaName(rowSet.getString("curricula_name"));
+        curricula.setDailyInstruction(rowSet.getString("daily_instruction"));
+        curricula.setDailyHomework(rowSet.getString("daily_homework"));
+
+        return curricula;
     }
+
     @Override
     public List<Curricula> getAllCurricula() {
         List<Curricula> curricula = new ArrayList<>();
@@ -31,27 +31,43 @@ public class JDBCCurriculaDAO implements CurriculaDAO {
                 "     , daily_homework \n" +
                 " from curricula;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-        while (results.next()){
+        while (results.next()) {
             curricula.add(mapRowToCurricula(results));
         }
         return curricula;
     }
 
 
-
     @Override
-    public List<Curricula> search(String idcurricula) {
+    public List<Curricula> search(String curriculaId) {
         return null;
+
+
     }
 
     @Override
-    public Curricula getById(int idcurricula) {
-        return null;
+    public Curricula getById(int curriculaId) {
+        Curricula curricula = new Curricula();
+        String sql = " SELECT curricula_id\n" +
+                "           , curricula_name\n" +
+                "           , daily_instruction\n" +
+                "           , daily_homework\n" +
+                "      from curricula\n" +
+                "      WHERE curricula_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, curriculaId);
+        if (results.next()) {
+            curricula = mapRowToCurricula(results);
+        }
+        return curricula;
     }
 
     @Override
-    public Curricula add(Curricula curricula) {
-        return null;
+    public void add(String curriculaName, String dailyInstruction, String dailyHomework) {
+    jdbcTemplate.update("INSERT INTO curricula ( curricula_name\n" +
+            "                      , daily_instruction\n" +
+            "                      , daily_homework)\n" +
+            "values (?, ?, ?);",
+    curriculaName, dailyInstruction, dailyHomework);
     }
 
     @Override

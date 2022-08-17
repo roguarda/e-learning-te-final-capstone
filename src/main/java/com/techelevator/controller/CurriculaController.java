@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
-import com.techelevator.model.teacher.RegistrationCurricula;
+import com.techelevator.model.dao.CurriculaDAO;
+import com.techelevator.model.dto.Curricula;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -14,11 +15,14 @@ import javax.validation.Valid;
 @Controller
 
 public class CurriculaController {
+    private CurriculaDAO curriculaDAO;
+
+
 
     @RequestMapping(path="/CreateCurricula", method= RequestMethod.GET)
-    public String showCreateCourseForm (ModelMap modelHolder){
-        if( ! modelHolder.containsAttribute("registrationCurricula")) {
-            modelHolder.addAttribute("registrationCurricula", new RegistrationCurricula());
+    public String showCreateCurriculaForm (ModelMap modelHolder){
+        if( ! modelHolder.containsAttribute("curricula")) {
+            modelHolder.addAttribute("curricula", new Curricula());
         }
         return "Teacher/CreateCurricula";
 
@@ -26,20 +30,20 @@ public class CurriculaController {
 
 
     @RequestMapping(path="/CreateCurricula", method= RequestMethod.POST)
-    public String submitRegistrationForm(
-            @Valid @ModelAttribute("Registration Curricula") RegistrationCurricula registrationValues,
+    public String submitCurriculaForm(
+            @Valid @ModelAttribute("createCurricula") Curricula curricula,
             BindingResult result,
             RedirectAttributes flash
     ){
         if(result.hasErrors()) {
-            flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "Registration", result);
+            flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "createCurricula", result);
 
             return "redirect:/CreateCurricula";
         }
 
-        flash.addFlashAttribute("message", "You have successfully registered the Course.");
-
-        return "redirect:/CourseConfirmation";
+        flash.addFlashAttribute("message", "You have successfully created the curricula.");
+        curriculaDAO.add(curricula.getCurriculaName(), curricula.getDailyInstruction(), curricula.getDailyHomework() );
+        return "redirect:/CreateCurricula/CurriculaConfirmation";
     }
 
     @RequestMapping(path = "/CreateCurricula/CurriculaConfirmation", method = RequestMethod.GET)
