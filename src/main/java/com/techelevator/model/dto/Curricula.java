@@ -4,7 +4,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 public class Curricula {
 
-    private int curriculaid;
+    private int curriculaId;
 
     @NotBlank(message = "Introduction is required")
     private String introduction;
@@ -20,11 +20,11 @@ public class Curricula {
 
     public int getId()
     {
-        return curriculaid;
+        return curriculaId;
     }
-    public void setId(int curriculaid)
+    public void setId(int curriculaId)
     {
-        this.curriculaid = curriculaid;
+        this.curriculaId = curriculaId;
     }
 
     public String getIntroduction()

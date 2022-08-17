@@ -13,6 +13,17 @@
 <p>You have successfully logged in!</p>
 
 <%--add user homepage to this button--%>
+<<<<<<< HEAD
+<div>
+
+    <button
+            onclick="window.location.href = '/login';">
+        Login
+    </button>
+
+
+</div>
+=======
 
 
 <c:choose>
@@ -31,6 +42,7 @@
     </c:otherwise>
 
 </c:choose>
+>>>>>>> main
 
 
 <%@include file="../common/footer.jsp"%>
