@@ -6,15 +6,15 @@
 
 <c:set var="pageTitle" value="Registrations"/>
 
-<h2>Create a Curricula</h2>
+<h2>Create Curricula</h2>
 
-<c:url value="/CreateCurricula" var="curricula Registration"/>
-<form:form action="${register}" method="POST" modelAttribute="registrationCurricula">
+<c:url value="/CreateCurricula" var="createCurricula"/>
+<form:form action="${createCurricula}" method="POST" modelAttribute="curricula">
 
     <div>
-            <%--@declare id="introduction"--%><label for="Introduction"> Name:</label>
-        <form:input path="introduction" class="form-control"/>
-        <form:errors path="introduction" cssClass="error"/>
+            <%--@declare id="introduction"--%><label for="curriculaName"> Name:</label>
+        <form:input path="curriculaName" class="form-control"/>
+        <form:errors path="curriculaName" cssClass="error"/>
     </div>
 
     <div>
