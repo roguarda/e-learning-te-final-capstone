@@ -1,15 +1,10 @@
 package com.techelevator.model.dto;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import javax.validation.constraints.AssertFalse;
-import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
 
 public class Course {
 
-    private int courseid;
+    private int id;
 
     @NotBlank(message = "Name is required")
     private String name;
@@ -26,12 +21,12 @@ public class Course {
 
     public int getId()
     {
-        return courseid;
+        return id;
     }
 
-    public void setId(int courseid)
+    public void setId(int id)
     {
-        this.courseid = courseid;
+        this.id = id;
     }
 
     public String getName()
@@ -49,7 +44,7 @@ public class Course {
         return description;
     }
 
-    public void setDescription()
+    public void setDescription(String course_description)
     {
         this.description = description;
     }
@@ -66,7 +61,7 @@ public class Course {
         return cost;
     }
 
-    public void setCost()
+    public void setCost(String course_cost)
     {
         this.cost = cost;
     }
