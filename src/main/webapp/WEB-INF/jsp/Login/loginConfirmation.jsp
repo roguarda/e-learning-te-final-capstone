@@ -13,6 +13,15 @@
 <p>You have successfully logged in!</p>
 
 <%--add user homepage to this button--%>
-<button><a >Go to Main Page</a></button>
+<div>
+
+    <button
+            onclick="window.location.href = '/login';">
+        Login
+    </button>
+
+
+</div>
+
 
 <%@include file="../common/footer.jsp"%>

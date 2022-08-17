@@ -15,7 +15,7 @@
 
 <div>
     <button
-            onclick="window.location.href = '/users/login';">
+            onclick="window.location.href = '/login';">
         Login
     </button>
 
