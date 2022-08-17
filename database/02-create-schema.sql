@@ -42,7 +42,7 @@ CREATE TABLE course
     course_name        VARCHAR(55)  NOT NULL,
     teacher_id         INT,
     course_description varchar(255) NOT NULL,
-    difficulty         SMALLINT     NOT NULL,
+    difficulty         varchar(10)     NOT NULL,
     cost               DECIMAL,
     student_id         INT,
     curricula_id       INT,

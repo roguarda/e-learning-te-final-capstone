@@ -8,14 +8,14 @@ public interface CurriculaDAO {
 
 		List<Curricula> getAllCurricula();
 
-		List<Curricula> search (String idcurricula);
+		List<Curricula> search (String curriculaId);
 
-		Curricula getById(int idcurricula);
+		Curricula getById(int curriculaId);
 
 		Curricula add(Curricula curricula);
 
-		void update(int idcurricula, Curricula curricula);
+		void update(int curriculaId, Curricula curricula);
 
-		void delete(int idcurricula);
+		void delete(int curriculaId);
 
 	}
