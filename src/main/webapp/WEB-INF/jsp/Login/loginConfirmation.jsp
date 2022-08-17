@@ -13,6 +13,22 @@
 <p>You have successfully logged in!</p>
 
 <%--add user homepage to this button--%>
-<button><a >Go to Main Page</a></button>
+
+
+<c:choose>
+
+    <c:when test="${app_user.role == student}">
+
+        <button href="studentHomePage" class="btn btn-primary">Go to main page</button>
+
+    </c:when>
+
+    <c:otherwise>
+        <button href="teacherHomePage" class="btn btn-primary">Go to main page</button>
+
+    </c:otherwise>
+
+</c:choose>
+
 
 <%@include file="../common/footer.jsp"%>
