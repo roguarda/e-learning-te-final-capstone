@@ -26,7 +26,7 @@ public class UserController {
 	}
 	@RequestMapping(path="/", method=RequestMethod.GET)
 	public String getHomePage() {
-		return "homePage";
+		return "common/homePage";
 	}
 
 	@RequestMapping(path="/users/new", method=RequestMethod.GET)
