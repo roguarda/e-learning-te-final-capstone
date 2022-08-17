@@ -17,14 +17,16 @@
 
 <c:choose>
 
-    <c:when test="${app_user.role == student}">
+    <c:when test="${app_user.is_student}">
+<c:url var="studentUrl" value="/studentHomePage"></c:url>
 
-        <button href="studentHomePage" class="btn btn-primary">Go to main page</button>
+        <a href="${studentUrl}" class="btn btn-primary">Go to main page</a>
 
     </c:when>
 
     <c:otherwise>
-        <button href="teacherHomePage" class="btn btn-primary">Go to main page</button>
+        <c:url var="teacherUrl" value="/teacherHomePage"></c:url>
+        <a href="${teacherUrl}" class="btn btn-primary">Go to main page</a>
 
     </c:otherwise>
 

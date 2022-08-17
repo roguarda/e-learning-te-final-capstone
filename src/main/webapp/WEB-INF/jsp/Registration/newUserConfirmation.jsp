@@ -14,11 +14,9 @@
 <div><p>You have successfully registered!</p></div>
 
 <div>
-    <button
-            onclick="window.location.href = '/users/login';">
-        Login
-    </button>
+    <c:url var="loginURL" value="/login"></c:url>
 
+    <a href="${loginURL}" class="btn btn-primary">Login</a>
 
 </div>
 
