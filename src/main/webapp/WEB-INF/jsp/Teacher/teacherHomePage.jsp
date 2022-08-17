@@ -5,7 +5,7 @@
 
 <div class="row">
     <div>
-        Student
+        Teacher
     </div>
 
 </div>

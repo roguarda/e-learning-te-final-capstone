@@ -28,6 +28,15 @@ public class UserController {
 	public String getHomePage() {
 		return "common/homePage";
 	}
+	@RequestMapping(path="/studentHomePage", method=RequestMethod.GET)
+	public String getStudentHomePage() {
+		return "Student/studentHomePage";
+	}
+
+	@RequestMapping(path="/teacherHomePage", method=RequestMethod.GET)
+	public String getTeacherHomePage() {
+		return "Teacher/teacherHomePage";
+	}
 
 	@RequestMapping(path="/users/new", method=RequestMethod.GET)
 	public String displayNewUserForm(ModelMap modelHolder) {
