@@ -25,12 +25,20 @@
     </div>
     <div>
         <%--@declare id="difficulty level"--%><label for="Difficulty Level">Difficulty Level</label>
-        <form:input  path="difficultyLevel" class="form-control" />
-        <form:errors path="difficultyLevel" cssClass="error"/>
 
-    </div>
-    <div>
-        <%--@declare id="cost"--%><label for="Cost">Cost</label>
+                    <div class="form-group">
+                        <select  id="difficultyLevel" name="difficultyLevel"  class="form-control">
+                            <option>Low</option>
+                            <option>Mid</option>
+                            <option>High</option>
+
+
+                        </select>
+                    </div>
+
+            </div>
+            <div>
+                <%--@declare id="cost"--%><label for="Cost">Cost</label>
         <form:input  path="cost" class="form-control" />
         <form:errors path="cost" cssClass="error"/>
     </div>
