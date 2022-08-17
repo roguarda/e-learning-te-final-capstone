@@ -6,7 +6,7 @@
 
 <html>
 <div class="text">
-    <c:url var="home" value="/img/homephoto.png" />
+    <c:url var="home" value="/img/Homepage.jpg" />
     <img align="center" src="${home}" class="img-fluid" alt="Welcome!">
 </div>
 
