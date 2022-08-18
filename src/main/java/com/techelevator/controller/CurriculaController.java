@@ -1,7 +1,6 @@
 package com.techelevator.controller;
 
-import com.techelevator.model.dao.CurriculaDAO;
-import com.techelevator.model.dto.Curricula;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -10,14 +9,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.techelevator.model.dto.Curricula;
+import com.techelevator.model.dao.CurriculaDAO;
+
 import javax.validation.Valid;
 
 @Controller
-
 public class CurriculaController {
     private CurriculaDAO curriculaDAO;
 
-
+    @Autowired
+    public CurriculaController(CurriculaDAO curriculaDAO) {
+        this.curriculaDAO = curriculaDAO;
+    }
 
     @RequestMapping(path="/CreateCurricula", method= RequestMethod.GET)
     public String showCreateCurriculaForm (ModelMap modelHolder){
@@ -43,7 +47,7 @@ public class CurriculaController {
 
         flash.addFlashAttribute("message", "You have successfully created the curricula.");
         curriculaDAO.add(curricula.getCurriculaName(), curricula.getDailyInstruction(), curricula.getDailyHomework() );
-        return "redirect:/CreateCurricula/CurriculaConfirmation";
+        return "redirect:/teacherHomePage?curriculaName="+curricula.getCurriculaName();
     }
 
     @RequestMapping(path = "/CreateCurricula/CurriculaConfirmation", method = RequestMethod.GET)

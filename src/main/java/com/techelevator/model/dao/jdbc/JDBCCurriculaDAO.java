@@ -2,15 +2,25 @@ package com.techelevator.model.dao.jdbc;
 
 import com.techelevator.model.dao.CurriculaDAO;
 import com.techelevator.model.dto.Curricula;
+import com.techelevator.services.security.PasswordHasher;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
+import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class JDBCCurriculaDAO implements CurriculaDAO {
 
     JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    public JDBCCurriculaDAO(DataSource dataSource) {
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
+    }
 
     private Curricula mapRowToCurricula(SqlRowSet rowSet) {
         Curricula curricula = new Curricula();
@@ -63,11 +73,11 @@ public class JDBCCurriculaDAO implements CurriculaDAO {
 
     @Override
     public void add(String curriculaName, String dailyInstruction, String dailyHomework) {
-    jdbcTemplate.update("INSERT INTO curricula ( curricula_name\n" +
-            "                      , daily_instruction\n" +
-            "                      , daily_homework)\n" +
-            "values (?, ?, ?);",
-    curriculaName, dailyInstruction, dailyHomework);
+        jdbcTemplate.update("INSERT INTO curricula ( curricula_name\n " +
+                        "                      , daily_instruction\n " +
+                        "                      , daily_homework)\n " +
+                        "       values (?, ?, ?);",
+                curriculaName, dailyInstruction, dailyHomework);
     }
 
     @Override

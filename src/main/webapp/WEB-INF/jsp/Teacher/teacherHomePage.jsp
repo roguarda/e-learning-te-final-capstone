@@ -2,6 +2,9 @@
 
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
 
+<c:url var="popup" value="/js/popup.js" />
+<script src="${popup}"></script>
+
 
 <div class="row">
     <div>
