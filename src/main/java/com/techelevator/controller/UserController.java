@@ -34,21 +34,21 @@ public class UserController {
 		return "Student/studentHomePage";
 	}
 
-	@RequestMapping(path="/studentHomePage/Profile", method=RequestMethod.POST)
-	public String getStudentProfileAndEdit(@Valid @ModelAttribute User user, @RequestParam String name, @RequestParam int age, @RequestParam Email mail ) {
-		if (User.hasError()) {
-			return "redirect:/studentHomePage/Profile";
-		}
+//	@RequestMapping(path="/studentHomePage/Profile", method=RequestMethod.GET)
+//	public String getStudentProfileAndEdit(@Valid @ModelAttribute User user, @RequestParam String name, @RequestParam int age, @RequestParam Email mail ) {
+//		if (User.hasError()) {
+//			return "redirect:/studentHomePage/Profile";
+//		}
 
 
-		User currentUser = (User) userDAO.getAttribute("currentUser");
-		user.setAttribute("user", currentUser);
-
-		userDAO.updateName(currentUser.getUserName(), name);
-		userDAO.updateAge(currentUser.getUserAge(), age);
-		userDAO.updateMail(currentUser.getUserMail(), mail);
-
-		return "redirect:/studentHomePage";}
+//		User currentUser = (User) userDAO.getAttribute("currentUser");
+//		user.setAttribute("user", currentUser);
+//
+//		userDAO.updateName(currentUser.getUserName(), name);
+//		userDAO.updateAge(currentUser.getUserAge(), age);
+//		userDAO.updateMail(currentUser.getUserMail(), mail);
+//
+//		return "redirect:/studentHomePage";}
 
 	@RequestMapping(path="/teacherHomePage", method=RequestMethod.GET)
 	public String getTeacherHomePage() {

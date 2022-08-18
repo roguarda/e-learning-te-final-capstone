@@ -40,16 +40,11 @@ public class JDBCCurriculaDAO implements CurriculaDAO {
                 "     , daily_homework \n" +
                 " from curricula;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-
         while (results.next()) {
-            /*      curricula.add(mapRowToCurricula(results));*/
-
-            while (results.next()) {
-                curricula.add(mapRowToCurricula(results));
-
-            }
-            return curricula;
+            curricula.add(mapRowToCurricula(results));
         }
+        return curricula;
+
     }
 
 
