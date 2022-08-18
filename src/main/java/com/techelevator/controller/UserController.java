@@ -2,7 +2,7 @@ package com.techelevator.controller;
 
 import javax.validation.Valid;
 
-import com.techelevator.model.dto.Login;
+import org.hibernate.validator.constraints.Email;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.techelevator.model.dto.User;
@@ -32,6 +33,22 @@ public class UserController {
 	public String getStudentHomePage() {
 		return "Student/studentHomePage";
 	}
+
+	@RequestMapping(path="/studentHomePage/Profile", method=RequestMethod.POST)
+	public String getStudentProfileAndEdit(@Valid @ModelAttribute User user, @RequestParam String name, @RequestParam int age, @RequestParam Email mail ) {
+		if (User.hasError()) {
+			return "redirect:/studentHomePage/Profile";
+		}
+
+
+		User currentUser = (User) userDAO.getAttribute("currentUser");
+		user.setAttribute("user", currentUser);
+
+		userDAO.updateName(currentUser.getUserName(), name);
+		userDAO.updateAge(currentUser.getUserAge(), age);
+		userDAO.updateMail(currentUser.getUserMail(), mail);
+
+		return "redirect:/studentHomePage";}
 
 	@RequestMapping(path="/teacherHomePage", method=RequestMethod.GET)
 	public String getTeacherHomePage() {
