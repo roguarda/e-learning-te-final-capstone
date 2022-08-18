@@ -1,5 +1,7 @@
 package com.techelevator.model.dto;
 
+import org.hibernate.validator.constraints.Email;
+
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -21,8 +23,17 @@ public class User {
 	private String lastName;
 
 	private String fullName ;
+
+	private Email email;
+
+	private int age;
 	
 	private String confirmPassword;
+
+	public static boolean hasError() {
+		return false;
+	}
+
 	public String getUserName() {
 		return userName;
 	}
@@ -102,5 +113,16 @@ public class User {
 
 
 		this.fullName = lastName+", "+ firstName;
+	}
+
+	public Email getUserMail() {
+		return email;
+	}
+
+	public Object getUserAge() {
+		return age;
+	}
+
+	public void setAttribute(String user, User currentUser) {
 	}
 }

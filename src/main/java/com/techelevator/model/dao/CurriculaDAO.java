@@ -6,16 +6,16 @@ import java.util.List;
 
 public interface CurriculaDAO {
 
-		List<Curricula> getAllCurricula();
+		public List<Curricula> getAllCurricula();
 
-		List<Curricula> search (String curriculaId);
+		public List<Curricula> search (String curriculaId);
 
-		Curricula getById(int curriculaId);
+		public Curricula getById(int curriculaId);
 
-		Curricula add(Curricula curricula);
+		public void add(String curriculaName, String dailyInstruction, String dailyHomework);
 
-		void update(int curriculaId, Curricula curricula);
+		public void update(int curriculaId, Curricula curricula);
 
-		void delete(int curriculaId);
+		public void delete(int curriculaId);
 
 	}
