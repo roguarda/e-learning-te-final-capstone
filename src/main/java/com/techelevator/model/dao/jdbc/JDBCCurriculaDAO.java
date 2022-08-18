@@ -2,7 +2,6 @@ package com.techelevator.model.dao.jdbc;
 
 import com.techelevator.model.dao.CurriculaDAO;
 import com.techelevator.model.dto.Curricula;
-import com.techelevator.services.security.PasswordHasher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;

@@ -9,6 +9,6 @@ $(document).ready(function () {
     }
 
     if (courseName) {
-        alert("Curricula "+courseName+" created");
+        alert("Course "+courseName+" created");
     }
 });

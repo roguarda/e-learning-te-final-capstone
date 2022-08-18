@@ -6,6 +6,8 @@ public class Course {
 
     private int id;
 
+    private int teacherId;
+
     @NotBlank(message = "Name is required")
     private String name;
 
@@ -17,6 +19,8 @@ public class Course {
 
     @NotBlank(message="Cost is required")
     private String cost;
+
+    private int studentId;
 
 
     public int getId()
@@ -44,7 +48,7 @@ public class Course {
         return description;
     }
 
-    public void setDescription(String course_description)
+    public void setDescription(String description)
     {
         this.description = description;
     }
@@ -61,8 +65,26 @@ public class Course {
         return cost;
     }
 
-    public void setCost(String course_cost)
+    public void setCost(String cost)
     {
         this.cost = cost;
     }
+
+    public Integer getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(Integer teacherId) {
+        this.teacherId = teacherId;
+    }
+
+    public Integer getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
+    }
+
+
 }

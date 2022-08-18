@@ -2,6 +2,7 @@ package com.techelevator.model.dao.jdbc;
 
 import com.techelevator.model.dao.CourseDAO;
 import com.techelevator.model.dto.Course;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -11,27 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-
 public class JDBCCourseDAO implements CourseDAO {
 
-    static JdbcTemplate jdbcTemplate;
+    JdbcTemplate jdbcTemplate;
 
-    public JDBCCourseDAO (DataSource dataSource){
-        jdbcTemplate = new JdbcTemplate(dataSource);
-    }
-
-    @Override
-    public List<Course> getAllCourse() {
-
-        List<Course> courses = new ArrayList<>();
-        String sql = "SELECT course_id " + ", course_name " + ", course_description" + ", difficulty" + ", cost " +
-                " FROM course;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-        while (results.next()) {
-            courses.add(mapRowToCourses(results));
-        }
-
-        return courses;
+    @Autowired
+    public JDBCCourseDAO(DataSource dataSource) {
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
     private Course mapRowToCourses(SqlRowSet results) {
@@ -41,22 +28,43 @@ public class JDBCCourseDAO implements CourseDAO {
         course.setDescription(results.getString("course_description"));
         course.setDifficultyLevel(results.getString("course_difficultyLevel"));
         course.setCost(results.getString("course_cost"));
+        course.setTeacherId(results.getInt("teacher_id"));
+        course.setStudentId(results.getInt("studentId"));
 
-        return  course;
+
+        return course;
     }
 
     @Override
-    public List<Course> search(String idcourse) {
+    public List<Course> getAllCourse() {
+
+        List<Course> courses = new ArrayList<>();
+        String sql = "SELECT course_id " +
+                " , course_name " +
+                " , course_description" +
+                " , difficulty" +
+                " , cost " +
+                " FROM course;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            courses.add(mapRowToCourses(results));
+        }
+        return courses;
+    }
+
+    @Override
+    public List<Course> search(String courseId) {
         return null;
     }
 
     @Override
-    public Course getById(int idcourse) {Course course = null;
+    public Course getById(int courseId) {
+        Course course = null;
 
         String sql = "SELECT course_id " + ", course_name " + ", course_description" + ", difficulty" + ", cost " +
                 " FROM course " +
                 " WHERE course_id = ? ; ";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, idcourse);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, courseId);
         if (results.next()) {
             course = mapRowToCourses(results);
         }
@@ -64,8 +72,16 @@ public class JDBCCourseDAO implements CourseDAO {
     }
 
     @Override
-    public Course add(Course course) {
-        return null;
+    public Course add(String courseName,int teacherId, String description, String difficultyLevel, String cost) {
+        Course newCourse = new Course();
+        jdbcTemplate.update("INSERT INTO course (course_name,\n" +
+                        "                    teacher_id,\n" +
+                        "                    course_description,\n" +
+                        "                    difficulty,\n" +
+                        "                    cost)\n" +
+                        "VALUES (?, ?, ?, ?,?);",
+                courseName, teacherId, description, difficultyLevel, cost);
+        return newCourse;
     }
 
     @Override

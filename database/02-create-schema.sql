@@ -43,7 +43,7 @@ CREATE TABLE course
     teacher_id         INT,
     course_description varchar(255) NOT NULL,
     difficulty         varchar(10)     NOT NULL,
-    cost               DECIMAL,
+    cost               varchar(10),
     student_id         INT,
     curricula_id       INT,
     FOREIGN KEY (teacher_id) REFERENCES app_user (user_id),
