@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import javax.servlet.http.HttpSession;
 
+import com.techelevator.model.dto.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -32,6 +33,7 @@ public class AuthenticationController {
 						@RequestParam(required=false) String destination,
 						HttpSession session) {
 		if(userDAO.searchForUsernameAndPassword(userName, password)) {
+			User user = (User)userDAO.getUserByUserName(userName);
 			session.setAttribute("currentUser", userDAO.getUserByUserName(userName));
 			
 			if(destination != null && ! destination.isEmpty()) {

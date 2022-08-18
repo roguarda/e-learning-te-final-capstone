@@ -67,9 +67,6 @@ public class User {
 	}
 
 	public void setTeacher(boolean teacher) {
-		if(getRole().equalsIgnoreCase("teacher")){
-			teacher = true;
-		}
 		isTeacher = teacher;
 	}
 
@@ -78,9 +75,6 @@ public class User {
 	}
 
 	public void setStudent(boolean student) {
-		if(getRole().equalsIgnoreCase("student")){
-			student = true;
-		}
 		isStudent = student;
 	}
 

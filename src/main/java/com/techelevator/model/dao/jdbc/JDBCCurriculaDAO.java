@@ -16,6 +16,19 @@ public class JDBCCurriculaDAO implements CurriculaDAO {
 
     JdbcTemplate jdbcTemplate;
 
+/*
+    private Employee mapRowToEmployee(SqlRowSet rowSet) {
+        Employee employee = new Employee();
+        employee.setId((long) rowSet.getInt("employee_id"));
+        employee.setDepartmentId((long) rowSet.getInt("department_id"));
+        employee.setFirstName(rowSet.getString("first_name"));
+        employee.setLastName(rowSet.getString("last_name"));
+        employee.setBirthDate(rowSet.getDate("birth_date").toLocalDate());
+        employee.setHireDate(rowSet.getDate("hire_date").toLocalDate());
+        return employee;
+    }*/
+
+
     @Autowired
     public JDBCCurriculaDAO(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
@@ -40,52 +53,56 @@ public class JDBCCurriculaDAO implements CurriculaDAO {
                 "     , daily_homework \n" +
                 " from curricula;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+
         while (results.next()) {
-            curricula.add(mapRowToCurricula(results));
+            /*      curricula.add(mapRowToCurricula(results));*/
+
+            while (results.next()) {
+                curricula.add(mapRowToCurricula(results));
+
+            }
+            return curricula;
         }
-        return curricula;
-    }
 
 
-    @Override
-    public List<Curricula> search(String curriculaId) {
-        return null;
-
-
-    }
-
-    @Override
-    public Curricula getById(int curriculaId) {
-        Curricula curricula = new Curricula();
-        String sql = " SELECT curricula_id\n" +
-                "           , curricula_name\n" +
-                "           , daily_instruction\n" +
-                "           , daily_homework\n" +
-                "      from curricula\n" +
-                "      WHERE curricula_id = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, curriculaId);
-        if (results.next()) {
-            curricula = mapRowToCurricula(results);
+        @Override
+        public List<Curricula> search (String curriculaId){
+            return null;
         }
-        return curricula;
-    }
 
-    @Override
-    public void add(String curriculaName, String dailyInstruction, String dailyHomework) {
-        jdbcTemplate.update("INSERT INTO curricula ( curricula_name\n " +
-                        "                      , daily_instruction\n " +
-                        "                      , daily_homework)\n " +
-                        "       values (?, ?, ?);",
-                curriculaName, dailyInstruction, dailyHomework);
-    }
+        @Override
+        public Curricula getById ( int curriculaId){
+            Curricula curricula = new Curricula();
+            String sql = " SELECT curricula_id\n" +
+                    "           , curricula_name\n" +
+                    "           , daily_instruction\n" +
+                    "           , daily_homework\n" +
+                    "      from curricula\n" +
+                    "      WHERE curricula_id = ?;";
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, curriculaId);
+            if (results.next()) {
+                curricula = mapRowToCurricula(results);
+            }
+            return curricula;
+        }
 
-    @Override
-    public void update(int idcurricula, Curricula curricula) {
+        @Override
+        public void add (String curriculaName, String dailyInstruction, String dailyHomework){
+            jdbcTemplate.update("INSERT INTO curricula ( curricula_name\n " +
+                            "                      , daily_instruction\n " +
+                            "                      , daily_homework)\n " +
+                            "       values (?, ?, ?);",
+                    curriculaName, dailyInstruction, dailyHomework);
+        }
 
-    }
+        @Override
+        public void update ( int idcurricula, Curricula curricula){
 
-    @Override
-    public void delete(int idcurricula) {
+        }
 
+        @Override
+        public void delete ( int idcurricula){
+
+        }
     }
 }

@@ -13,22 +13,11 @@
 <p>You have successfully logged in!</p>
 
 <%--add user homepage to this button--%>
-<<<<<<< HEAD
-<div>
-
-    <button
-            onclick="window.location.href = '/login';">
-        Login
-    </button>
-
-
-</div>
-=======
 
 
 <c:choose>
 
-    <c:when test="${app_user.is_student}">
+    <c:when test="${currentUser.student}">
 <c:url var="studentUrl" value="/studentHomePage"></c:url>
 
         <a href="${studentUrl}" class="btn btn-primary">Go to main page</a>
@@ -42,7 +31,6 @@
     </c:otherwise>
 
 </c:choose>
->>>>>>> main
 
 
 <%@include file="../common/footer.jsp"%>
