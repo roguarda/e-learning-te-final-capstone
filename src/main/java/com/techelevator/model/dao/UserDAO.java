@@ -1,7 +1,5 @@
 package com.techelevator.model.dao;
 
-import org.hibernate.validator.constraints.Email;
-
 public interface UserDAO {
 
 	public void saveUser(String userName, String password, String firstName, String lastName, String role);
@@ -12,11 +10,4 @@ public interface UserDAO {
 
 	public Object getUserByUserName(String userName);
 
-	Object getAttribute(String currentUser);
-
-	void updateName(String userName, String name);
-
-	void updateAge(Object userAge, int age);
-
-	void updateMail(Email userMail, Email mail);
 }

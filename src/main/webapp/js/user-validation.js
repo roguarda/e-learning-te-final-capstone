@@ -2,11 +2,6 @@ $(document).ready(function () {
     $.validator.addMethod('capitals', function(thing){
         return thing.match(/[A-Z]/);
     });
-
-    $.validator.addMethod('emailPattern', function(thing2){
-        return thing2.match(/[a-z0-9]+@+[a-z0-9]+.com/);
-    });
-
     $("form").validate({
 
         rules : {
@@ -21,10 +16,6 @@ $(document).ready(function () {
             confirmPassword : {
                 required : true,
                 equalTo : "#password"
-            },
-            email : {
-                required:true,
-                emailPattern:true,
             }
         },
         messages : {
@@ -34,9 +25,6 @@ $(document).ready(function () {
             },
             confirmPassword : {
                 equalTo : "Passwords do not match"
-            },
-            email : {
-                emailPattern: "Email must be entered in the formal xxxxxx@yyyyy.com"
             }
         },
         errorClass : "error"

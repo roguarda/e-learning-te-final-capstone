@@ -4,7 +4,6 @@ import javax.sql.DataSource;
 
 import com.techelevator.model.dao.UserDAO;
 import org.bouncycastle.util.encoders.Base64;
-import org.hibernate.validator.constraints.Email;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -97,26 +96,6 @@ public class JDBCUserDAO implements UserDAO {
         }
 
         return thisUser;
-    }
-
-    @Override
-    public Object getAttribute(String currentUser) {
-        return null;
-    }
-
-    @Override
-    public void updateName(String userName, String name) {
-
-    }
-
-    @Override
-    public void updateAge(Object userAge, int age) {
-
-    }
-
-    @Override
-    public void updateMail(Email userMail, Email mail) {
-
     }
 
 }
