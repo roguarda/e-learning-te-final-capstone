@@ -17,7 +17,7 @@
 
 <c:choose>
 
-    <c:when test="${app_user.is_student}">
+    <c:when test="${currentUser.student}">
 <c:url var="studentUrl" value="/studentHomePage"></c:url>
 
         <a href="${studentUrl}" class="btn btn-primary">Go to main page</a>

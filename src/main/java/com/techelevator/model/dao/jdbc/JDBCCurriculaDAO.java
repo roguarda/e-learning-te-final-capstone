@@ -11,7 +11,7 @@ import java.util.List;
 public class JDBCCurriculaDAO implements CurriculaDAO {
 
     JdbcTemplate jdbcTemplate;
-
+/*
     private Employee mapRowToEmployee(SqlRowSet rowSet) {
         Employee employee = new Employee();
         employee.setId((long) rowSet.getInt("employee_id"));
@@ -21,7 +21,7 @@ public class JDBCCurriculaDAO implements CurriculaDAO {
         employee.setBirthDate(rowSet.getDate("birth_date").toLocalDate());
         employee.setHireDate(rowSet.getDate("hire_date").toLocalDate());
         return employee;
-    }
+    }*/
     @Override
     public List<Curricula> getAllCurricula() {
         List<Curricula> curricula = new ArrayList<>();
@@ -32,7 +32,7 @@ public class JDBCCurriculaDAO implements CurriculaDAO {
                 " from curricula;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()){
-            curricula.add(mapRowToCurricula(results));
+      /*      curricula.add(mapRowToCurricula(results));*/
         }
         return curricula;
     }
