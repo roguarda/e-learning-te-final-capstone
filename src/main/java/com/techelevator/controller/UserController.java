@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,19 +34,19 @@ public class UserController {
         return "Student/studentHomePage";
     }
 
-    @RequestMapping("/studentHomePage/profile/{userName}")
-    public String details(@PathVariable String userName, ModelMap map) {
-        User user = UserDAO.getUserByUserName(userName);
+    @RequestMapping("/studentHomePage/profile")
+    public String details(HttpSession session, ModelMap map) {
 
-                map.put("user", user);
+        User user = (User) session.getAttribute("currentUser");
+        map.put("user", user);
 
-        return ":/profile";
+        return "/Student/studentProfile";
     }
 
     @RequestMapping(value = "/edit/{userName}", method = RequestMethod.GET)
     public String edit(@PathVariable int userId, ModelMap map)
     {
-        User user = UserDAO.getUserById(userId);
+        User user = userDAO.getUserById(userId);
 
         map.put("user", user);
 
@@ -57,7 +58,7 @@ public class UserController {
     {
         userDAO.update(userName, user);
 
-        return ":/profile";
+        return "/profile";
     }
 
 
@@ -84,7 +85,7 @@ public class UserController {
             return "redirect:/users/new";
         }
 
-        userDAO.saveUser(user.getUserName(), user.getUserMail(), user.getPassword(), user.getFirstName(), user.getLastName(), user.getRole());
+        userDAO.saveUser(user.getUserName(), user.getPassword(), user.getFirstName(), user.getLastName(), user.getRole());
         return "redirect:/Registration/newUserConfirmation";
     }
 

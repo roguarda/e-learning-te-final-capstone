@@ -17,7 +17,7 @@
       ID
     </div>
     <div class="detail-value">
-        ${user.UserID}
+        ${user.userId}
     </div>
   </div>
     <div class="detail-row">
@@ -25,7 +25,7 @@
         First Name
       </div>
       <div class="detail-value">
-          ${user.FirstName}
+          ${user.firstName}
       </div>
     </div>
     <div class="detail-row">
@@ -33,7 +33,7 @@
         Last Name
       </div>
       <div class="detail-value">
-          ${user.LastName}
+          ${user.lastName}
       </div>
     </div>
   <div class="detail-row">

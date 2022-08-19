@@ -14,7 +14,7 @@ public interface CurriculaDAO {
 
 		public void add(String curriculaName, String dailyInstruction, String dailyHomework);
 
-		public void update(int curriculaId, Curricula curricula);
+		public void update(String updateCriteria, String newValue, int curriculaId);
 
 		public void delete(int curriculaId);
 

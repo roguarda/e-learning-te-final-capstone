@@ -30,8 +30,6 @@ public class JDBCUserDAO implements UserDAO {
         User user = new User();
         user.setUserId(rowSet.getInt("user_id"));
         user.setUserName(rowSet.getString("user_name"));
-        //esto puede que se rompa
-        user.setEmail((Email) rowSet.getObject("email"));
         user.setFirstName(rowSet.getString("first_name"));
         user.setLastName(rowSet.getString("last_name"));
         user.setRole(rowSet.getString("role"));
@@ -39,7 +37,7 @@ public class JDBCUserDAO implements UserDAO {
     }
 
     @Override
-    public void saveUser(String userName, Email email, String password, String firstName, String lastName, String role) {
+    public void saveUser(String userName, String password, String firstName, String lastName, String role) {
         byte[] salt = hashMaster.generateRandomSalt();
         String hashedPassword = hashMaster.computeHash(password, salt);
         String saltString = new String(Base64.encode(salt));
@@ -55,8 +53,10 @@ public class JDBCUserDAO implements UserDAO {
         }
 
         jdbcTemplate.update("INSERT INTO app_user(user_name, password, first_name, last_name, role, is_teacher, is_student, salt) " +
-                        "VALUES (?,?,?,?,?,?,?,?,?);",
-                userName, email, hashedPassword, firstName, lastName, role, isTeacher, isStudent, saltString);
+
+                        "VALUES (?,?,?,?,?,?,?,?);",
+                userName, hashedPassword, firstName, lastName, role, isTeacher, isStudent, saltString);
+
     }
 
     @Override
@@ -92,7 +92,6 @@ public class JDBCUserDAO implements UserDAO {
         if (user.next()) {
             thisUser = new User();
             thisUser.setUserName(user.getString("user_name"));
-            thisUser.setEmail((Email) user.getObject("email"));
             thisUser.setPassword(user.getString("password"));
             thisUser.setStudent(user.getBoolean("is_student"));
             thisUser.setTeacher(user.getBoolean("is_teacher"));
@@ -101,6 +100,32 @@ public class JDBCUserDAO implements UserDAO {
         }
 
         return thisUser;
+    }
+
+    @Override
+    public User getUserById(int userId) {
+        String sqlSearchForUsername = "SELECT * " +
+                "FROM app_user " +
+                "WHERE user_id = ? ";
+
+        SqlRowSet user = jdbcTemplate.queryForRowSet(sqlSearchForUsername, userId);
+        User thisUser = null;
+        if (user.next()) {
+            thisUser = new User();
+            thisUser.setUserName(user.getString("user_name"));
+            thisUser.setPassword(user.getString("password"));
+            thisUser.setStudent(user.getBoolean("is_student"));
+            thisUser.setTeacher(user.getBoolean("is_teacher"));
+            thisUser.setFirstName(user.getString("first_name"));
+            thisUser.setLastName(user.getString("last_name"));
+        }
+
+        return thisUser;
+    }
+
+    @Override
+    public void saveUser(String userName, Email email, String password, String firstName, String lastName, String role) {
+
     }
 
     @Override

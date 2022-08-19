@@ -5,10 +5,12 @@ import org.hibernate.validator.constraints.Email;
 import org.springframework.context.annotation.Profile;
 
 public interface UserDAO {
-
 	User getUserById (int userId);
 
 	public void saveUser(String userName, Email email, String password, String firstName, String lastName, String role);
+
+	public void saveUser(String userName, String password, String firstName, String lastName, String role);
+
 
 	public boolean searchForUsernameAndPassword(String userName, String password);
 
