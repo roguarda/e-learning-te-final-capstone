@@ -15,6 +15,7 @@ CREATE TABLE app_user
 (
     user_id    SERIAL       NOT NULL UNIQUE PRIMARY KEY,
     user_name  varchar(32)  NOT NULL UNIQUE,
+    email      varchar(32)  NOT NULL,
     password   varchar(32)  NOT NULL,
     first_name varchar(32)  NOT NULL,
     last_name  varchar(32)  NOT NULL,
@@ -42,7 +43,7 @@ CREATE TABLE course
     course_name        VARCHAR(55)  NOT NULL,
     teacher_id         INT,
     course_description varchar(255) NOT NULL,
-    difficulty         varchar(10)     NOT NULL,
+    difficulty         varchar(10)  NOT NULL,
     cost               varchar(10),
     student_id         INT,
     curricula_id       INT,

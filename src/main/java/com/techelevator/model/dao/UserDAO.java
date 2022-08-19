@@ -4,7 +4,7 @@ import org.hibernate.validator.constraints.Email;
 
 public interface UserDAO {
 
-	public void saveUser(String userName, String password, String firstName, String lastName, String role);
+	public void saveUser(String userName, Email email, String password, String firstName, String lastName, String role);
 
 	public boolean searchForUsernameAndPassword(String userName, String password);
 

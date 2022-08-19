@@ -127,4 +127,12 @@ public class User {
 	public Email getUserMail() {
 		return email;
 	}
+
+	public void setEmail(Email email) {
+		this.email = email;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
 }
