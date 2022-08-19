@@ -44,7 +44,6 @@ public class JDBCCurriculaDAO implements CurriculaDAO {
             curricula.add(mapRowToCurricula(results));
         }
         return curricula;
-
     }
 
 
@@ -79,8 +78,16 @@ public class JDBCCurriculaDAO implements CurriculaDAO {
     }
 
     @Override
-    public void update(int idcurricula, Curricula curricula) {
+    public void update(String updateCriteria, String newValue, int curriculaId) {
 
+        if (updateCriteria.equals("name")) {
+            jdbcTemplate.update("update curricula SET curricula_name = ?\n" +
+                    "where curricula_id = ?;", newValue, curriculaId);
+        } else if (updateCriteria.equals("instruction")) {
+            jdbcTemplate.update("update curricula SET daily_instruction = ?\n" +
+                    "where curricula_id = ?;", newValue, curriculaId);
+        } else jdbcTemplate.update("update curricula SET daily_instruction = ?\n" +
+                "where curricula_id = ?;", newValue, curriculaId);
     }
 
     @Override

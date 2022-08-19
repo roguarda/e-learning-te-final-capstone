@@ -12,6 +12,8 @@ public interface UserDAO {
 
 	public Object getUserByUserName(String userName);
 
+	Object getUserById(int userId);
+
 	Object getAttribute(String currentUser);
 
 	void updateName(String userName, String name);

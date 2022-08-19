@@ -28,7 +28,7 @@ public class JDBCUserDAO implements UserDAO {
     private User mapRowToUser(SqlRowSet rowSet) {
         User user = new User();
         user.setUserId(rowSet.getInt("user_id"));
-        user.setUserName( rowSet.getString("user_name"));
+        user.setUserName(rowSet.getString("user_name"));
         user.setFirstName(rowSet.getString("first_name"));
         user.setLastName(rowSet.getString("last_name"));
         user.setRole(rowSet.getString("role"));
@@ -43,7 +43,7 @@ public class JDBCUserDAO implements UserDAO {
 
         boolean isStudent;
         boolean isTeacher;
-        if(role.equals("student")){
+        if (role.equals("student")) {
             isStudent = true;
             isTeacher = false;
         } else {
@@ -85,6 +85,27 @@ public class JDBCUserDAO implements UserDAO {
                 "WHERE UPPER(user_name) = ? ";
 
         SqlRowSet user = jdbcTemplate.queryForRowSet(sqlSearchForUsername, userName.toUpperCase());
+        User thisUser = null;
+        if (user.next()) {
+            thisUser = new User();
+            thisUser.setUserName(user.getString("user_name"));
+            thisUser.setPassword(user.getString("password"));
+            thisUser.setStudent(user.getBoolean("is_student"));
+            thisUser.setTeacher(user.getBoolean("is_teacher"));
+            thisUser.setFirstName(user.getString("first_name"));
+            thisUser.setLastName(user.getString("last_name"));
+        }
+
+        return thisUser;
+    }
+
+    @Override
+    public Object getUserById(int userId) {
+        String sqlSearchForUsername = "SELECT * " +
+                "FROM app_user " +
+                "WHERE user_id = ? ";
+
+        SqlRowSet user = jdbcTemplate.queryForRowSet(sqlSearchForUsername, userId);
         User thisUser = null;
         if (user.next()) {
             thisUser = new User();

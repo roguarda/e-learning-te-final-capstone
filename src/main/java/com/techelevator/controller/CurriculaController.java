@@ -10,6 +10,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.techelevator.model.dto.Curricula;
 import com.techelevator.model.dao.CurriculaDAO;
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class CurriculaController {
@@ -20,6 +22,14 @@ public class CurriculaController {
     @Autowired
     public CurriculaController(CurriculaDAO curriculaDAO) {
         this.curriculaDAO = curriculaDAO;
+    }
+
+    @RequestMapping(path="/Curricula", method= RequestMethod.GET)
+    public String displayAllCurricula(ModelMap modelMap){
+            List<Curricula> curricula = curriculaDAO.getAllCurricula();
+                    modelMap.put("curricula", curricula);
+            return "Teacher/allCurricula";
+
     }
 
     @RequestMapping(path="/CreateCurricula", method= RequestMethod.GET)
@@ -49,8 +59,9 @@ public class CurriculaController {
         return "redirect:/teacherHomePage?curriculaName="+curricula.getCurriculaName();
     }
 
-    @RequestMapping(path = "/CreateCurricula/CurriculaConfirmation", method = RequestMethod.GET)
-    public String createCurriculaConfirmation() {
+    @RequestMapping(path = "/curricula/delete/{curriculaId}", method = RequestMethod.GET)
+    public String deleteCurricula() {
+        //continuar este codigo, lo deje a la mitad para fixear el tema del mail que no compila
         return "/Teacher/CurriculaConfirmation";
     }
 }

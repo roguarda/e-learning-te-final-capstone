@@ -19,20 +19,22 @@ import com.techelevator.model.dao.UserDAO;
 @Controller
 public class UserController {
 
-	private UserDAO userDAO;
+    private UserDAO userDAO;
 
-	@Autowired
-	public UserController(UserDAO userDAO) {
-		this.userDAO = userDAO;
-	}
-	@RequestMapping(path="/", method=RequestMethod.GET)
-	public String getHomePage() {
-		return "common/homePage";
-	}
-	@RequestMapping(path="/studentHomePage", method=RequestMethod.GET)
-	public String getStudentHomePage() {
-		return "Student/studentHomePage";
-	}
+    @Autowired
+    public UserController(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
+
+    @RequestMapping(path = "/", method = RequestMethod.GET)
+    public String getHomePage() {
+        return "common/homePage";
+    }
+
+    @RequestMapping(path = "/studentHomePage", method = RequestMethod.GET)
+    public String getStudentHomePage() {
+        return "Student/studentHomePage";
+    }
 
 /*//	@RequestMapping(path="/studentHomePage/Profile", method=RequestMethod.GET)
 //	public String getStudentProfileAndEdit(@Valid @ModelAttribute User user, @RequestParam String name, @RequestParam int age, @RequestParam Email mail ) {
@@ -50,6 +52,7 @@ public class UserController {
 //
 //		return "redirect:/studentHomePage";}*/
 
+<<<<<<< HEAD
 	@RequestMapping(path="/teacherHomePage", method=RequestMethod.GET)
 	public String getTeacherHomePage() {
 		return "Teacher/teacherHomePage";
@@ -99,9 +102,5 @@ public class UserController {
 ////		return "redirect:/login/loginConfirmation";*/
 //
 //	}
-
-
-
-
 
 }
