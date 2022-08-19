@@ -36,6 +36,7 @@ public class UserController {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     @RequestMapping("/studentHomePage/profile")
     public String details(HttpSession session, ModelMap map) {
 
@@ -68,6 +69,8 @@ public class UserController {
 =======
 =======
 >>>>>>> main
+=======
+>>>>>>> main
 /*//	@RequestMapping(path="/studentHomePage/Profile", method=RequestMethod.GET)
 //	public String getStudentProfileAndEdit(@Valid @ModelAttribute User user, @RequestParam String name, @RequestParam int age, @RequestParam Email mail ) {
 //		if (User.hasError()) {
@@ -84,6 +87,9 @@ public class UserController {
 //
 //		return "redirect:/studentHomePage";}*/
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
 =======
 >>>>>>> main
@@ -92,6 +98,7 @@ public class UserController {
 	public String getTeacherHomePage() {
 		return "Teacher/teacherHomePage";
 	}
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 	@RequestMapping(path="/users/new", method=RequestMethod.GET)
@@ -126,6 +133,36 @@ public class UserController {
         return "redirect:/Registration/newUserConfirmation";
     }
 =======
+>>>>>>> main
+=======
+
+	@RequestMapping(path="/users/new", method=RequestMethod.GET)
+	public String displayNewUserForm(ModelMap modelHolder) {
+		if( ! modelHolder.containsAttribute("user")) {
+			modelHolder.addAttribute("user", new User());
+		}
+		return "Registration/newUser";
+	}
+	
+	@RequestMapping(path="/users", method=RequestMethod.POST)
+	public String createUser(@Valid @ModelAttribute User user, BindingResult result, RedirectAttributes flash) {
+		if(result.hasErrors()) {
+			flash.addFlashAttribute("user", user);
+			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "user", result);
+			return "redirect:/users/new";
+		}
+		
+		userDAO.saveUser(user.getUserName(), user.getPassword(), user.getFirstName(), user.getLastName(), user.getRole());
+		return "redirect:/Registration/newUserConfirmation" ;
+	}
+
+	@RequestMapping(path = "/Registration/newUserConfirmation", method = RequestMethod.GET)
+	public String newUserConfirmation() {
+		return "/Registration/newUserConfirmation";
+	}
+
+
+
 >>>>>>> main
 =======
 

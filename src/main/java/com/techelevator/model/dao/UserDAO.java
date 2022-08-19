@@ -8,6 +8,7 @@ public interface UserDAO {
 	User getUserById (int userId);
 
 	public void saveUser(String userName, String password, String firstName, String lastName, String role);
+<<<<<<< HEAD
 
 	public void saveUser(String userName, String password, String firstName, String lastName, String role);
 
@@ -15,12 +16,16 @@ public interface UserDAO {
 =======
 	public void saveUser(String userName, String password, String firstName, String lastName, String role);
 >>>>>>> main
+=======
+>>>>>>> main
 
 	public boolean searchForUsernameAndPassword(String userName, String password);
 
 	public void updatePassword(String userName, String password);
 
 	User getUserByUserName(String userName);
+
+	Object getUserById(int userId);
 
 	Object getUserById(int userId);
 
