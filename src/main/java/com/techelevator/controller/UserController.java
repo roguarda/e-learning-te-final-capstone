@@ -73,7 +73,7 @@ public class UserController {
             return "redirect:/users/new";
         }
 
-        userDAO.saveUser(user.getUserName(), user.getUserMail(), user.getPassword(), user.getFirstName(), user.getLastName(), user.getRole());
+        userDAO.saveUser(user.getUserName(), user.getPassword(), user.getFirstName(), user.getLastName(), user.getRole());
         return "redirect:/Registration/newUserConfirmation";
     }
 

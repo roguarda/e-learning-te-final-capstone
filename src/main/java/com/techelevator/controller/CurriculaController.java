@@ -59,8 +59,9 @@ public class CurriculaController {
         return "redirect:/teacherHomePage?curriculaName="+curricula.getCurriculaName();
     }
 
-    @RequestMapping(path = "/CreateCurricula/CurriculaConfirmation", method = RequestMethod.GET)
-    public String createCurriculaConfirmation() {
+    @RequestMapping(path = "/curricula/delete/{curriculaId}", method = RequestMethod.GET)
+    public String deleteCurricula() {
+        //continuar este codigo, lo deje a la mitad para fixear el tema del mail que no compila
         return "/Teacher/CurriculaConfirmation";
     }
 }
