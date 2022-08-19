@@ -34,6 +34,7 @@ public class UserController {
         return "Student/studentHomePage";
     }
 
+<<<<<<< HEAD
     @RequestMapping("/studentHomePage/profile")
     public String details(HttpSession session, ModelMap map) {
 
@@ -63,35 +64,62 @@ public class UserController {
 
 
 
+=======
+/*//	@RequestMapping(path="/studentHomePage/Profile", method=RequestMethod.GET)
+//	public String getStudentProfileAndEdit(@Valid @ModelAttribute User user, @RequestParam String name, @RequestParam int age, @RequestParam Email mail ) {
+//		if (User.hasError()) {
+//			return "redirect:/studentHomePage/Profile";
+//		}
 
-    @RequestMapping(path = "/teacherHomePage", method = RequestMethod.GET)
-    public String getTeacherHomePage() {
-        return "Teacher/teacherHomePage";
-    }
 
-    @RequestMapping(path = "/users/new", method = RequestMethod.GET)
-    public String displayNewUserForm(ModelMap modelHolder) {
-        if (!modelHolder.containsAttribute("user")) {
-            modelHolder.addAttribute("user", new User());
-        }
-        return "Registration/newUser";
-    }
+//		User currentUser = (User) userDAO.getAttribute("currentUser");
+//		user.setAttribute("user", currentUser);
+//
+//		userDAO.updateName(currentUser.getUserName(), name);
+//		userDAO.updateAge(currentUser.getUserAge(), age);
+//		userDAO.updateMail(currentUser.getUserMail(), mail);
+//
+//		return "redirect:/studentHomePage";}*/
+>>>>>>> main
 
-    @RequestMapping(path = "/users", method = RequestMethod.POST)
-    public String createUser(@Valid @ModelAttribute User user, BindingResult result, RedirectAttributes flash) {
-        if (result.hasErrors()) {
-            flash.addFlashAttribute("user", user);
-            flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "user", result);
-            return "redirect:/users/new";
-        }
+	@RequestMapping(path="/teacherHomePage", method=RequestMethod.GET)
+	public String getTeacherHomePage() {
+		return "Teacher/teacherHomePage";
+	}
 
+	@RequestMapping(path="/users/new", method=RequestMethod.GET)
+	public String displayNewUserForm(ModelMap modelHolder) {
+		if( ! modelHolder.containsAttribute("user")) {
+			modelHolder.addAttribute("user", new User());
+		}
+		return "Registration/newUser";
+	}
+	
+	@RequestMapping(path="/users", method=RequestMethod.POST)
+	public String createUser(@Valid @ModelAttribute User user, BindingResult result, RedirectAttributes flash) {
+		if(result.hasErrors()) {
+			flash.addFlashAttribute("user", user);
+			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "user", result);
+			return "redirect:/users/new";
+		}
+		
+		userDAO.saveUser(user.getUserName(), user.getPassword(), user.getFirstName(), user.getLastName(), user.getRole());
+		return "redirect:/Registration/newUserConfirmation" ;
+	}
+
+	@RequestMapping(path = "/Registration/newUserConfirmation", method = RequestMethod.GET)
+	public String newUserConfirmation() {
+		return "/Registration/newUserConfirmation";
+	}
+
+
+
+<<<<<<< HEAD
         userDAO.saveUser(user.getUserName(), user.getPassword(), user.getFirstName(), user.getLastName(), user.getRole());
         return "redirect:/Registration/newUserConfirmation";
     }
+=======
+>>>>>>> main
 
-    @RequestMapping(path = "/Registration/newUserConfirmation", method = RequestMethod.GET)
-    public String newUserConfirmation() {
-        return "/Registration/newUserConfirmation";
-    }
 
 }

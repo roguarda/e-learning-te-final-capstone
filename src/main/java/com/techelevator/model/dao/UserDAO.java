@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Profile;
 public interface UserDAO {
 	User getUserById (int userId);
 
-	public void saveUser(String userName, Email email, String password, String firstName, String lastName, String role);
+	public void saveUser(String userName, String password, String firstName, String lastName, String role);
 
 	public void saveUser(String userName, String password, String firstName, String lastName, String role);
 
@@ -17,6 +17,8 @@ public interface UserDAO {
 	public void updatePassword(String userName, String password);
 
 	User getUserByUserName(String userName);
+
+	Object getUserById(int userId);
 
 	Object getAttribute(String currentUser);
 
