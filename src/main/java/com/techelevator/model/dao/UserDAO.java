@@ -1,8 +1,12 @@
 package com.techelevator.model.dao;
 
+import com.techelevator.model.dto.User;
 import org.hibernate.validator.constraints.Email;
+import org.springframework.context.annotation.Profile;
 
 public interface UserDAO {
+
+	User getUserById (int userId);
 
 	public void saveUser(String userName, Email email, String password, String firstName, String lastName, String role);
 
@@ -10,7 +14,7 @@ public interface UserDAO {
 
 	public void updatePassword(String userName, String password);
 
-	public Object getUserByUserName(String userName);
+	User getUserByUserName(String userName);
 
 	Object getAttribute(String currentUser);
 
@@ -19,4 +23,8 @@ public interface UserDAO {
 	void updateAge(Object userAge, int age);
 
 	void updateMail(Email userMail, Email mail);
+
+	Profile getProfile();
+
+	void update(String userName, User user);
 }

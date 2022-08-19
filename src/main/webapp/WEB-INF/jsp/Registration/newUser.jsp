@@ -21,6 +21,10 @@
 				<input type="password" id="password" name="password" placeHolder="Password" class="form-control" />
 			</div>
 			<div class="form-group">
+				<label for="email">Email: </label>
+				<input type="email" id="email" name="email" placeHolder="Email" class="form-control" />
+			</div>
+			<div class="form-group">
 				<label for="confirmPassword">Confirm Password: </label>
 				<input type="password" id="confirmPassword" name="confirmPassword" placeHolder="Re-Type Password" class="form-control" />
 			</div>

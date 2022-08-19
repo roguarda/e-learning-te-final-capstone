@@ -6,6 +6,7 @@ import com.techelevator.model.dao.UserDAO;
 import org.bouncycastle.util.encoders.Base64;
 import org.hibernate.validator.constraints.Email;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -53,7 +54,7 @@ public class JDBCUserDAO implements UserDAO {
             isTeacher = true;
         }
 
-        jdbcTemplate.update("INSERT INTO app_user(user_name, email, password, first_name, last_name, role, is_teacher, is_student, salt) " +
+        jdbcTemplate.update("INSERT INTO app_user(user_name, password, first_name, last_name, role, is_teacher, is_student, salt) " +
                         "VALUES (?,?,?,?,?,?,?,?,?);",
                 userName, email, hashedPassword, firstName, lastName, role, isTeacher, isStudent, saltString);
     }
@@ -81,7 +82,7 @@ public class JDBCUserDAO implements UserDAO {
     }
 
     @Override
-    public Object getUserByUserName(String userName) {
+    public User getUserByUserName(String userName) {
         String sqlSearchForUsername = "SELECT * " +
                 "FROM app_user " +
                 "WHERE UPPER(user_name) = ? ";
@@ -119,6 +120,16 @@ public class JDBCUserDAO implements UserDAO {
 
     @Override
     public void updateMail(Email userMail, Email mail) {
+
+    }
+
+    @Override
+    public Profile getProfile() {
+        return null;
+    }
+
+    @Override
+    public void update(String userName, User user) {
 
     }
 

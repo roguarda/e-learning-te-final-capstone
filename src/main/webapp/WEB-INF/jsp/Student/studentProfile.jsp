@@ -3,29 +3,113 @@
 
 <form method="POST" action="${formAction}">
 <input type="hidden" name="TOKEN" value="${TOKEN}"/>
-<h2>Edit/View you profile</h2>
+<h2>Your profile</h2>
 
 <c:url value="/studentHomePage/Profile" var="Profile" />
-<%--@elvariable id="RegisterProfile" type=""--%>
+<%--@elvariable id="YourProfile" type=""--%>
+
 <form:form action="${register}" method="POST" modelAttribute="RegisterProfile">
 
+  <div class="detail-container">
+  </div>
+  <div class="detail-row">
+    <div class="detail-header">
+      ID
+    </div>
+    <div class="detail-value">
+        ${user.UserID}
+    </div>
+  </div>
+    <div class="detail-row">
+      <div class="detail-header">
+        First Name
+      </div>
+      <div class="detail-value">
+          ${user.FirstName}
+      </div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-header">
+        Last Name
+      </div>
+      <div class="detail-value">
+          ${user.LastName}
+      </div>
+    </div>
+  <div class="detail-row">
+    <div class="detail-header">
+    <%--  Email
+    </div>
+    <div class="detail-value">
+        ${user.Email}
+    </div>
+  </div>--%>
+
+
+
+  <div class="detail-row">
+      <c:url var="editLink" value="/Profile/edit/${Profile.id}" />
+    <a href="${editLink}" class="edit-link">Edit</a>
+
+
+  </div>
+  </div>
+
+
+
+
+<%--
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label for="userName">User Name: </label>
+          <input type="text" id="userName" name="userName" placeHolder="User Name" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="password">Password: </label>
+          <input type="password" id="password" name="password" placeHolder="Password" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password: </label>
+          <input type="password" id="confirmPassword" name="confirmPassword" placeHolder="Re-Type Password" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="firstName">First Name: </label>
+          <input type="text" id="firstName" name="firstName" placeHolder="Name" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name: </label>
+          <input type="text" id="lastName" name="lastName" placeHolder="Last Name" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="role">Role: </label>
+          <select  id="role" name="role"  class="form-control">
+            <option value="" selected disabled>Please select a role</option>
+            <option value="teacher">Teacher</option>
+            <option value="student">Student</option>
+
+
+
+
+
   <div>
-      <%--@declare id="name"--%><label for="Name"> Name</label>
+      &lt;%&ndash;@declare id="name"&ndash;%&gt;<label for="Name"> Name</label>
     <form:input  path="name" class="form-control"/>
     <form:errors path="name" cssClass="error"/>
   </div>
   <div>
-      <%--@declare id="age"--%><label for="Age">Age</label>
+      &lt;%&ndash;@declare id="age"&ndash;%&gt;<label for="Age">Age</label>
     <form:input  path="age" class="form-control" />
     <form:errors path="age" cssClass="error"/>
   </div>
   <div>
-      <%--@declare id="Email"--%><label for="Email">Email</label>
+      &lt;%&ndash;@declare id="Email"&ndash;%&gt;<label for="Email">Email</label>
     <form:input  path="Email" class="form-control" />
     <form:errors path="Email" cssClass="error"/>
 
 
-  </div>
+  </div>--%>
 
   </form>
 
