@@ -78,7 +78,12 @@ public class JDBCCurriculaDAO implements CurriculaDAO {
     }
 
     @Override
-    public void update(int idcurricula, Curricula curricula) {
+    public void update(String updateCriteria , int curriculaId, Curricula curricula) {
+
+        if(updateCriteria.equals("name"))
+        {updateCriteria = "curricula_name"
+
+//        jdbcTemplate.update("UPDATE app_user SET password = ? WHERE user_name = ?", password, userName);
 
     }
 

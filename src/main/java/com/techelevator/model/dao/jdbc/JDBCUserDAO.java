@@ -103,6 +103,28 @@ public class JDBCUserDAO implements UserDAO {
     }
 
     @Override
+    public Object getUserById(int userId) {
+        String sqlSearchForUsername = "SELECT * " +
+                "FROM app_user " +
+                "WHERE user_id = ? ";
+
+        SqlRowSet user = jdbcTemplate.queryForRowSet(sqlSearchForUsername, userId);
+        User thisUser = null;
+        if (user.next()) {
+            thisUser = new User();
+            thisUser.setUserName(user.getString("user_name"));
+            thisUser.setEmail((Email) user.getObject("email"));
+            thisUser.setPassword(user.getString("password"));
+            thisUser.setStudent(user.getBoolean("is_student"));
+            thisUser.setTeacher(user.getBoolean("is_teacher"));
+            thisUser.setFirstName(user.getString("first_name"));
+            thisUser.setLastName(user.getString("last_name"));
+        }
+
+        return thisUser;
+    }
+
+    @Override
     public Object getAttribute(String currentUser) {
         return null;
     }
