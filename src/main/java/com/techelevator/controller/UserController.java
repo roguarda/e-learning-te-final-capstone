@@ -51,8 +51,7 @@ public class UserController {
 //		userDAO.updateMail(currentUser.getUserMail(), mail);
 //
 //		return "redirect:/studentHomePage";}*/
-
-<<<<<<< HEAD
+    
 	@RequestMapping(path="/teacherHomePage", method=RequestMethod.GET)
 	public String getTeacherHomePage() {
 		return "Teacher/teacherHomePage";
