@@ -63,23 +63,6 @@ public class UserController {
 
 
 
-/*//	@RequestMapping(path="/studentHomePage/Profile", method=RequestMethod.GET)
-//	public String getStudentProfileAndEdit(@Valid @ModelAttribute User user, @RequestParam String name, @RequestParam int age, @RequestParam Email mail ) {
-//		if (User.hasError()) {
-//			return "redirect:/studentHomePage/Profile";
-//		}
-
-
-//		User currentUser = (User) userDAO.getAttribute("currentUser");
-//		user.setAttribute("user", currentUser);
-//
-//		userDAO.updateName(currentUser.getUserName(), name);
-//		userDAO.updateAge(currentUser.getUserAge(), age);
-//		userDAO.updateMail(currentUser.getUserMail(), mail);
-//
-//		return "redirect:/studentHomePage";}*/
-
-
 	@RequestMapping(path = "/teacherHomePage", method = RequestMethod.GET)
 	public String getTeacherHomePage() {
 		return "Teacher/teacherHomePage";
@@ -111,7 +94,6 @@ public class UserController {
 		userDAO.saveUser(user.getUserName(), user.getPassword(), user.getFirstName(), user.getLastName(), user.getRole());
 		return "redirect:/Registration/newUserConfirmation" ;
 	}
-
 
 
 }

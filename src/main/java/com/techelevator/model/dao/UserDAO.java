@@ -20,6 +20,7 @@ public interface UserDAO {
 
 	void saveUser(String userName, Email email, String password, String firstName, String lastName, String role);
 
+
 	Object getAttribute(String currentUser);
 
 	void updateName(String userName, String name);
