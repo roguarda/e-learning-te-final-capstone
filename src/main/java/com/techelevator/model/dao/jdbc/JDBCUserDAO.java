@@ -53,25 +53,12 @@ public class JDBCUserDAO implements UserDAO {
         }
 
         jdbcTemplate.update("INSERT INTO app_user(user_name, password, first_name, last_name, role, is_teacher, is_student, salt) " +
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 
                         "VALUES (?,?,?,?,?,?,?,?);",
                 userName, hashedPassword, firstName, lastName, role, isTeacher, isStudent, saltString);
 
-=======
-                        "VALUES (?,?,?,?,?,?,?,?);",
-                userName, hashedPassword, firstName, lastName, role, isTeacher, isStudent, saltString);
->>>>>>> main
-=======
-                        "VALUES (?,?,?,?,?,?,?,?);",
-                userName, hashedPassword, firstName, lastName, role, isTeacher, isStudent, saltString);
->>>>>>> main
-=======
-                        "VALUES (?,?,?,?,?,?,?,?);",
-                userName, hashedPassword, firstName, lastName, role, isTeacher, isStudent, saltString);
->>>>>>> main
+
     }
 
     @Override
@@ -107,78 +94,6 @@ public class JDBCUserDAO implements UserDAO {
         if (user.next()) {
             thisUser = new User();
             thisUser.setUserName(user.getString("user_name"));
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
-=======
-            thisUser.setPassword(user.getString("password"));
-            thisUser.setStudent(user.getBoolean("is_student"));
-            thisUser.setTeacher(user.getBoolean("is_teacher"));
-            thisUser.setFirstName(user.getString("first_name"));
-            thisUser.setLastName(user.getString("last_name"));
-        }
-
-        return thisUser;
-    }
-
-    @Override
-    public Object getUserById(int userId) {
-        String sqlSearchForUsername = "SELECT * " +
-                "FROM app_user " +
-                "WHERE user_id = ? ";
-
-        SqlRowSet user = jdbcTemplate.queryForRowSet(sqlSearchForUsername, userId);
-        User thisUser = null;
-        if (user.next()) {
-            thisUser = new User();
-            thisUser.setUserName(user.getString("user_name"));
->>>>>>> main
-            thisUser.setPassword(user.getString("password"));
-            thisUser.setStudent(user.getBoolean("is_student"));
-            thisUser.setTeacher(user.getBoolean("is_teacher"));
-            thisUser.setFirstName(user.getString("first_name"));
-            thisUser.setLastName(user.getString("last_name"));
-        }
-
-        return thisUser;
-    }
-
-    @Override
-    public Object getUserById(int userId) {
-        String sqlSearchForUsername = "SELECT * " +
-                "FROM app_user " +
-                "WHERE user_id = ? ";
-
-        SqlRowSet user = jdbcTemplate.queryForRowSet(sqlSearchForUsername, userId);
-        User thisUser = null;
-        if (user.next()) {
-            thisUser = new User();
-            thisUser.setUserName(user.getString("user_name"));
->>>>>>> main
-            thisUser.setPassword(user.getString("password"));
-            thisUser.setStudent(user.getBoolean("is_student"));
-            thisUser.setTeacher(user.getBoolean("is_teacher"));
-            thisUser.setFirstName(user.getString("first_name"));
-            thisUser.setLastName(user.getString("last_name"));
-        }
-
-        return thisUser;
-    }
-
-    @Override
-    public Object getUserById(int userId) {
-        String sqlSearchForUsername = "SELECT * " +
-                "FROM app_user " +
-                "WHERE user_id = ? ";
-
-        SqlRowSet user = jdbcTemplate.queryForRowSet(sqlSearchForUsername, userId);
-        User thisUser = null;
-        if (user.next()) {
-            thisUser = new User();
-            thisUser.setUserName(user.getString("user_name"));
->>>>>>> main
             thisUser.setPassword(user.getString("password"));
             thisUser.setStudent(user.getBoolean("is_student"));
             thisUser.setTeacher(user.getBoolean("is_teacher"));
@@ -200,6 +115,7 @@ public class JDBCUserDAO implements UserDAO {
         if (user.next()) {
             thisUser = new User();
             thisUser.setUserName(user.getString("user_name"));
+
             thisUser.setPassword(user.getString("password"));
             thisUser.setStudent(user.getBoolean("is_student"));
             thisUser.setTeacher(user.getBoolean("is_teacher"));
@@ -209,6 +125,7 @@ public class JDBCUserDAO implements UserDAO {
 
         return thisUser;
     }
+
 
     @Override
     public void saveUser(String userName, Email email, String password, String firstName, String lastName, String role) {
@@ -229,6 +146,7 @@ public class JDBCUserDAO implements UserDAO {
     public void updateAge(Object userAge, int age) {
 
     }
+
 
     @Override
     public void updateMail(Email userMail, Email mail) {
