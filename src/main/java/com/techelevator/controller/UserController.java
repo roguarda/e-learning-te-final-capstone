@@ -34,7 +34,7 @@ public class UserController {
 		return "Student/studentHomePage";
 	}
 
-//	@RequestMapping(path="/studentHomePage/Profile", method=RequestMethod.GET)
+/*//	@RequestMapping(path="/studentHomePage/Profile", method=RequestMethod.GET)
 //	public String getStudentProfileAndEdit(@Valid @ModelAttribute User user, @RequestParam String name, @RequestParam int age, @RequestParam Email mail ) {
 //		if (User.hasError()) {
 //			return "redirect:/studentHomePage/Profile";
@@ -48,7 +48,7 @@ public class UserController {
 //		userDAO.updateAge(currentUser.getUserAge(), age);
 //		userDAO.updateMail(currentUser.getUserMail(), mail);
 //
-//		return "redirect:/studentHomePage";}
+//		return "redirect:/studentHomePage";}*/
 
 	@RequestMapping(path="/teacherHomePage", method=RequestMethod.GET)
 	public String getTeacherHomePage() {
@@ -82,21 +82,21 @@ public class UserController {
 
 
 
-//	@RequestMapping(path="users/login", method=RequestMethod.GET)
-//	public String getLoginForm(ModelMap modelMap) {
-//		modelMap.put("login", new Login());
-//		return "Login/login";
-//	}
-//
-//	@RequestMapping(path="users/login", method=RequestMethod.POST)
-//	public String login(@Valid Login login
-//			, BindingResult result) {
-//
-//		if (result.hasErrors()) {
-//			return "/login/login";
-//		}
-//
-//		return "redirect:/login/loginConfirmation";
+///*//	@RequestMapping(path="users/login", method=RequestMethod.GET)
+////	public String getLoginForm(ModelMap modelMap) {
+////		modelMap.put("login", new Login());
+////		return "Login/login";
+////	}
+////
+////	@RequestMapping(path="users/login", method=RequestMethod.POST)
+////	public String login(@Valid Login login
+////			, BindingResult result) {
+////
+////		if (result.hasErrors()) {
+////			return "/login/login";
+////		}
+////
+////		return "redirect:/login/loginConfirmation";*/
 //
 //	}
 

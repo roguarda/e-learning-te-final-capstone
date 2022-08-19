@@ -45,7 +45,7 @@ public class CourseController {
         flash.addFlashAttribute("message", "You have successfully registered the Course.");
         courseDAO.add(course.getName(), course.getTeacherId(),course.getDescription(), course.getDifficultyLevel(), course.getCost());
 //        return "redirect:/CourseConfirmation";
-        return "redirect:/teacherHomePage?courseName="+course.getName();
+        return "redirect:/teacherHomePage/courseName="+course.getName();
     }
 
     @RequestMapping(path = "/allCourses", method = RequestMethod.GET)
@@ -57,5 +57,10 @@ public class CourseController {
         return "Teacher/allCourses";
 
     }
-}
+    @RequestMapping(path = "/eachCourse", method = RequestMethod.GET)
+    public String showEachCourse(ModelMap modelHolder) {
+        return "/Course";
+    }
+    }
+
 
