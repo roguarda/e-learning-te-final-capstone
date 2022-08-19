@@ -84,22 +84,6 @@ public class UserController {
 
 
 
-///*//	@RequestMapping(path="users/login", method=RequestMethod.GET)
-////	public String getLoginForm(ModelMap modelMap) {
-////		modelMap.put("login", new Login());
-////		return "Login/login";
-////	}
-////
-////	@RequestMapping(path="users/login", method=RequestMethod.POST)
-////	public String login(@Valid Login login
-////			, BindingResult result) {
-////
-////		if (result.hasErrors()) {
-////			return "/login/login";
-////		}
-////
-////		return "redirect:/login/loginConfirmation";*/
-//
-//	}
+
 
 }
