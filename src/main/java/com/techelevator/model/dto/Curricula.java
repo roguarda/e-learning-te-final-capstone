@@ -48,10 +48,5 @@ public class Curricula {
         this.dailyHomework = dailyHomework;
     }
 
-//    public Curricula(String curriculaName, String dailyInstruction, String dailyHomework) {
-//        this.curriculaName = curriculaName;
-//        this.dailyInstruction = dailyInstruction;
-//        this.dailyHomework = dailyHomework;
-//    }
 
 }
