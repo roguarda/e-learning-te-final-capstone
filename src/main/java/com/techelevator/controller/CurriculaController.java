@@ -83,23 +83,22 @@ public class CurriculaController {
 
 
         //edit GET
-    @RequestMapping("Curricula/edit/{id}")
-    public String editCurriculaForm(@PathVariable Integer curriculaId, ModelMap map, @RequestParam String updateCriteria, String newValue)
+    @RequestMapping("curricula/edit/{curriculaId}")
+    public String editCurriculaForm(@PathVariable Integer curriculaId, ModelMap map)
     {  Curricula curricula = curriculaDAO.getById(curriculaId);
         map.put("curricula", curricula);
         return "Teacher/Curricula/editCurricula";
     }
 
     //edit POST
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "curricula/edit/{curriculaId}", method = RequestMethod.POST)
     public String editCurriculaForm(@PathVariable Integer curriculaId, String updateCriteria, String newValue)
     {
         curriculaDAO.update(updateCriteria, newValue, curriculaId);
 
-        return "redirect:/curricula";
+        return "redirect:/Curricula";
     }
-//
-//
+
 
 
     //edit GET
