@@ -34,11 +34,12 @@ public class JDBCCurriculaDAO implements CurriculaDAO {
     @Override
     public List<Curricula> getAllCurricula() {
         List<Curricula> curricula = new ArrayList<>();
-        String sql = " SELECT curricula_id \n" +
-                "     , curricula_name \n" +
-                "     , daily_instruction \n" +
-                "     , daily_homework \n" +
-                " from curricula;";
+        String sql = " SELECT curricula_id\n " +
+                "     , curricula_name\n " +
+                "     , daily_instruction\n " +
+                "     , daily_homework\n " +
+                " FROM curricula\n " +
+                " ORDER BY curricula_id; ";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
             curricula.add(mapRowToCurricula(results));
@@ -86,7 +87,7 @@ public class JDBCCurriculaDAO implements CurriculaDAO {
         } else if (updateCriteria.equals("instruction")) {
             jdbcTemplate.update("update curricula SET daily_instruction = ?\n" +
                     "where curricula_id = ?;", newValue, curriculaId);
-        } else jdbcTemplate.update("update curricula SET daily_instruction = ?\n" +
+        } else jdbcTemplate.update("update curricula SET daily_homework = ?\n" +
                 "where curricula_id = ?;", newValue, curriculaId);
     }
 

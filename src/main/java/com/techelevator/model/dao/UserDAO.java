@@ -31,5 +31,6 @@ public interface UserDAO {
 
 	Profile getProfile();
 
-	void update(String userName, User user);
+
+	void update(String updateUser, String newValue, String userName);
 }
