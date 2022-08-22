@@ -5,7 +5,7 @@
 BEGIN;
 
 -- CREATE statements go here
-DROP TABLE IF EXISTS app_user, course, curricula, homework, curricula_course, student_course CASCADE ;
+DROP TABLE IF EXISTS app_user, course, curricula, homework, curricula_course, student_course CASCADE;
 
 
 CREATE TABLE app_user
@@ -49,8 +49,7 @@ CREATE TABLE course
 
 );
 CREATE TABLE curricula_course
-(   course_curricula_id SERIAL      NOT NULL  UNIQUE PRIMARY KEY ,
-    course_id          SERIAL       NOT NULL ,
+(   course_id          SERIAL       NOT NULL ,
     curricula_id       INT          NOT NULL ,
 
     CONSTRAINT FK_curricula_course FOREIGN KEY (course_id) REFERENCES course(course_id),
@@ -58,10 +57,10 @@ CREATE TABLE curricula_course
 
 );
 CREATE TABLE student_course
-(   enrollment_id serial unique NOT NULL,
+(
     student_id int NOT NULL,
     course_id int NOT NULL,
-    CONSTRAINT PK_enrollment PRIMARY KEY (enrollment_id)
+    PRIMARY KEY (student_id, course_id)
 
 );
 CREATE TABLE homework
@@ -82,5 +81,13 @@ CREATE TABLE homework
 
 
 );
+
+ALTER TABLE student_course
+Add constraint fk_student_course_student
+foreign key (student_id) references app_user (user_id);
+
+ALTER TABLE student_course
+    Add constraint fk_student_course_course
+        foreign key (course_id) references course (course_id);
 
 COMMIT;
