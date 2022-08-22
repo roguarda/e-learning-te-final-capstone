@@ -12,7 +12,6 @@ import com.techelevator.model.dao.CourseDAO;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import org.springframework.validation.annotation.Validated;
 import java.util.List;
 
 @Controller
@@ -29,7 +28,7 @@ public class CourseController {
         if (!modelHolder.containsAttribute("course")) {
             modelHolder.addAttribute("course", new Course());
         }
-        return "Teacher/CreateCourse";
+        return "Teacher/Course/CreateCourse";
 
     }
 
@@ -57,7 +56,7 @@ public class CourseController {
 
         List<Course> courses = courseDAO.getAllCourse();
         modelHolder.addAttribute("courses", courses);
-        return "Teacher/allCourses";
+        return "Teacher/Course/allCourses";
 
     }
 

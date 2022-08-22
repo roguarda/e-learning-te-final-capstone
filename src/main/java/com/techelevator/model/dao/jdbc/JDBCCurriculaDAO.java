@@ -91,7 +91,9 @@ public class JDBCCurriculaDAO implements CurriculaDAO {
     }
 
     @Override
-    public void delete(int idcurricula) {
-
+    public void delete(int curriculaId) {
+        String query = "DELETE FROM curricula\n" +
+                "WHERE curricula_id = ?;";
+        jdbcTemplate.update(query, curriculaId);
     }
 }
