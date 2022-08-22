@@ -1,41 +1,42 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Student
-  Date: 18/8/2022
-  Time: 11:24
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<div class="course">
-    <h2>{{ name }}</h2>
-    <div class="curriculas">
-        <div
-                class="curricula"
-                v-for="curricula in curriculas"
-                v-bind:key="curricula.id"
-                v-on:click="viewCurriculaDetails(curricula.id)"
-        >
-            <div class="header">
-                <h2>{{curricula.curriculaId}} - {{ curricula.curriculaName }} </h2>
-            </div>
-            <div class="footer">
-                <h3>{{ curricula.summary }}</h3>
-            </div>
-        </div>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<c:import url="/WEB-INF/jsp/common/header.jsp"/>
+
+<div id="course-detail">
+
+    <c:url var="courseImageURL"
+           value="/images/course-images/${course.imageName}" />
+    <img class="courseImage" src="${courseImageURL}">
+
+    <div class="course-description">
+        <h3>${course.description}</h3>
     </div>
+    <div class="dificulty-level">
+        <h3>${course.difficultyLevel}</h3>
+    </div>
+    <div>
+     <c:url var="curriculaURL" value="/curricula"></c:url>
+        <a href="${curriculaUrl}" class="btn btn-primary">Go to curricula</a>
+    </div>
+    <div>
+        <c:choose>
+
+            <c:when test="${currentUser.student}">
+                <a class="btn btn-primary">Enroll</a>
+            </c:when>
+
+            <c:otherwise>
+                <c:url var="teacherUrl" value="/teacherHomePage"></c:url>
+                <a href="${teacherUrl}" class="btn btn-primary">Return to main page</a>
+
+            </c:otherwise>
+
+        </c:choose>
+        <a class="btn btn-primary">Enroll</a>
+    </div>
+
+
 </div>
-</template>
-
-<script>
-    export default {
-        props: ['coursename', 'curriculas', 'courseID'],
-        methods: {
-            viewCurriculaDetails(curriculaID) {
-                this.$router.push(`/curricula/${curriculaID}`);
-            },
-        }
-    };
-</script>
 
 
-</style>

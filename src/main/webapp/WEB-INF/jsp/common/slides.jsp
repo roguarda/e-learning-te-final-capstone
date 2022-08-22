@@ -169,7 +169,7 @@
 
     <div class="mySlides fade">
         <div class="numbertext">2 / 3</div>
-        <img src="../../../img/pexels-christina-morillo-1181290.jpg" style="width:100%" alt="woman">
+        <img src="../../../img/course-images/pexels-christina-morillo-1181290.jpg" style="width:100%" alt="woman">
         <div class="text">Full Stack Web Development</div>
     </div>
 

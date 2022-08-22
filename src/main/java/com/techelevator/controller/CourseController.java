@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.techelevator.model.dto.Course;
 import com.techelevator.model.dao.CourseDAO;
@@ -64,18 +62,16 @@ public class CourseController {
 
     }
 
-    @RequestMapping(path = "/courses/detail", method = RequestMethod.GET)
-    public String showCourseDetail(HttpServletRequest request) {
-        int courseId = Integer.parseInt(request.getParameter("id"));
+    @RequestMapping(path = "/courses/detail/{courseId}", method = RequestMethod.GET)
+    public String showCourseDetail( ModelMap modelMap, @PathVariable int courseId) {
         Course course = courseDAO.getById(courseId);
+        modelMap.addAttribute("course", course);
 
-        request.setAttribute("course", course);
-
-        return "courseDetail";
+        return "/common/course";
     }
 }
  /*   @RequestMapping(path = "/courses/student", method = RequestMethod.GET)
-    public List<Course> getEnrolledCourses(Principal principal) {
+    public List<Course> getEnrolledCourses() {
         long studentId = userDao.findIdByUsername(principal.getName());
         return courseDao.findAllEnrolled(studentId);
     }*/

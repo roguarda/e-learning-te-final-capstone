@@ -8,7 +8,7 @@
 <input type="hidden" name="TOKEN" value="${TOKEN}"/>
 <h2>Your profile</h2>
 
-<c:url value="/studentHomePage/Profile" var="Profile" />
+<c:url value="/studentHomePage/profile" var="Profile" />
 <%--@elvariable id="YourProfile" type=""--%>
 
 <form:form action="${register}" method="POST" modelAttribute="RegisterProfile">
