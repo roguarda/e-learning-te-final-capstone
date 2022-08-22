@@ -54,9 +54,9 @@
 
 
   <div class="detail-row">
-      <c:url var="editLink" value="/Profile/edit/${currentUser.userId}" />
-    <a href="${editLink}" class="edit-link">Edit</a>
-
+      <button type="button" class="btn btn-outline-info">
+      <c:url var="editLink" value="/Profile/edit/${currentUser.userName}" />
+          <a href="${editLink}">edit</a></button>
 
   </div>
   </div>

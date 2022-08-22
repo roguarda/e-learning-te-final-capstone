@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import com.techelevator.model.dto.Curricula;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -44,23 +45,21 @@ public class UserController {
 		return "/Student/studentProfile";
 	}
 
-	@RequestMapping(value = "/edit/{userName}", method = RequestMethod.GET)
-	public String edit(@PathVariable int userId, ModelMap map) {
-		User user = userDAO.getUserById(userId);
+	@RequestMapping(value = "Profile/edit/{userName}")
+	public String editProfile(@PathVariable String userName, ModelMap map) {
+		User user = userDAO.getUserByUserName(userName);
 
 		map.put("user", user);
 
-		return "profile/edit";
+		return "/Student/Edit";
 	}
 
-	@RequestMapping(value = "/edit/{userName}", method = RequestMethod.POST)
-	public String edit(@PathVariable String userName, @ModelAttribute User user) {
-		userDAO.update(userName, user);
+	@RequestMapping(value = "Profile/edit/{userName}", method = RequestMethod.POST)
+	public String editProfileForm(@PathVariable String userName, String updateUser, String newValue) {
+		userDAO.update(updateUser, newValue, userName);
 
-		return "/profile";
+		return "redirect:/studentHomePage/profile";
 	}
-
-
 
 
 	@RequestMapping(path = "/teacherHomePage", method = RequestMethod.GET)

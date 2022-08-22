@@ -137,8 +137,19 @@ public class JDBCUserDAO implements UserDAO {
         return null;
     }
 
+
+
     @Override
-    public void update(String userName, User user) {
+    public void update(String updateUser, String newValue, String userName) {
+
+            if (updateUser.equals("firstName")) {
+                jdbcTemplate.update("update app_user SET first_name = ?\n" +
+                        "where user_name = ?;", newValue, userName);
+            } else if (updateUser.equals("lastName")) {
+                jdbcTemplate.update("update app_user SET last_name = ?\n" +
+                        "where user_name = ?;", newValue, userName);
+            }
+        }
 
     }
-}
+
