@@ -9,12 +9,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.techelevator.model.dto.Course;
 import com.techelevator.model.dao.CourseDAO;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
 @Controller
 public class CourseController {
     private CourseDAO courseDAO;
+
     @Autowired
     public CourseController(CourseDAO courseDAO) {
         this.courseDAO = courseDAO;
@@ -42,9 +45,9 @@ public class CourseController {
         }
 
         flash.addFlashAttribute("message", "You have successfully registered the Course.");
-        courseDAO.add(course.getName(), course.getTeacherId(),course.getDescription(), course.getDifficultyLevel(), course.getCost());
+        courseDAO.add(course.getName(), course.getTeacherId(), course.getDescription(), course.getDifficultyLevel(), course.getCost());
 //        return "redirect:/CourseConfirmation";
-        return "redirect:/teacherHomePage?courseName="+course.getName();
+        return "redirect:/teacherHomePage/courseName=" + course.getName();
     }
 
     @RequestMapping(path = "/allCourses", method = RequestMethod.GET)
@@ -56,5 +59,21 @@ public class CourseController {
         return "Teacher/Course/allCourses";
 
     }
+
+    @RequestMapping(path = "/courses/detail", method = RequestMethod.GET)
+    public String showCourseDetail(HttpServletRequest request) {
+        int courseId = Integer.parseInt(request.getParameter("id"));
+        Course course = courseDAO.getById(courseId);
+
+        request.setAttribute("course", course);
+
+        return "courseDetail";
+    }
 }
+ /*   @RequestMapping(path = "/courses/student", method = RequestMethod.GET)
+    public List<Course> getEnrolledCourses(Principal principal) {
+        long studentId = userDao.findIdByUsername(principal.getName());
+        return courseDao.findAllEnrolled(studentId);
+    }*/
+
 
