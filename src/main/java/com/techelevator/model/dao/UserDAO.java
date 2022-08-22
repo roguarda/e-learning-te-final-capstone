@@ -6,31 +6,20 @@ import org.springframework.context.annotation.Profile;
 
 public interface UserDAO {
 
-	public void saveUser(String userName, String password, String firstName, String lastName, String role);
+    public void saveUser(String userName, String password, String firstName, String lastName, String role);
 
 
-	public boolean searchForUsernameAndPassword(String userName, String password);
+    public boolean searchForUsernameAndPassword(String userName, String password);
 
-	public void updatePassword(String userName, String password);
+    public void updatePassword(String userName, String password);
 
-	User getUserByUserName(String userName);
+    User getUserByUserName(String userName);
 
+    User getUserById(int userId);
 
-	User getUserById(int userId);
+    Object getAttribute(String currentUser);
 
-	void saveUser(String userName, Email email, String password, String firstName, String lastName, String role);
+    Profile getProfile();
 
-
-	Object getAttribute(String currentUser);
-
-	void updateName(String userName, String name);
-
-	void updateAge(Object userAge, int age);
-
-	void updateMail(Email userMail, Email mail);
-
-	Profile getProfile();
-
-
-	void update(String updateUser, String newValue, String userName);
+    void update(String updateUser, String newValue, String userName);
 }

@@ -20,7 +20,6 @@ public class Course {
     @NotBlank(message="Cost is required")
     private String cost;
 
-    private int studentId;
 
 
     public int getId()
@@ -78,13 +77,6 @@ public class Course {
         this.teacherId = teacherId;
     }
 
-    public Integer getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(Integer studentId) {
-        this.studentId = studentId;
-    }
 
 
 }

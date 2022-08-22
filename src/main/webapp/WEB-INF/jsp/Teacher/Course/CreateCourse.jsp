@@ -12,13 +12,13 @@
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
             <div class="form-group">
+                <p> Teacher ID: ${currentUser.userId} </p>
+            </div>
+            <div class="form-group">
                 <label for="name"> Course Name: </label>
                 <input type="text" id="name" name="name" placeHolder=" Name" class="form-control"/>
             </div>
-            <div class="form-group">
-                <label for="teacherId"> Teacher ID: </label>
-                <input type="number" id="teacherId" name="teacherId" placeHolder=" ID" class="form-control"/>
-            </div>
+
             <div class="form-group">
                 <label for="description"> Course Description: </label>
                 <input type="text" id="description" name="description" placeHolder="description" class="form-control"/>

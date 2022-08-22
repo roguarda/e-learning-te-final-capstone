@@ -4,13 +4,11 @@ import javax.sql.DataSource;
 
 import com.techelevator.model.dao.UserDAO;
 import org.bouncycastle.util.encoders.Base64;
-import org.hibernate.validator.constraints.Email;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
-
 import com.techelevator.model.dto.User;
 import com.techelevator.services.security.PasswordHasher;
 
@@ -54,62 +52,71 @@ public class JDBCUserDAO implements UserDAO {
         jdbcTemplate.update("INSERT INTO app_user(user_name, password, first_name, last_name, role, is_teacher, is_student, salt) " +
                         "VALUES (?,?,?,?,?,?,?,?);",
                 userName, hashedPassword, firstName, lastName, role, isTeacher, isStudent, saltString);
-
     }
-        @Override
-        public boolean searchForUsernameAndPassword (String userName, String password){
-            String sqlSearchForUser = "SELECT * " +
-                    "FROM app_user " +
-                    "WHERE UPPER(user_name) = ? ";
 
-            SqlRowSet user = jdbcTemplate.queryForRowSet(sqlSearchForUser, userName.toUpperCase());
-            if (user.next()) {
-                String dbSalt = user.getString("salt");
-                String dbHashedPassword = user.getString("password");
-                String givenPassword = hashMaster.computeHash(password, Base64.decode(dbSalt));
-                return dbHashedPassword.equals(givenPassword);
-            } else {
-                return false;
-            }
+    @Override
+    public boolean searchForUsernameAndPassword(String userName, String password) {
+        String sqlSearchForUser = "SELECT * " +
+                "FROM app_user " +
+                "WHERE UPPER(user_name) = ? ";
+
+        SqlRowSet user = jdbcTemplate.queryForRowSet(sqlSearchForUser, userName.toUpperCase());
+        if (user.next()) {
+            String dbSalt = user.getString("salt");
+            String dbHashedPassword = user.getString("password");
+            String givenPassword = hashMaster.computeHash(password, Base64.decode(dbSalt));
+            return dbHashedPassword.equals(givenPassword);
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public void updatePassword(String userName, String password) {
+        jdbcTemplate.update("UPDATE app_user SET password = ? WHERE user_name = ?", password, userName);
+    }
+
+    @Override
+    public User getUserByUserName(String userName) {
+        String sqlSearchForUsername = "SELECT * " +
+                "FROM app_user " +
+                "WHERE UPPER(user_name) = ? ";
+
+        SqlRowSet user = jdbcTemplate.queryForRowSet(sqlSearchForUsername, userName.toUpperCase());
+        User thisUser = null;
+        if (user.next()) {
+            thisUser = new User();
+            thisUser.setUserName(user.getString("user_name"));
+            thisUser.setUserId(user.getInt("user_id"));
+            thisUser.setPassword(user.getString("password"));
+            thisUser.setStudent(user.getBoolean("is_student"));
+            thisUser.setTeacher(user.getBoolean("is_teacher"));
+            thisUser.setFirstName(user.getString("first_name"));
+            thisUser.setLastName(user.getString("last_name"));
         }
 
-        @Override
-        public void updatePassword (String userName, String password){
-            jdbcTemplate.update("UPDATE app_user SET password = ? WHERE user_name = ?", password, userName);
-        }
-
-        @Override
-        public User getUserByUserName (String userName){
-            String sqlSearchForUsername = "SELECT * " +
-                    "FROM app_user " +
-                    "WHERE UPPER(user_name) = ? ";
-
-            SqlRowSet user = jdbcTemplate.queryForRowSet(sqlSearchForUsername, userName.toUpperCase());
-            User thisUser = null;
-            if (user.next()) {
-                thisUser = new User();
-                thisUser.setUserName(user.getString("user_name"));
-
-                thisUser.setPassword(user.getString("password"));
-                thisUser.setStudent(user.getBoolean("is_student"));
-                thisUser.setTeacher(user.getBoolean("is_teacher"));
-                thisUser.setFirstName(user.getString("first_name"));
-                thisUser.setLastName(user.getString("last_name"));
-            }
-
-            return thisUser;
-        }
-
+        return thisUser;
+    }
 
 
     @Override
     public User getUserById(int userId) {
-        return null;
-    }
+        String sqlSearchForUsername = "SELECT * " +
+                "FROM app_user " +
+                "WHERE user_id = ? ";
 
-    @Override
-    public void saveUser(String userName, Email email, String password, String firstName, String lastName, String role) {
-
+        SqlRowSet user = jdbcTemplate.queryForRowSet(sqlSearchForUsername, userId);
+        User thisUser = null;
+        if (user.next()) {
+            thisUser = new User();
+            thisUser.setUserName(user.getString("user_name"));
+            thisUser.setPassword(user.getString("password"));
+            thisUser.setStudent(user.getBoolean("is_student"));
+            thisUser.setTeacher(user.getBoolean("is_teacher"));
+            thisUser.setFirstName(user.getString("first_name"));
+            thisUser.setLastName(user.getString("last_name"));
+        }
+        return thisUser;
     }
 
     @Override
@@ -118,38 +125,21 @@ public class JDBCUserDAO implements UserDAO {
     }
 
     @Override
-    public void updateName(String userName, String name) {
-
-    }
-
-    @Override
-    public void updateAge(Object userAge, int age) {
-
-    }
-
-    @Override
-    public void updateMail(Email userMail, Email mail) {
-
-    }
-
-    @Override
     public Profile getProfile() {
         return null;
     }
 
-
-
     @Override
     public void update(String updateUser, String newValue, String userName) {
 
-            if (updateUser.equals("firstName")) {
-                jdbcTemplate.update("update app_user SET first_name = ?\n" +
-                        "where user_name = ?;", newValue, userName);
-            } else if (updateUser.equals("lastName")) {
-                jdbcTemplate.update("update app_user SET last_name = ?\n" +
-                        "where user_name = ?;", newValue, userName);
-            }
+        if (updateUser.equals("firstName")) {
+            jdbcTemplate.update("update app_user SET first_name = ?\n" +
+                    "where user_name = ?;", newValue, userName);
+        } else if (updateUser.equals("lastName")) {
+            jdbcTemplate.update("update app_user SET last_name = ?\n" +
+                    "where user_name = ?;", newValue, userName);
         }
-
     }
+
+}
 

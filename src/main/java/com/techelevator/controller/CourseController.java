@@ -1,4 +1,5 @@
 package com.techelevator.controller;
+import com.techelevator.model.dto.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -9,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.techelevator.model.dto.Course;
 import com.techelevator.model.dao.CourseDAO;
-
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -36,26 +37,29 @@ public class CourseController {
     public String submitCourseForm(
             @Valid @ModelAttribute("createCourse") Course course,
             BindingResult result,
-            RedirectAttributes flash
+            RedirectAttributes flash,
+            HttpSession session
     ) {
         if (result.hasErrors()) {
             flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "createCourse", result);
 
             return "redirect:/CreateCourse";
         }
-
+        User currentUser = (User) session.getAttribute("currentUser");
         flash.addFlashAttribute("message", "You have successfully registered the Course.");
-        courseDAO.add(course.getName(), course.getTeacherId(), course.getDescription(), course.getDifficultyLevel(), course.getCost());
+        courseDAO.add(course.getName(), currentUser.getUserId() , course.getDescription(), course.getDifficultyLevel(), course.getCost());
 //        return "redirect:/CourseConfirmation";
-        return "redirect:/teacherHomePage/courseName=" + course.getName();
+        return "redirect:/teacherHomePage?courseName=" + course.getName();
     }
 
     @RequestMapping(path = "/allCourses", method = RequestMethod.GET)
-    public String showAllCourses(ModelMap modelHolder) {
-
-
+    public String showAllCourses(ModelMap modelHolder,  HttpSession session) {
         List<Course> courses = courseDAO.getAllCourse();
         modelHolder.addAttribute("courses", courses);
+
+        User currentUser = (User) session.getAttribute("currentUser");
+
+//        if(currentUser.isStudent())
         return "Teacher/Course/allCourses";
 
     }

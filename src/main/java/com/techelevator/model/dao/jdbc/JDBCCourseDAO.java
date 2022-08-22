@@ -24,12 +24,11 @@ public class JDBCCourseDAO implements CourseDAO {
     private Course mapRowToCourses(SqlRowSet results) {
         Course course = new Course();
         course.setId(results.getInt("course_id"));
-        course.setName(results.getString("course_id"));
+        course.setName(results.getString("course_name"));
         course.setDescription(results.getString("course_description"));
-        course.setDifficultyLevel(results.getString("course_difficultyLevel"));
-        course.setCost(results.getString("course_cost"));
+        course.setDifficultyLevel(results.getString("difficulty"));
+        course.setCost(results.getString("cost"));
         course.setTeacherId(results.getInt("teacher_id"));
-        course.setStudentId(results.getInt("studentId"));
 
 
         return course;
@@ -39,11 +38,7 @@ public class JDBCCourseDAO implements CourseDAO {
     public List<Course> getAllCourse() {
 
         List<Course> courses = new ArrayList<>();
-        String sql = "SELECT course_id " +
-                " , course_name " +
-                " , course_description" +
-                " , difficulty" +
-                " , cost " +
+        String sql = "SELECT * " +
                 " FROM course;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {

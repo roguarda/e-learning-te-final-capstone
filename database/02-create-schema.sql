@@ -41,10 +41,8 @@ CREATE TABLE course
     course_description varchar(255) NOT NULL,
     difficulty         varchar(10)  NOT NULL,
     cost               varchar(10),
-    student_id         INT,
     curricula_id       INT,
     FOREIGN KEY (teacher_id) REFERENCES app_user (user_id),
-    FOREIGN KEY (student_id) REFERENCES app_user (user_id),
     foreign key (curricula_id) REFERENCES curricula (curricula_id)
 
 );

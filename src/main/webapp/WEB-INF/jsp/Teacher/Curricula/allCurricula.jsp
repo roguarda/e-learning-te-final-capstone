@@ -18,6 +18,8 @@
     <a href="${addLink}" class="edit-link"> </a>
 </div>
 
+<h1>Curricula</h1>
+
 <table class="table table-hover">
     <thead class="table-dark">
     <tr>
@@ -46,32 +48,9 @@
                     <a href="${editLink}">edit</a></button>
             </td>
             <td>
-<span>
-<%--                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Delete</button></span>--%>
-                <button onclick="confirmDelete()" type="button" class="btn btn-outline-danger">
+                <button type="button" class="btn btn-outline-danger">
                     <c:url var="deleteLink" value="/deleteCurricula/${curricula.id}"/>
                  <a href="${deleteLink}">delete</a></button>
-                <!-- Modal -->
-<%--                <div id="myModal" class="modal fade" role="dialog">--%>
-<%--                    <div class="modal-dialog">--%>
-<%--                        <!-- Modal content-->--%>
-<%--                        <div class="modal-content">--%>
-<%--                            <div class="modal-header">--%>
-<%--                                <button type="button" class="close" data-dismiss="modal">&times;</button>--%>
-<%--                                <h4 class="modal-title">Confirm appointment</h4>--%>
-<%--                            </div>--%>
-<%--                            <div class="modal-body">--%>
-<%--                                <p>Do you want to confirm your appointment with?</p>--%>
-<%--                            </div>--%>
-<%--                            <div class="modal-footer">--%>
-<%--                                <button type="submit" class="btn btn-default">Confirm</button>--%>
-<%--                                <button type="button" class="btn btn-default" data-dismiss="modal">Go back</button>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-
-
             </td>
         </tr>
     </c:forEach>

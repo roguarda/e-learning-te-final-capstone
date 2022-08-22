@@ -8,8 +8,10 @@
 <a href="${addLink}" class="edit-link"> </a>
 </div>
 
-<table>
-    <thead>
+<h1>Courses</h1>
+
+<table class="table table-hover">
+    <thead class="table-dark">
     <tr>
         <th>Id</th>
         <th>Name</th>
@@ -21,7 +23,7 @@
     </tr>
 
     </thead>
-    <tbody>
+    <tbody class="table-active">
     <c:forEach var="course" items="${courses}">
         <c:url var="courseLink" value="/course/details/${course.id}" />
         <tr>
@@ -33,10 +35,15 @@
             <td>${course.difficultyLevel}</td>
             <td>${course.cost}</td>
             <td>
+                <button type="button" class="btn btn-outline-info">
                 <c:url var="editLink" value="/course/edit/${course.id}" />
-                <a href="${editLink}">edit</a>
+                    <a href="${editLink}">edit</a> </button>
+
+            </td>
+            <td>
+                <button type="button" class="btn btn-outline-danger">
                 <c:url var="deleteLink" value="/course/delete/${course.id}" />
-                <a href="${deleteLink}">delete</a>
+                <a href="${deleteLink}">delete</a></button>
             </td>
         </tr>
     </c:forEach>
