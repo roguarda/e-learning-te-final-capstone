@@ -6,10 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-- Name
-- Description
-- Difficulty Level
-- Cost (For now all courses are free)
 <div class="course">
     <h2>{{ name }}</h2>
     <div class="curriculas">
