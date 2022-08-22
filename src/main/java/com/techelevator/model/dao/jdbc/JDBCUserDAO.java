@@ -51,6 +51,9 @@ public class JDBCUserDAO implements UserDAO {
             isStudent = false;
             isTeacher = true;
         }
+        jdbcTemplate.update("INSERT INTO app_user(user_name, password, first_name, last_name, role, is_teacher, is_student, salt) " +
+                        "VALUES (?,?,?,?,?,?,?,?);",
+                userName, hashedPassword, firstName, lastName, role, isTeacher, isStudent, saltString);
 
     }
         @Override
