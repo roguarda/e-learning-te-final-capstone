@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <c:import url="/WEB-INF/jsp/common/header.jsp"/>
 
 
@@ -48,7 +51,7 @@
 
 
   <div class="detail-row">
-      <c:url var="editLink" value="/Profile/edit/${Profile.id}" />
+      <c:url var="editLink" value="/Profile/edit/${currentUser.userId}" />
     <a href="${editLink}" class="edit-link">Edit</a>
 
 
