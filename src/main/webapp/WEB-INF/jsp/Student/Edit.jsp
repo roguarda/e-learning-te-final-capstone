@@ -4,7 +4,7 @@
 </c:import>
 
 
-<c:url var="editUrl" value="/people/edit/${Profile.id}"/>
+<c:url var="editUrl" value="/people/edit/${user.userId}"/>
 <form method="post" action="${editUrl}" class="detail-container">
 
   <div class="form-group">

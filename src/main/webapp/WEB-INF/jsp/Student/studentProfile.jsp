@@ -17,15 +17,18 @@
   </div>
   <div class="detail-row">
     <div class="detail-header">
-      ID
+      ID:
     </div>
     <div class="detail-value">
         ${user.userId}
+          <td>
+          ${user.userId}
+          </td>
     </div>
   </div>
-    <div class="detail-row">
+  <div class="detail-row">
       <div class="detail-header">
-        First Name
+        First Name:
       </div>
       <div class="detail-value">
           ${user.firstName}
@@ -33,7 +36,7 @@
     </div>
     <div class="detail-row">
       <div class="detail-header">
-        Last Name
+        Last Name:
       </div>
       <div class="detail-value">
           ${user.lastName}
