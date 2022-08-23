@@ -12,6 +12,10 @@ public interface HomeworkDAO {
 	// metodo que usa el maestro para corregir y dar devolucion
 	void gradeHomework(int grade, String teacherFeedback, String status, int homeworkId);
 
+	List<Homework> getHomeworkListByUserId(int userId);
+
+	List<Homework> getHomeworkListByStatusAndTeacherId(int userId);
+
 	List<Homework> getAllHomework();
 
 	List<Homework> search (String id);

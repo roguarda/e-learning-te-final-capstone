@@ -86,6 +86,16 @@ CREATE TABLE homework
 
 );
 
+CREATE TABLE student_homework
+(
+    student_id  int NOT NULL,
+    homework_id int NOT NULL,
+    PRIMARY KEY (student_id, homework_id)
+
+);
+
+--student - course FKS
+
 ALTER TABLE student_course
     Add constraint fk_student_course_student
         foreign key (student_id) references app_user (user_id);
@@ -93,5 +103,16 @@ ALTER TABLE student_course
 ALTER TABLE student_course
     Add constraint fk_student_course_course
         foreign key (course_id) references course (course_id);
+
+
+-- STUDENT - HOMEWORK FKS
+ALTER TABLE student_homework
+    Add constraint fk_student_homework_student
+        foreign key (student_id) references app_user (user_id);
+
+ALTER TABLE student_homework
+    Add constraint fk_student_homework_homework
+        foreign key (homework_id) references homework (homework_id);
+
 
 COMMIT;
