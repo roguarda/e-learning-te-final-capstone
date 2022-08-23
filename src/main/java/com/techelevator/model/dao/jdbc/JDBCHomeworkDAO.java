@@ -20,7 +20,7 @@ public class JDBCHomeworkDAO implements HomeworkDAO {
         Homework homework = new Homework();
         homework.setId(rowSet.getInt("homework_id"));
         homework.setStatus(rowSet.getString("status"));
-        if (homework.getStatus("completed")){
+        if (homework.getStatus("completed")) {
             homework.setCompleted(true);
         } else homework.setDescription(false);
 
@@ -30,4 +30,5 @@ public class JDBCHomeworkDAO implements HomeworkDAO {
         user.setRole(rowSet.getString("role"));
         return user;
     }
+}
 

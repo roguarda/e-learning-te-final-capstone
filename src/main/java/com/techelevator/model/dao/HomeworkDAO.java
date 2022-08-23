@@ -20,5 +20,6 @@ public interface HomeworkDAO {
 
 	public void add(String homeworkName, String homeworkIntroduction, String homeworkDescription);
 
+	public void add(String teacherFeedback, int homeworkGrade);
 
 }
