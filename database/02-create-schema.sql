@@ -46,6 +46,7 @@ CREATE TABLE course
     foreign key (curricula_id) REFERENCES curricula (curricula_id)
 
 );
+
 CREATE TABLE curricula_course
 (
     course_id    SERIAL NOT NULL,
@@ -64,15 +65,18 @@ CREATE TABLE student_course
 );
 CREATE TABLE homework
 (
-    homework_id      SERIAL      NOT NULL UNIQUE PRIMARY KEY,
-    curricula_id     INT         NOT NULL,
-    course_id        INT         NOT NULL,
-    student_id       INT         NOT NULL,
-    teacher_id       INT         NOT NULL,
-    status           VARCHAR(20) NOT NULL,
-    is_completed     BOOLEAN,
-    grade            INT,
-    teacher_feedback VARCHAR(1000),
+    homework_id           SERIAL        NOT NULL UNIQUE PRIMARY KEY,
+    homework_name         VARCHAR(20)   NOT NULL,
+    homework_introduction VARCHAR(140)  NOT NULL,
+    homework_description  VARCHAR(1000) NOT NULL,
+    curricula_id          INT,
+    course_id             INT,
+    student_id            INT,
+    teacher_id            INT,
+    status                VARCHAR(20),
+    is_completed          BOOLEAN,
+    grade                 INT,
+    teacher_feedback      VARCHAR(1000),
 
     FOREIGN KEY (teacher_id) REFERENCES app_user (user_id),
     FOREIGN KEY (student_id) REFERENCES app_user (user_id),
