@@ -11,61 +11,53 @@ public class Course {
     @NotBlank(message = "Name is required")
     private String name;
 
-    @NotBlank(message="Description is required")
+    @NotBlank(message = "Description is required")
     private String description;
 
-    @NotBlank(message="Difficulty Level is required")
+    @NotBlank(message = "Difficulty Level is required")
     private String difficultyLevel;
 
-    @NotBlank(message="Cost is required")
+    @NotBlank(message = "Cost is required")
     private String cost;
 
 
-
-    public int getId()
-    {
+    public int getId() {
         return id;
     }
 
-    public void setId(int id)
-    {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public void setName(String name)
-    {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getDescription()
-    {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description)
-    {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public String getDifficultyLevel() { return difficultyLevel;}
+    public String getDifficultyLevel() {
+        return difficultyLevel;
+    }
 
-    public void setDifficultyLevel(String difficultyLevel)
-    {
+    public void setDifficultyLevel(String difficultyLevel) {
         this.difficultyLevel = difficultyLevel;
     }
 
-    public String getCost()
-    {
+    public String getCost() {
         return cost;
     }
 
-    public void setCost(String cost)
-    {
+    public void setCost(String cost) {
         this.cost = cost;
     }
 
@@ -76,7 +68,4 @@ public class Course {
     public void setTeacherId(Integer teacherId) {
         this.teacherId = teacherId;
     }
-
-
-
 }

@@ -1,12 +1,10 @@
 package com.techelevator.model.dao.jdbc;
-
 import com.techelevator.model.dao.CourseDAO;
 import com.techelevator.model.dto.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
-
 import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +27,6 @@ public class JDBCCourseDAO implements CourseDAO {
         course.setDifficultyLevel(results.getString("difficulty"));
         course.setCost(results.getString("cost"));
         course.setTeacherId(results.getInt("teacher_id"));
-
-
         return course;
     }
 
@@ -56,7 +52,7 @@ public class JDBCCourseDAO implements CourseDAO {
     public Course getById(int courseId) {
         Course course = null;
 
-        String sql = "SELECT course_id " + ", course_name " + ", course_description" + ", difficulty" + ", cost " +
+        String sql = "SELECT * " +
                 " FROM course " +
                 " WHERE course_id = ? ; ";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, courseId);
@@ -67,7 +63,7 @@ public class JDBCCourseDAO implements CourseDAO {
     }
 
     @Override
-    public Course add(String courseName,int teacherId, String description, String difficultyLevel, String cost) {
+    public Course add(String courseName, int teacherId, String description, String difficultyLevel, String cost) {
         Course newCourse = new Course();
         jdbcTemplate.update("INSERT INTO course (course_name,\n" +
                         "                    teacher_id,\n" +
@@ -80,12 +76,24 @@ public class JDBCCourseDAO implements CourseDAO {
     }
 
     @Override
-    public void update(int idcourse, Course course) {
+    public void update(String updateCriteria, String newValue, int courseId) {
+
+        if (updateCriteria.equals("name")) {
+            jdbcTemplate.update("update course SET course_name = ?\n" +
+                    "where course_id = ?;", newValue, courseId);
+        } else if (updateCriteria.equals("description")) {
+            jdbcTemplate.update("update course SET course_description = ?\n" +
+                    "where course_id = ?;", newValue, courseId);
+        } else jdbcTemplate.update("update course SET difficulty = ?\n" +
+                "where course_id = ?;", newValue, courseId);
 
     }
 
     @Override
-    public void delete(int idcourse) {
+    public void delete(int courseId) {
+        String query = "DELETE FROM course\n" +
+                "WHERE course_id = ?;";
+        jdbcTemplate.update(query, courseId);
 
     }
 

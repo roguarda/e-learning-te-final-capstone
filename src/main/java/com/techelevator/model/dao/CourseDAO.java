@@ -10,14 +10,12 @@ public interface CourseDAO {
 
 	List<Course> search (String idcourse);
 
-	Course getById(int idcourse);
-
-
+	Course getById(int courseId);
 
 	Course add(String courseName, int teacherId, String description, String difficultyLevel, String cost);
 
-	void update(int idcourse, Course course);
+	void update(String updateCriteria, String newValue, int courseId);
 
-	void delete(int idcourse);
+	void delete(int courseId);
 
 }
