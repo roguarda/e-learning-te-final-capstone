@@ -18,7 +18,7 @@ CREATE TABLE app_user
     role       varchar(32)  NOT NULL,
     is_teacher boolean,
     is_student boolean,
-    salt       varchar(255)
+    salt       varchar(255) NOT NULL
 );
 
 

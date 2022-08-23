@@ -15,6 +15,7 @@ public interface UserDAO {
 
     User getUserByUserName(String userName);
 
+
     User getUserById(int userId);
 
     Object getAttribute(String currentUser);

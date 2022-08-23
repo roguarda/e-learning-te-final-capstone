@@ -27,13 +27,17 @@
             </c:when>
 
             <c:otherwise>
-                <c:url var="teacherUrl" value="/teacherHomePage"></c:url>
-                <a href="${teacherUrl}" class="btn btn-primary">Return to main page</a>
+
+                    <c:url var="editLink" value="/course/edit/${course.id}" />
+                    <a href="${editLink}" class="btn btn-primary">edit</a> </button>
+
+                    <c:url var="deleteLink" value="/course/delete/${course.id}" />
+                    <a href="${deleteLink}" class="btn btn-primary" >delete</a></button>
 
             </c:otherwise>
 
         </c:choose>
-        <a class="btn btn-primary">Enroll</a>
+
     </div>
 
 

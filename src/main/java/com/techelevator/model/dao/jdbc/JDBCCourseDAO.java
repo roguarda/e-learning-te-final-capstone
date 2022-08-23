@@ -97,5 +97,19 @@ public class JDBCCourseDAO implements CourseDAO {
 
     }
 
+    @Override
+    public List<Course> findAllEnrolled(int studentId) {
+        List<Course> courses = new ArrayList<>();
+        String query = "SELECT * FROM course JOIN student_course ON course.course_id=student_course.course_id " +
+                "WHERE student_id = ?";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(query, studentId);
+        while(results.next()) {
+            courses.add(mapRowToCourses(results));
+        }
+        return courses;
+    }
+
+
 
 }

@@ -72,6 +72,14 @@ public class CourseController {
         modelMap.addAttribute("course", course);
         return "/common/course";
     }
+//    @RequestMapping(path = "/courses/student", method = RequestMethod.GET)
+//    public List<Course> getEnrolledCourses( ) {
+//
+//        return "/Student/enrolledCourses";
+//    }
+
+    
+
 
     //edit GET
     @RequestMapping("course/edit/{courseId}")
@@ -103,10 +111,6 @@ public class CourseController {
         return "redirect:/allCourses";
     }
 }
- /*   @RequestMapping(path = "/courses/student", method = RequestMethod.GET)
-    public List<Course> getEnrolledCourses() {
-        long studentId = userDao.findIdByUsername(principal.getName());
-        return courseDao.findAllEnrolled(studentId);
-    }*/
+
 
 
