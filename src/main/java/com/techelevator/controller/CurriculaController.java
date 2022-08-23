@@ -58,30 +58,6 @@ public class CurriculaController {
         return "redirect:/teacherHomePage?curriculaName=" + curricula.getCurriculaName();
     }
 
-//    @RequestMapping(path = "/Curricula/edit/{curriculaId}", method = RequestMethod.GET)
-//    public String editCurriculaForm(ModelMap modelMap, int curriculaId) {
-//        Curricula curricula = curriculaDAO.getById(curriculaId);
-//        modelMap.put("curricula", curricula);
-//        return "Teacher/Curricula/editCurricula";
-
-//    }
-
-//    @RequestMapping(path = "/Curricula/edit/{curriculaId}", method = RequestMethod.POST)
-//    public String editCurriculaForm(
-//            @Valid @ModelAttribute("editCurricula") Curricula curricula,
-//            BindingResult result,
-//            RedirectAttributes flash
-//    ) {
-//        if (result.hasErrors()) {
-//            flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "editCurricula", result);
-//            return "redirect:/Teacher/Curricula/editCurricula";
-//        }
-//        flash.addFlashAttribute("message", "You have successfully edited the curricula.");
-////        curriculaDAO.update(flash.);
-//        return "redirect:/Curricula?curriculaName=" + curricula.getCurriculaName();
-//    }
-
-
         //edit GET
     @RequestMapping("curricula/edit/{curriculaId}")
     public String editCurriculaForm(@PathVariable Integer curriculaId, ModelMap map)
@@ -98,8 +74,6 @@ public class CurriculaController {
 
         return "redirect:/Curricula";
     }
-
-
 
     //edit GET
     @RequestMapping("/deleteCurricula/{curriculaId}")
