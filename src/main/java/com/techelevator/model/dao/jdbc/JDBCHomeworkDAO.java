@@ -89,6 +89,11 @@ public class JDBCHomeworkDAO implements HomeworkDAO {
         return homeworkList;
     }
 
+    @Override
+    public void add(String teacherFeedback, int homeworkGrade, String status) {
+
+    }
+
 
     @Override
     public List<Homework> getAllHomework() {
