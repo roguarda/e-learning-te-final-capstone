@@ -1,17 +1,23 @@
 package com.techelevator.model.dto;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 public class Homework {
 
     private int id;
-    String status;
 
-    String introduction;
+    @NotBlank(message = "Homework's name is required")
+    private String homeworkName;
 
-    String description;
+    @NotBlank(message = "Homework's introduction is required")
+    private String homeworkIntroduction;
 
-    String teacherFeedback;
+    @NotBlank(message = "Homework's Description is required")
+    private String homeworkDescription;
 
-    boolean isCompleted;
+    private String status;
+    private boolean isCompleted;
+    private String teacherFeedback;
 
     public int getId() {
         return id;
@@ -21,8 +27,6 @@ public class Homework {
         this.id = id;
     }
 
-
-
     public String getStatus() {
         return status;
     }
@@ -31,21 +35,31 @@ public class Homework {
         this.status = status;
     }
 
-    public String getDescription() {
-        return description;
+    public String getHomeworkName() {
+        return homeworkName;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setHomeworkName(String homeworkName) {
+        this.homeworkName = homeworkName;
     }
 
-    public String teacherFeedback() {
-        return teacherFeedback;
+    public String getHomeworkIntroduction() {
+        return homeworkIntroduction;
     }
 
-    public void teacherFeedback(String teacherFeedback) {
-        this.teacherFeedback = teacherFeedback;
+    public void setHomeworkIntroduction(String homeworkIntroduction) {
+        this.homeworkIntroduction = homeworkIntroduction;
     }
+
+    public String getHomeworkDescription() {
+        return homeworkDescription;
+    }
+
+    public void setHomeworkDescription(String homeworkDescription) {
+        this.homeworkDescription = homeworkDescription;
+
+    }
+
 
     public boolean isCompleted() {
         return isCompleted;
@@ -54,4 +68,16 @@ public class Homework {
     public void setCompleted(boolean completed) {
         isCompleted = completed;
     }
+
+    public String getTeacherFeedback() {
+        return teacherFeedback;
+    }
+
+    public void setTeacherFeedback(String teacherFeedback) {
+        this.teacherFeedback = teacherFeedback;
+    }
+
+
 }
+
+

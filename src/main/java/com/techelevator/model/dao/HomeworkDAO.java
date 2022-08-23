@@ -18,4 +18,7 @@ public interface HomeworkDAO {
 
 	void delete(int id);
 
+	public void add(String homeworkName, String homeworkIntroduction, String homeworkDescription);
+
+
 }
