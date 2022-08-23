@@ -10,12 +10,12 @@ DROP TABLE IF EXISTS app_user, course, curricula, homework, curricula_course, st
 
 CREATE TABLE app_user
 (
-    user_id    SERIAL       NOT NULL UNIQUE PRIMARY KEY,
-    user_name  varchar(32)  NOT NULL UNIQUE,
-    password   varchar(32)  NOT NULL,
-    first_name varchar(32)  NOT NULL,
-    last_name  varchar(32)  NOT NULL,
-    role       varchar(32)  NOT NULL,
+    user_id    SERIAL      NOT NULL UNIQUE PRIMARY KEY,
+    user_name  varchar(32) NOT NULL UNIQUE,
+    password   varchar(32) NOT NULL,
+    first_name varchar(32) NOT NULL,
+    last_name  varchar(32) NOT NULL,
+    role       varchar(32) NOT NULL,
     is_teacher boolean,
     is_student boolean,
     salt       varchar(255)
@@ -47,29 +47,31 @@ CREATE TABLE course
 
 );
 CREATE TABLE curricula_course
-(   course_id          SERIAL       NOT NULL ,
-    curricula_id       INT          NOT NULL ,
+(
+    course_id    SERIAL NOT NULL,
+    curricula_id INT    NOT NULL,
 
-    CONSTRAINT FK_curricula_course FOREIGN KEY (course_id) REFERENCES course(course_id),
-    CONSTRAINT FK_course_curricula FOREIGN KEY (curricula_id) REFERENCES curricula(curricula_id)
+    CONSTRAINT FK_curricula_course FOREIGN KEY (course_id) REFERENCES course (course_id),
+    CONSTRAINT FK_course_curricula FOREIGN KEY (curricula_id) REFERENCES curricula (curricula_id)
 
 );
 CREATE TABLE student_course
 (
     student_id int NOT NULL,
-    course_id int NOT NULL,
+    course_id  int NOT NULL,
     PRIMARY KEY (student_id, course_id)
 
 );
 CREATE TABLE homework
 (
-    homework_id      SERIAL NOT NULL UNIQUE PRIMARY KEY,
-    curricula_id     INT    NOT NULL,
-    course_id        INT    NOT NULL,
-    student_id       INT    NOT NULL,
-    teacher_id       INT    NOT NULL,
-    COMPLETED        BOOLEAN,
-    GRADE            INT,
+    homework_id      SERIAL      NOT NULL UNIQUE PRIMARY KEY,
+    curricula_id     INT         NOT NULL,
+    course_id        INT         NOT NULL,
+    student_id       INT         NOT NULL,
+    teacher_id       INT         NOT NULL,
+    status           VARCHAR(20) NOT NULL,
+    is_completed     BOOLEAN,
+    grade            INT,
     teacher_feedback VARCHAR(1000),
 
     FOREIGN KEY (teacher_id) REFERENCES app_user (user_id),
@@ -81,8 +83,8 @@ CREATE TABLE homework
 );
 
 ALTER TABLE student_course
-Add constraint fk_student_course_student
-foreign key (student_id) references app_user (user_id);
+    Add constraint fk_student_course_student
+        foreign key (student_id) references app_user (user_id);
 
 ALTER TABLE student_course
     Add constraint fk_student_course_course
