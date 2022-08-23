@@ -4,7 +4,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import com.techelevator.model.dao.HomeworkDAO;
 import com.techelevator.model.dto.Curricula;
+import com.techelevator.model.dto.Homework;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -74,25 +76,29 @@ public class UserController {
 	}
 
 
-	@RequestMapping(path="/users/new", method=RequestMethod.GET)
+	@RequestMapping(path = "/users/new", method = RequestMethod.GET)
 	public String displayNewUserForm(ModelMap modelHolder) {
-		if( ! modelHolder.containsAttribute("user")) {
+		if (!modelHolder.containsAttribute("user")) {
 			modelHolder.addAttribute("user", new User());
 		}
 		return "Registration/newUser";
 	}
-	
-	@RequestMapping(path="/users", method=RequestMethod.POST)
+
+	@RequestMapping(path = "/users", method = RequestMethod.POST)
 	public String createUser(@Valid @ModelAttribute User user, BindingResult result, RedirectAttributes flash) {
-		if(result.hasErrors()) {
+		if (result.hasErrors()) {
 			flash.addFlashAttribute("user", user);
 			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "user", result);
 			return "redirect:/users/new";
 		}
-		
+
 		userDAO.saveUser(user.getUserName(), user.getPassword(), user.getFirstName(), user.getLastName(), user.getRole());
-		return "redirect:/Registration/newUserConfirmation" ;
+		return "redirect:/Registration/newUserConfirmation";
 	}
 
-
 }
+
+
+
+
+
