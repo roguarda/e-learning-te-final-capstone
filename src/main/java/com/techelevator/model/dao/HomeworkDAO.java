@@ -37,4 +37,6 @@ public interface HomeworkDAO {
 
 
 	List<Homework> getHomeworkListByCourseId(int courseId);
+
+	public void add(String teacherFeedback, int homeworkGrade, String status);
 }
