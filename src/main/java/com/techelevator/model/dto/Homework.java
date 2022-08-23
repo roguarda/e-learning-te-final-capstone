@@ -15,9 +15,16 @@ public class Homework {
     @NotBlank(message = "Homework's Description is required")
     private String homeworkDescription;
 
+    @NotBlank(message = "Homework's feedback is required")
+    private String teacherFeedback;
+
+    @NotBlank(message = "Grade is required")
+    private int homeworkGrade;
+
+
     private String status;
     private boolean isCompleted;
-    private String teacherFeedback;
+
 
     public int getId() {
         return id;
@@ -59,6 +66,16 @@ public class Homework {
         this.homeworkDescription = homeworkDescription;
 
     }
+
+    public int getHomeworkGrade() {
+        return homeworkGrade;
+    }
+
+    public void setHomeworkGrade(int homeworkGrade) {
+        this.homeworkGrade = homeworkGrade;
+
+    }
+
 
 
     public boolean isCompleted() {

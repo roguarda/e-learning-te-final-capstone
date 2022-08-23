@@ -29,7 +29,7 @@ public interface HomeworkDAO {
 
 	public void add(String homeworkName, String homeworkIntroduction, String homeworkDescription);
 
-	void submitHomeworkAsStudent(String title, String introduction, String description);
+
 
 
 	List<Homework> getHomeworkListByCourseId(int courseId);

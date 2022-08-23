@@ -34,6 +34,7 @@ public class JDBCHomeworkDAO implements HomeworkDAO {
         return homework;
     }
 
+
     //metodo que usa el alumno para subir la tarea
     @Override
     public void submitHomework(String title, String introduction, String description) {
@@ -124,12 +125,6 @@ public class JDBCHomeworkDAO implements HomeworkDAO {
     public void add(String homeworkName, String homeworkIntroduction, String homeworkDescription) {
 
     }
-
-    @Override
-    public void submitHomeworkAsStudent(String title, String introduction, String description) {
-
-    }
-
 
 }
 
