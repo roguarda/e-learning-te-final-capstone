@@ -1,7 +1,5 @@
 package com.techelevator.model.dao.jdbc;
-
 import javax.sql.DataSource;
-
 import com.techelevator.model.dao.UserDAO;
 import org.bouncycastle.util.encoders.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
