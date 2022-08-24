@@ -123,6 +123,7 @@ public class JDBCCourseDAO implements CourseDAO {
     @Override
     public void  enroll(int courseId, int studentId) {
         String query = "INSERT INTO student_course (student_id, course_id) VALUES (?,?);";
+        jdbcTemplate.update(query);
     }
 
     @Override

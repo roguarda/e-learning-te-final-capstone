@@ -18,7 +18,8 @@
     <div class="card-body">
         <h5 class="card-title">My current courses</h5>
         <%-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>--%>
-        <a href="StudentCurrentCourses" class="btn btn-primary">current courses</a>
+        <c:url var="currentCourses" value="/courses/student/${currentUser.userId}"></c:url>
+        <a href="${currentCourses}" class="btn btn-primary">current courses</a>
     </div>
 </div>
 

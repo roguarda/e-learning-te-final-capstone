@@ -27,9 +27,9 @@ values ('course', 1, 'description', 'mid', 'FREE'),
 
 
 insert into student_course (student_id, course_id)
-values (1, 1),
-       (1, 2),
-       (2, 1),
+values (5, 1),
+       (6, 2),
+       (7, 1),
        (2, 2),
        (3, 1),
        (3, 2);

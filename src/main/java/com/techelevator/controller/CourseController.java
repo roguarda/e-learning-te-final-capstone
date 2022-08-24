@@ -107,15 +107,16 @@ public class CourseController {
     }
     //dejo esto en comment para arreglarlo mañana
     @RequestMapping(path = "/courses/student/{studentId}", method = RequestMethod.GET)
-    public String getEnrolledCourses(@PathVariable Integer studentId, HttpSession session) {
+    public String getEnrolledCourses(@PathVariable Integer studentId, HttpSession session, ModelMap map) {
         User currentUser = (User) session.getAttribute("currentUser");
         List<Course> allEnrolledCourse = courseDAO.findAllEnrolled(studentId);
-
+        map.put("courses", allEnrolledCourse);
         return "/Student/enrolledCourses";
     }
 
     @RequestMapping(path = "/courses/teacher/{teacherId}", method = RequestMethod.GET)
-    public String getAllMyCourses(@PathVariable Integer teacherId) {
+    public String getAllMyCourses(@PathVariable Integer teacherId, HttpSession session) {
+        User currentUser = (User) session.getAttribute("currentUser");
         List<Course> findAllMyCourses = courseDAO.findAllMyCourses(teacherId);
         return "/Teacher/myCourses";
 
