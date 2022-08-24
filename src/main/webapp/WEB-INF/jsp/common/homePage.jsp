@@ -5,6 +5,8 @@
 
 
 <html>
+<figure class="text-center">
+    <blockquote class="blockquote">
 <div class="image-header">
     <c:url var="home" value="/img/Homepage.jpg" />
     
@@ -60,6 +62,7 @@
         </div>
     </div>
 </div>
-
+    </blockquote>
+</figure>
 
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />

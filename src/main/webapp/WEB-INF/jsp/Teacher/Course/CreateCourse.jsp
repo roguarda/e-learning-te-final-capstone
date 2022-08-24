@@ -37,9 +37,8 @@
                 <select id="curriculaId" name="curriculaId" class="form-control">
                     <option value="" selected disabled>Please select a curricula:</option>
 
-                <%--@elvariable id="curricula" type="java.util.List"--%>
-                <c:forEach var="curricula" items="${curricula}">
-                    <option value="${curricula.id}">${curricula.id} - ${curricula.name}</option>
+                <c:forEach var="curriculaSelect" items="${curricula}">
+                    <option value="${curriculaSelect.id}">${curriculaSelect.id} - ${curriculaSelect.curriculaName}</option>
                 </c:forEach>
 
                 </select>

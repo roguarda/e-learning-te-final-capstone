@@ -1,5 +1,6 @@
 package com.techelevator.controller;
 
+import com.techelevator.model.dao.CurriculaDAO;
 import com.techelevator.model.dto.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,15 +19,20 @@ import java.util.List;
 public class CourseController {
     private CourseDAO courseDAO;
 
+    private CurriculaDAO curriculaDAO;
+
     @Autowired
-    public CourseController(CourseDAO courseDAO) {
+    public CourseController(CourseDAO courseDAO, CurriculaDAO curriculaDAO) {
         this.courseDAO = courseDAO;
+        this.curriculaDAO = curriculaDAO;
+
     }
 
     @RequestMapping(path = "/CreateCourse", method = RequestMethod.GET)
     public String showCreateCourseForm(ModelMap modelHolder) {
         if (!modelHolder.containsAttribute("course")) {
             modelHolder.addAttribute("course", new Course());
+            modelHolder.addAttribute("curricula", curriculaDAO.getAllCurricula());
         }
         return "Teacher/Course/CreateCourse";
 
@@ -48,8 +54,8 @@ public class CourseController {
         User currentUser = (User) session.getAttribute("currentUser");
         flash.addFlashAttribute("message", "You have successfully registered the Course.");
 
-        courseDAO.add(course.getName(), currentUser.getUserId(), course.getDescription(), course.getDifficultyLevel(), course.getCost());
-        courseDAO.asignCurriculaToCourse(course.getId(), curriculaId );
+        Course currentCourse = courseDAO.add(course.getName(), currentUser.getUserId(), course.getDescription(), course.getDifficultyLevel(), course.getCost());
+        courseDAO.asignCurriculaToCourse(currentCourse.getId(), curriculaId );
 
         return "redirect:/teacherHomePage?courseName=" + course.getName();
     }
