@@ -29,8 +29,7 @@ CREATE TABLE curricula
     curricula_name    VARCHAR(55)   not null,
     daily_instruction VARCHAR(1000) NOT NULL,
     daily_homework    VARCHAR(1000) NOT NULL
---     course_id          SERIAL NOT   NULL,
---     FOREIGN KEY (course_id) REFERENCES course (course_id)
+
 );
 
 
@@ -42,9 +41,10 @@ CREATE TABLE course
     course_description varchar(255) NOT NULL,
     difficulty         varchar(10)  NOT NULL,
     cost               varchar(10),
---     curricula_id       INT,
+
+    FOREIGN KEY (teacher_id) REFERENCES app_user (user_id),
+
     FOREIGN KEY (teacher_id) REFERENCES app_user (user_id)
---     foreign key (curricula_id) REFERENCES curricula (curricula_id)
 
 );
 
