@@ -44,7 +44,7 @@
             <td>
                 <button type="button" class="btn btn-outline-info">
                     <c:url var="enrollLink" value="/course/enroll/${course.id}" />
-                    <a href="${enrollLink}">edit</a> </button>
+                    <a href="${enrollLink}">ENROLL</a> </button>
 
             </td>
 <%--            <td>--%>

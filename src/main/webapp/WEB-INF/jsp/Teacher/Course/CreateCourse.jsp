@@ -32,6 +32,18 @@
                     <option value="high">High</option>
                 </select>
             </div>
+            <div class="form-group">
+                <label for="curriculaId">Choose curricula for this course: </label>
+                <select id="curriculaId" name="curriculaId" class="form-control">
+                    <option value="" selected disabled>Please select a curricula:</option>
+
+                <%--@elvariable id="curricula" type="java.util.List"--%>
+                <c:forEach var="curricula" items="${curricula}">
+                    <option value="${curricula.id}">${curricula.id} - ${curricula.name}</option>
+                </c:forEach>
+
+                </select>
+            </div>
 
             <div class="form-group">
                 <label for="cost">Course cost: </label>
