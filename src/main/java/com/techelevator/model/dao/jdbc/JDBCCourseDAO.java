@@ -110,7 +110,7 @@ public class JDBCCourseDAO implements CourseDAO {
         return courses;
     }
     @Override
-    public List<Course> findAllMyCourses(long teacherId) {
+    public List<Course> findAllMyCourses(int teacherId) {
         List<Course> courses = new ArrayList<>();
         String query = "SELECT * FROM course WHERE teacher_id=? ";
 
@@ -120,6 +120,12 @@ public class JDBCCourseDAO implements CourseDAO {
         }
         return courses;
     }
+    @Override
+    public void  enroll(int course_id, int student_id) {
+        String sql = "INSERT INTO student_course (student_id, course_id) VALUES (?,?);";
+
+    }
+
 
 
 
