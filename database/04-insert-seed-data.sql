@@ -5,15 +5,15 @@
 BEGIN;
 
 INSERT INTO app_user (user_name, password, first_name, last_name, role, is_teacher, is_student, salt)
-VALUES ('GARY','Pasword1', 'gary', 'thanks', 'teacher', true, false, 'Lp5Ey8FccIyx6Wo+K9EJSAkXLXF95pfyjXUhn4m89nhFKeLNb8Z2MNENcYAHFbIUM+UGawKLLenh7+O6xdBYbrZK+h5nivf3yU4uiOFBFCzXCVLy3RPhlqrNQ8RpUmdHgaZl7n0pXQPoTruSibst9UbQHiFHQhi6Pck6ygeouFA=
+VALUES ('GARY', 'pd2UZJrtxEELdf5S2K1P3w==', 'gary', 'thanks', 'teacher', true, false, 'Lp5Ey8FccIyx6Wo+K9EJSAkXLXF95pfyjXUhn4m89nhFKeLNb8Z2MNENcYAHFbIUM+UGawKLLenh7+O6xdBYbrZK+h5nivf3yU4uiOFBFCzXCVLy3RPhlqrNQ8RpUmdHgaZl7n0pXQPoTruSibst9UbQHiFHQhi6Pck6ygeouFA=
 '),
-       ('Micat','Pasword1', 'micaela', 'teacher', 'teacher', true, false, 'Lp5Ey8FccIyx6Wo+K9EJSAkXLXF95pfyjXUhn4m89nhFKeLNb8Z2MNENcYAHFbIUM+UGawKLLenh7+O6xdBYbrZK+h5nivf3yU4uiOFBFCzXCVLy3RPhlqrNQ8RpUmdHgaZl7n0pXQPoTruSibst9UbQHiFHQhi6Pck6ygeouFA=
+       ('Micat', 'pd2UZJrtxEELdf5S2K1P3w==', 'micaela', 'teacher', 'teacher', true, false, 'Lp5Ey8FccIyx6Wo+K9EJSAkXLXF95pfyjXUhn4m89nhFKeLNb8Z2MNENcYAHFbIUM+UGawKLLenh7+O6xdBYbrZK+h5nivf3yU4uiOFBFCzXCVLy3RPhlqrNQ8RpUmdHgaZl7n0pXQPoTruSibst9UbQHiFHQhi6Pck6ygeouFA=
 '),
-       ('Michelle','Pasword1', 'michelle', 'student', 'student', false, true, 'Lp5Ey8FccIyx6Wo+K9EJSAkXLXF95pfyjXUhn4m89nhFKeLNb8Z2MNENcYAHFbIUM+UGawKLLenh7+O6xdBYbrZK+h5nivf3yU4uiOFBFCzXCVLy3RPhlqrNQ8RpUmdHgaZl7n0pXQPoTruSibst9UbQHiFHQhi6Pck6ygeouFA=
+       ('Michelle', 'pd2UZJrtxEELdf5S2K1P3w==', 'michelle', 'student', 'student', false, true, 'Lp5Ey8FccIyx6Wo+K9EJSAkXLXF95pfyjXUhn4m89nhFKeLNb8Z2MNENcYAHFbIUM+UGawKLLenh7+O6xdBYbrZK+h5nivf3yU4uiOFBFCzXCVLy3RPhlqrNQ8RpUmdHgaZl7n0pXQPoTruSibst9UbQHiFHQhi6Pck6ygeouFA=
 '),
-       ('John','Pasword1', 'john', 'student', 'student', false, true, 'Lp5Ey8FccIyx6Wo+K9EJSAkXLXF95pfyjXUhn4m89nhFKeLNb8Z2MNENcYAHFbIUM+UGawKLLenh7+O6xdBYbrZK+h5nivf3yU4uiOFBFCzXCVLy3RPhlqrNQ8RpUmdHgaZl7n0pXQPoTruSibst9UbQHiFHQhi6Pck6ygeouFA=
+       ('John', 'pd2UZJrtxEELdf5S2K1P3w==', 'john', 'student', 'student', false, true, 'Lp5Ey8FccIyx6Wo+K9EJSAkXLXF95pfyjXUhn4m89nhFKeLNb8Z2MNENcYAHFbIUM+UGawKLLenh7+O6xdBYbrZK+h5nivf3yU4uiOFBFCzXCVLy3RPhlqrNQ8RpUmdHgaZl7n0pXQPoTruSibst9UbQHiFHQhi6Pck6ygeouFA=
 '),
-       ('Chris','Pasword1', 'christopher', 'student', 'student', false, true, 'Lp5Ey8FccIyx6Wo+K9EJSAkXLXF95pfyjXUhn4m89nhFKeLNb8Z2MNENcYAHFbIUM+UGawKLLenh7+O6xdBYbrZK+h5nivf3yU4uiOFBFCzXCVLy3RPhlqrNQ8RpUmdHgaZl7n0pXQPoTruSibst9UbQHiFHQhi6Pck6ygeouFA=
+       ('Chris', 'pd2UZJrtxEELdf5S2K1P3w==', 'christopher', 'student', 'student', false, true, 'Lp5Ey8FccIyx6Wo+K9EJSAkXLXF95pfyjXUhn4m89nhFKeLNb8Z2MNENcYAHFbIUM+UGawKLLenh7+O6xdBYbrZK+h5nivf3yU4uiOFBFCzXCVLy3RPhlqrNQ8RpUmdHgaZl7n0pXQPoTruSibst9UbQHiFHQhi6Pck6ygeouFA=
 ');
 
 
@@ -26,11 +26,11 @@ values ('course', 1, 'description', 'mid', 'FREE'),
 
 
 insert into student_course (student_id, course_id)
-values (1,1),
-       (1,2),
-       (2,1),
-       (2,2),
-       (3,1),
-       (3,2);
+values (1, 1),
+       (1, 2),
+       (2, 1),
+       (2, 2),
+       (3, 1),
+       (3, 2);
 
 COMMIT;

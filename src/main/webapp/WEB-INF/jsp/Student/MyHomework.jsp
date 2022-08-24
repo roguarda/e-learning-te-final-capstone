@@ -16,17 +16,17 @@
                 <h2>My Homework</h2>
             </div>
             <div class="form-group">
-                <label for="name" class="form-label mt-4"> Title: </label>
-                <input type="text" id="name" name="name" placeHolder=" Name" class="form-control"/>
+                <label for="homeworkName" class="form-label mt-4"> Title: </label>
+                <input type="text" id="homeworkName" name="homeworkName" placeHolder=" Name" class="form-control"/>
             </div>
 
             <div class="form-group">
-                <label for="introduction" class="form-label mt-4"> Homework's Introduction: </label>
-                <input type="text" id="introduction" name="introduction" placeHolder="Introduction" class="form-control"/>
+                <label for="homeworkIntroduction" class="form-label mt-4"> Homework's Introduction: </label>
+                <input type="text" id="homeworkIntroduction" name="homeworkIntroduction" placeHolder="Introduction" class="form-control"/>
             </div>
             <div class="form-group">
-                <label for="description" class="form-label mt-4"> Homework's Description: </label>
-                <input type="text" id="description" name="description" placeHolder="Description" class="form-control"/>
+                <label for="homeworkDescription" class="form-label mt-4"> Homework's Description: </label>
+                <input type="text" id="homeworkDescription" name="homeworkDescription" placeHolder="Description" class="form-control"/>
             </div>
             <button type="submit" class="btn btn-primary">Send my homework</button>
         </div>
