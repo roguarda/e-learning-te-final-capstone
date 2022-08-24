@@ -19,4 +19,6 @@ public interface CourseDAO {
 	void delete(int courseId);
 
 	List<Course> findAllEnrolled(int studentId);
+
+	List<Course> findAllMyCourses(long teacherId);
 }

@@ -109,6 +109,17 @@ public class JDBCCourseDAO implements CourseDAO {
         }
         return courses;
     }
+    @Override
+    public List<Course> findAllMyCourses(long teacherId) {
+        List<Course> courses = new ArrayList<>();
+        String query = "SELECT * FROM course WHERE teacher_id=? ";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(query, teacherId);
+        while(results.next()) {
+            courses.add(mapRowToCourses(results));
+        }
+        return courses;
+    }
 
 
 
