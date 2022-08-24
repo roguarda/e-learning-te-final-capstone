@@ -16,7 +16,8 @@
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="../../../img/55-Sparkling-Gold-Stars-Rating-png-hd.png"  alt="ratingStar" height="150px"/>
+                    <c:url var="ratingStars" value="/img/RatingStars.png" />
+                    <img src="${ratingStars}" alt="ratingStar" height="150px"/>
                     <figure>
                         <blockquote class="blockquote">
                             <p class="mb-0">Best online bootcamp ever. Found a job a week after last project.</p>
@@ -28,7 +29,8 @@
                     </figure>
                 </div>
                 <div class="col-md-4">
-                    <img src="../../../img/55-Sparkling-Gold-Stars-Rating-png-hd.png"  alt="ratingStar" height="150px"/>
+                    <c:url var="ratingStars" value="/img/RatingStars.png" />
+                    <img src=""${ratingStars}" alt="ratingStar" height="150px"/>
                     <figure class="text-center">
                         <blockquote class="blockquote">
                             <p class="mb-0">Great experience! Finally a course where I can manage my own schedule.</p>
@@ -40,7 +42,8 @@
                     </figure>
                 </div>
                 <div class="col-md-4">
-                    <img src="../../../img/55-Sparkling-Gold-Stars-Rating-png-hd.png"  alt="ratingStar" height="150px"/>
+                    <c:url var="ratingStars" value="/img/RatingStars.png" />
+                    <img src="${ratingStars}" alt="ratingStar" height="150px"/>
                     <figure class="text-end">
                         <blockquote class="blockquote">
                             <p class="mb-0">Excellent, simple to use website allowed me to easily learn all the contents I needed for a raise..</p>

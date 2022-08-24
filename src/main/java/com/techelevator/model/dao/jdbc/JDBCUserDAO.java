@@ -97,6 +97,7 @@ public class JDBCUserDAO implements UserDAO {
     }
 
 
+
     @Override
     public User getUserById(int userId) {
         String sqlSearchForUsername = "SELECT * " +

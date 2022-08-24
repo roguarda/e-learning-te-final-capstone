@@ -42,8 +42,8 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-
-        <img src="../../../img/e-learning-logo.png" alt="E-Learning-logo" href="#" height="150px">
+        <c:url var="e-learningLogo" value="/img/e-learning-logo.png"/>
+        <img src="${e-learningLogo}" href="#" height="150px">
         <%--        <a class="navbar-brand" href="#">E-Learning</a>--%>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
                 aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">

@@ -18,7 +18,7 @@ CREATE TABLE app_user
     role       varchar(32) NOT NULL,
     is_teacher boolean,
     is_student boolean,
-    salt       varchar(255)
+    salt       varchar(255) NOT NULL
 );
 
 
@@ -28,8 +28,9 @@ CREATE TABLE curricula
     curricula_id      SERIAL        NOT NULL UNIQUE PRIMARY KEY,
     curricula_name    VARCHAR(55)   not null,
     daily_instruction VARCHAR(1000) NOT NULL,
-    daily_homework    VARCHAR(1000) NOT NULL
-
+    daily_homework    VARCHAR(1000) NOT NULL,
+    course_id          SERIAL NOT   NULL,
+    FOREIGN KEY (course_id) REFERENCES course (course_id)
 );
 
 
