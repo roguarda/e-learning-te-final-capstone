@@ -6,21 +6,23 @@
 
 <form method="POST" action="${formAction}">
 <input type="hidden" name="TOKEN" value="${TOKEN}"/>
-<h2>Your profile</h2>
+    <figure class="text-center">
+        <blockquote class="blockquote">
+<h1>Your profile</h1>
 
 <c:url value="/studentHomePage/profile" var="Profile" />
 <%--@elvariable id="YourProfile" type=""--%>
 
-<form:form action="${register}" method="POST" modelAttribute="RegisterProfile">
+<%--<form:form action="${register}" method="POST" modelAttribute="RegisterProfile">--%>
+<%----%>
 
   <div class="detail-container">
   </div>
   <div class="detail-row">
     <div class="detail-header">
-      ID:
+      <h4> ID: </h4>
     </div>
     <div class="detail-value">
-        ${user.userId}
           <td>
           ${user.userId}
           </td>
@@ -28,7 +30,7 @@
   </div>
   <div class="detail-row">
       <div class="detail-header">
-        First Name:
+        <h4> First Name: </h4>
       </div>
       <div class="detail-value">
           ${user.firstName}
@@ -36,7 +38,7 @@
     </div>
     <div class="detail-row">
       <div class="detail-header">
-        Last Name:
+       <h4>Last Name:</h4>
       </div>
       <div class="detail-value">
           ${user.lastName}
@@ -51,17 +53,20 @@
     </div>
   </div>--%>
 
+<p>
+
+</p>
 
 
   <div class="detail-row">
       <button type="button" class="btn btn-outline-info">
       <c:url var="editLink" value="/Profile/edit/${currentUser.userName}" />
-          <a href="${editLink}">edit</a></button>
+          <a href="${editLink}">Edit</a></button>
 
   </div>
   </div>
-
-
+    </blockquote>
+</figure>
 
 
 <%--
@@ -119,6 +124,6 @@
 
   </form>
 
-</form:form>
-
+<%--</form:form>--%>
+<%----%>
 <%@include file="../common/footer.jsp" %>

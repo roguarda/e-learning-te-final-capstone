@@ -112,19 +112,20 @@ public class CourseController {
         return "redirect:/allCourses";
     }
     //dejo esto en comment para arreglarlo mañana
-/*
-    @RequestMapping(path = "/courses/student", method = RequestMethod.GET)
-    public List<Course> getEnrolledCourses(@PathVariable Integer studentId) {
-        Course course = courseDAO.findAllEnrolled();
+    @RequestMapping(path = "/courses/student/{studentId}", method = RequestMethod.GET)
+    public String getEnrolledCourses(@PathVariable Integer studentId, HttpSession session) {
+        User currentUser = (User) session.getAttribute("currentUser");
+        List<Course> allEnrolledCourse = courseDAO.findAllEnrolled(studentId);
+
         return "/Student/enrolledCourses";
     }
 
-    @RequestMapping(path = "/courses/teacher", method = RequestMethod.GET)
-    public List<Course> getAllMyCourses(@PathVariable Integer teacherId) {
-        Course course = courseDAO.findAllMyCourses();
+    @RequestMapping(path = "/courses/teacher/{teacherId}", method = RequestMethod.GET)
+    public String getAllMyCourses(@PathVariable Integer teacherId) {
+        List<Course> findAllMyCourses = courseDAO.findAllMyCourses(teacherId);
         return "/Teacher/myCourses";
 
-    }*/
+    }
 }
 
 

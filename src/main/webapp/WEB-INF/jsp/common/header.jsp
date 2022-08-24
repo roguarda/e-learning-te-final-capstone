@@ -54,20 +54,21 @@
                 <c:url var="homePageHref" value="/"/>
                 <li class="nav-item"><a class="nav-link" href="${homePageHref}">Home</a></li>
                 <%--                hasta aca todo bien--%>
+                    <c:url var="studentUrl" value="/studentHomePage/profile"/>
+                    <li class="nav-item"><a class="nav-link" href="${studentUrl}">My profile</a></li>
 
-                <c:if test="${not empty currentUser}">
-                    <c:url var="dashboardHref" value="/users/${currentUser}"/>
-                <li class="nav-item"><a class="nav-link" href="${dashboardHref}">Private Messages</a></li>
-                    <c:url var="newMessageHref"
-                           value="/users/${currentUser}/messages/new"/>
-                <li class="nav-item"><a class="nav-link" href="${newMessageHref}">New Message</a></li>
-                    <c:url var="sentMessagesHref"
-                           value="/users/${currentUser}/messages"/>
-                <li class="nav-item"><a class="nav-link" href="${sentMessagesHref}">Sent Messages</a></li>
-                    <c:url var="changePasswordHref"
-                           value="/users/${currentUser}/changePassword"/>
-                <li class="nav-item"><a class="nav-link" href="${changePasswordHref}">Change Password</a></li>
-                </c:if>
+<%--                    <c:if test="${not empty currentUser}">--%>
+
+<%--                    <c:url var="newMessageHref"--%>
+<%--                           value="/users/${currentUser}/messages/new"/>--%>
+<%--                <li class="nav-item"><a class="nav-link" href="${newMessageHref}">New Message</a></li>--%>
+<%--                    <c:url var="sentMessagesHref"--%>
+<%--                           value="/users/${currentUser}/messages"/>--%>
+<%--                <li class="nav-item"><a class="nav-link" href="${sentMessagesHref}">Sent Messages</a></li>--%>
+<%--                    <c:url var="changePasswordHref"--%>
+<%--                           value="/users/${currentUser}/changePassword"/>--%>
+<%--                <li class="nav-item"><a class="nav-link" href="${changePasswordHref}">Change Password</a></li>--%>
+<%--                </c:if>--%>
 
                 <ul class="navbar-nav ml-auto">
                     <c:choose>

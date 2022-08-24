@@ -41,6 +41,8 @@ public class UserController {
 		return "/Student/studentProfile";
 	}
 
+
+
 	@RequestMapping(value = "Profile/edit/{userName}")
 	public String editProfile(@PathVariable String userName, ModelMap map) {
 		User user = userDAO.getUserByUserName(userName);
