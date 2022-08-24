@@ -65,13 +65,21 @@ public class JDBCCourseDAO implements CourseDAO {
     @Override
     public Course add(String courseName, int teacherId, String description, String difficultyLevel, String cost) {
         Course newCourse = new Course();
-        jdbcTemplate.update("INSERT INTO course (course_name,\n" +
+        int courseId = jdbcTemplate.queryForObject("INSERT INTO course (course_name,\n" +
                         "                    teacher_id,\n" +
                         "                    course_description,\n" +
                         "                    difficulty,\n" +
                         "                    cost)\n" +
-                        "VALUES (?, ?, ?, ?,?);",
-                courseName, teacherId, description, difficultyLevel, cost);
+                        "VALUES (?, ?, ?, ?,?)" +
+                        "RETURNING course_id;", Integer.class,
+                courseName, teacherId, description, difficultyLevel, cost).intValue();
+        newCourse.setId(courseId);
+        newCourse.setName(courseName);
+        newCourse.setTeacherId(teacherId);
+        newCourse.setDescription(description);
+        newCourse.setDifficultyLevel(difficultyLevel);
+        newCourse.setCost(cost);
+
         return newCourse;
     }
 
