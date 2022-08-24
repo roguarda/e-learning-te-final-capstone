@@ -1,12 +1,6 @@
 package com.techelevator.controller;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-
-import com.techelevator.model.dao.HomeworkDAO;
-import com.techelevator.model.dto.Curricula;
-import com.techelevator.model.dto.Homework;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

@@ -5,7 +5,7 @@
 BEGIN;
 
 INSERT INTO app_user (user_name, password, first_name, last_name, role, is_teacher, is_student, salt)
-VALUES ('GARY', 'pd2UZJrtxEELdf5S2K1P3w==', 'gary', 'thanks', 'teacher', true, false, 'Lp5Ey8FccIyx6Wo+K9EJSAkXLXF95pfyjXUhn4m89nhFKeLNb8Z2MNENcYAHFbIUM+UGawKLLenh7+O6xdBYbrZK+h5nivf3yU4uiOFBFCzXCVLy3RPhlqrNQ8RpUmdHgaZl7n0pXQPoTruSibst9UbQHiFHQhi6Pck6ygeouFA=
+VALUES ('GARY', 'Password12', 'gary', 'thanks', 'teacher', true, false, 'Lp5Ey8FccIyx6Wo+K9EJSAkXLXF95pfyjXUhn4m89nhFKeLNb8Z2MNENcYAHFbIUM+UGawKLLenh7+O6xdBYbrZK+h5nivf3yU4uiOFBFCzXCVLy3RPhlqrNQ8RpUmdHgaZl7n0pXQPoTruSibst9UbQHiFHQhi6Pck6ygeouFA=
 '),
        ('Micat', 'pd2UZJrtxEELdf5S2K1P3w==', 'micaela', 'teacher', 'teacher', true, false, 'Lp5Ey8FccIyx6Wo+K9EJSAkXLXF95pfyjXUhn4m89nhFKeLNb8Z2MNENcYAHFbIUM+UGawKLLenh7+O6xdBYbrZK+h5nivf3yU4uiOFBFCzXCVLy3RPhlqrNQ8RpUmdHgaZl7n0pXQPoTruSibst9UbQHiFHQhi6Pck6ygeouFA=
 '),

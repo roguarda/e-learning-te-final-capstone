@@ -1,5 +1,4 @@
 package com.techelevator.model.dto;
-
 import org.hibernate.validator.constraints.NotBlank;
 
 public class Homework {
