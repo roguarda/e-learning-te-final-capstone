@@ -98,7 +98,7 @@ public class JDBCCurriculaDAO implements CurriculaDAO {
     @Override
     public List<Curricula> getCurriculaByCourseId(Long courseId) {
         List<Curricula> result = new ArrayList<>();
-        String query = "SELECT * FROM curricula WHERE course_id = ?;";
+        String query = "";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(query, courseId);
         while (rowSet.next()) {
             Curricula curricula = mapRowToCurricula(rowSet);

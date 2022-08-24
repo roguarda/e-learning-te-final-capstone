@@ -4,10 +4,9 @@
 <c:import url="/WEB-INF/jsp/common/header.jsp"/>
 
 <div id="course-detail">
-    <c:forEach var="course" items="${course}">
 
         <c:url var="courseImageURL"
-               value="/images/course-images/${course.imageName}" />
+               value="/img/course-images/pexels-christina-morillo-1181290.jpg" />
         <img class="courseImage" src="${courseImageURL}">
 
         <div class="course-description">
@@ -40,14 +39,6 @@
             </c:choose>
 
         </div>
-
-            </td>
-
-        </tr>
-    </c:forEach>
-
-
-
 
 </div>
 
