@@ -1,11 +1,8 @@
 package com.techelevator.controller;
 
 import com.techelevator.model.dao.HomeworkDAO;
-import com.techelevator.model.dto.Course;
-import com.techelevator.model.dto.Curricula;
 import com.techelevator.model.dto.Homework;
 import com.techelevator.model.dto.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -24,40 +21,40 @@ public class HomeworkController {
 
     private HomeworkDAO homeworkDAO;
 
-    @RequestMapping(path="/FeedbackHomework", method=RequestMethod.GET)
-    public String gradeHomework(ModelMap modelHolder) {
+    @RequestMapping(path = "/gradeHomework/{homeworkId}", method = RequestMethod.GET)
+    public String gradeHomework(@PathVariable Integer homeworkId, ModelMap modelHolder) {
         if (!modelHolder.containsAttribute("feedbackHomework")) {
             modelHolder.addAttribute("feedbackHomework", new Homework());
         }
-        return "Teacher/Homework/ViewHomework";
+        return "Teacher/Homework/gradeHomework";
 
     }
 
-    @RequestMapping(path = "/FeedbackHomework", method = RequestMethod.POST)
-    public String gradeHomework(@Valid @ModelAttribute("homeworkFeedback") Homework homework,
-            BindingResult result,
-            RedirectAttributes flash
-    ) {
+    @RequestMapping(path = "/gradeHomework/{homeworkId}", method = RequestMethod.POST)
+    public String gradeHomework(@PathVariable Integer homeworkId, @Valid @ModelAttribute("homeworkFeedback") Homework homework,
+                                BindingResult result,
+                                RedirectAttributes flash) {
         if (result.hasErrors()) {
             flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "createHomeworkFeedback", result);
 
-            return "redirect:/FeedbackHomework";
+            return "redirect:/viewHomework";
         }
 
         flash.addFlashAttribute("message", "You have successfully created the homework.");
         //cambiar metodo x el de jdbc dao que corrige el profe
-        homeworkDAO.gradeHomework(homework.getHomeworkGrade() , homework.getTeacherFeedback(), homework.getStatus(), homework.getId());
+        homeworkDAO.gradeHomework(homework.getHomeworkGrade(), homework.getTeacherFeedback(), homework.getStatus(), homeworkId);
         return "redirect:/teacherHomePage/";
     }
+
 
     //Crear en JDBC un metodo para ver todas las tareas que envian los alumnos
     @RequestMapping(path = "/viewHomework", method = RequestMethod.GET)
     public String showAllHomeworksToReview(ModelMap modelHolder, HttpSession session) {
-        List<Homework> homeworks = homeworkDAO.getAllHomework();
-        modelHolder.addAttribute("homeworks", homeworks);
 
         User currentUser = (User) session.getAttribute("currentUser");
-        return "Teacher/Course/allCourses";
+        List<Homework> homeworks = homeworkDAO.getHomeworkListByStatusAndTeacherId(currentUser.getUserId());
+        modelHolder.addAttribute("homeworks", homeworks);
+        return "Teacher/Homework/viewHomework";
 
     }
 
@@ -71,8 +68,8 @@ public class HomeworkController {
 
     @RequestMapping(path = "/MyHomework/{id}", method = RequestMethod.POST)
     public String submitHomeworkForm(@PathVariable Integer id, @Valid @ModelAttribute("createHomework") Homework homework,
-            BindingResult result,
-            RedirectAttributes flash
+                                     BindingResult result,
+                                     RedirectAttributes flash
     ) {
         if (result.hasErrors()) {
             flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "createHomework", result);
@@ -82,9 +79,9 @@ public class HomeworkController {
 
         flash.addFlashAttribute("message", "You have successfully created the homework.");
         homeworkDAO.add(homework.getHomeworkName(), homework.getHomeworkIntroduction(), homework.getHomeworkDescription());
-        return "redirect:/viewHomeworks" ;
+        return "redirect:/viewHomeworks";
 
-                //+ homework.getHomeworkName();
+        //+ homework.getHomeworkName();
     }
 
     //Falta agregar metodo en JDBC
@@ -94,7 +91,7 @@ public class HomeworkController {
         modelHolder.addAttribute("homeworks", homeworks);
 
         User currentUser = (User) session.getAttribute("currentUser");
-            return "Teacher/Course/allCourses";
+        return "Teacher/Course/allCourses";
 
     }
 

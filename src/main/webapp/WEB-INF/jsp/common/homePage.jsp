@@ -7,7 +7,9 @@
 <html>
 <div class="image-header">
     <c:url var="home" value="/img/Homepage.jpg" />
+    
     <img src="${home}" class="img-fluid" alt="Welcome!">
+
 </div>
 
 
