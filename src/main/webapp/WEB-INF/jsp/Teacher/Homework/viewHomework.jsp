@@ -4,7 +4,7 @@
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
 
 <div class="detail-row">
-    <c:url var="addLink" value="/viewHomeworks" />
+    <c:url var="addLink" value="/viewHomework" />
     <a href="${addLink}" class="edit-link"> </a>
 </div>
 

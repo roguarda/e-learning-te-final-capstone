@@ -6,7 +6,7 @@
 <c:url var="validationJs" value="/js/user-validation.js"/>
 <script src="${validationJs}"></script>
 
-<c:url var="formAction" value="/FeedbackHomework"/>
+<c:url var="formAction" value="/gradeHomework/${homeworkId}"/>
 <form method="POST" action="${formAction}">
     <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
     <div class="row">
@@ -15,7 +15,7 @@
             <div class="form-group">
                 <h2>Review Homework</h2>
                 <div class="form-group">
-                    <label for="grade" class="form-label mt-4">Select the grace</label>
+                    <label for="grade" class="form-label mt-4">Select homework grading</label>
                     <select class="form-select" id="grade" type="number" name="grade">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -23,7 +23,7 @@
                         <option value="4">4</option>
                         <option value="5">5</option>
                         <option value="6">6</option>
-                        <option value="7" >7</option>
+                        <option value="7">7</option>
                         <option value="8">8</option>
                         <option value="9">9</option>
                         <option value="10">10</option>
@@ -32,17 +32,18 @@
                 <div class="form-group">
                     <label for="status">Status: </label>
                     <select id="status" name="status" class="form-control">
-                        <option value="" selected disabled>Please select the new status of the homework:</option>
-                        <option value="complete">Complete</option>
+                        <option value="" selected disabled>Please select the status of the homework:</option>
+                        <option value="completed">Completed</option>
                         <option value="incomplete">Incomplete</option>
                     </select>
                 </div>
             </div>
             <div class="form-group">
-                <label for="comment" class="form-label mt-4"> Comments </label>
-                <input type="text" id="comment" name="comment" placeHolder=" Comment" class="form-control"/>
+                <label for="teacherFeedback" class="form-label mt-4"> Feedback: </label>
+                <input type="text" id="teacherFeedback" name="teacherFeedback" placeHolder=" Comment"
+                       class="form-control"/>
             </div>
-            <button type="submit" class="btn btn-primary">Send my homework</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </div>
         <div class="col-sm-4"></div>
     </div>

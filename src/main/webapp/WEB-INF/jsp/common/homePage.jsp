@@ -7,7 +7,7 @@
 <html>
 <div class="text">
     <c:url var="home" value="/img/Homepage.jpg" />
-    <img align="center" src="${home}" class="img-fluid" alt="Welcome!">
+    <img  src="${home}" class="img-fluid" alt="Welcome!">
 </div>
 
 
@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-md-4">
                     <c:url var="ratingStars" value="/img/RatingStars.png" />
-                    <img src=""${ratingStars}" alt="ratingStar" height="150px"/>
+                    <img src="${ratingStars}" alt="ratingStar" height="150px"/>
                     <figure class="text-center">
                         <blockquote class="blockquote">
                             <p class="mb-0">Great experience! Finally a course where I can manage my own schedule.</p>
