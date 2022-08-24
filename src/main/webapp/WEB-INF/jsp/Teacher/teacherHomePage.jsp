@@ -14,19 +14,15 @@
         <div class="card-body">
             <h5 class="card-title">Course</h5>
 
-            <div>
+            <div class="divbutton">
                 <a href="CreateCourse" class="btn btn-primary">Add course</a>
             </div>
-            <div>
+            <div class="divbutton">
                 <a href="TeacherCurrentCourses" class="btn btn-primary">See my Courses</a>
             </div>
-            <div>
+            <div class="divbutton">
                 <a href="allCourses" class="btn btn-primary">See all courses</a>
             </div>
-
-            <a href="CreateCourse" class="btn btn-primary">Add course</a>
-            <a href="TeacherCurrentCourses" class="btn btn-primary">See my current Courses</a>
-            <a href="allCourses" class="btn btn-primary">See all courses</a>
 
         </div>
     </div>
@@ -34,41 +30,29 @@
         <div class="card-body">
             <h5 class="card-title">Curricula</h5>
 
-            <div>
+            <div class="divbutton">
                 <a href="Curricula" class="btn btn-primary">All curricula</a>
             </div>
-            <div>
+            <div class="divbutton">
                 <a href="CreateCurricula" class="btn btn-primary">Add curricula</a>
             </div>
-
-
-            <a href="Curricula" class="btn btn-primary">All curricula</a>
-            <a href="CreateCurricula" class="btn btn-primary">Add curricula</a>
 
         </div>
     </div>
     <div class="card" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title">Homework</h5>
-
-            <div>
-                <a href="Curricula" class="btn btn-primary">Homework Grading</a>
+            <div class="divbutton">
+                <a href="/viewHomework" class="btn btn-primary">Homework Grading</a>
             </div>
-            <div>
-                <a href="CreateCurricula" class="btn btn-primary">All Homework</a>
-            </div>
-
-            <a href="Curricula" class="btn btn-primary">All curricula</a>
-
-
         </div>
     </div>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">All courses</h5>
+<%--    <div class="card" style="width: 18rem;">--%>
+<%--        <div class="card-body">--%>
+<%--            <h5 class="card-title">All courses</h5>--%>
 
-        </div>
-    </div>
+<%--        </div>--%>
+<%--    </div>--%>
 
 
 </div>

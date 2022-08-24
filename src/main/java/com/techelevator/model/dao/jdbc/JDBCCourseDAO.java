@@ -121,12 +121,17 @@ public class JDBCCourseDAO implements CourseDAO {
         return courses;
     }
     @Override
-    public void  enroll(int course_id, int student_id) {
+    public void  enroll(int courseId, int studentId) {
         String query = "INSERT INTO student_course (student_id, course_id) VALUES (?,?);";
-
     }
 
+    @Override
+    public void  asignCurriculaToCourse(int courseId, int curriculaId) {
+
+        jdbcTemplate.update("INSERT INTO curricula_course (course_id, curricula_id) \n" +
+                "values (?, ?); ", courseId, curriculaId);
 
 
+    }
 
 }

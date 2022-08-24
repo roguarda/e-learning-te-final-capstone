@@ -37,7 +37,8 @@ public class CourseController {
             @Valid @ModelAttribute("createCourse") Course course,
             BindingResult result,
             RedirectAttributes flash,
-            HttpSession session
+            HttpSession session,
+            int curriculaId
     ) {
         if (result.hasErrors()) {
             flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "createCourse", result);
@@ -46,7 +47,10 @@ public class CourseController {
         }
         User currentUser = (User) session.getAttribute("currentUser");
         flash.addFlashAttribute("message", "You have successfully registered the Course.");
+
         courseDAO.add(course.getName(), currentUser.getUserId(), course.getDescription(), course.getDifficultyLevel(), course.getCost());
+        courseDAO.asignCurriculaToCourse(course.getId(), curriculaId );
+
         return "redirect:/teacherHomePage?courseName=" + course.getName();
     }
 
@@ -102,19 +106,20 @@ public class CourseController {
         return "redirect:/allCourses";
     }
     //dejo esto en comment para arreglarlo mañana
+    @RequestMapping(path = "/courses/student/{studentId}", method = RequestMethod.GET)
+    public String getEnrolledCourses(@PathVariable Integer studentId, HttpSession session) {
+        User currentUser = (User) session.getAttribute("currentUser");
+        List<Course> allEnrolledCourse = courseDAO.findAllEnrolled(studentId);
 
-/*    @RequestMapping(path = "/courses/student", method = RequestMethod.GET)
-    public List<Course> getEnrolledCourses(@PathVariable Integer studentId) {
-        Course course = courseDAO.findAllEnrolled();
         return "/Student/enrolledCourses";
     }
 
-    @RequestMapping(path = "/courses/teacher", method = RequestMethod.GET)
-    public List<Course> getAllMyCourses(@PathVariable Integer teacherId) {
-        Course course = courseDAO.findAllMyCourses();
+    @RequestMapping(path = "/courses/teacher/{teacherId}", method = RequestMethod.GET)
+    public String getAllMyCourses(@PathVariable Integer teacherId) {
+        List<Course> findAllMyCourses = courseDAO.findAllMyCourses(teacherId);
         return "/Teacher/myCourses";
 
-    }*/
+    }
 }
 
 

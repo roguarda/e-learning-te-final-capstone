@@ -25,4 +25,5 @@ public interface CourseDAO {
 	List<Course> findAllMyCourses(int teacherId);
 
 
+    void  asignCurriculaToCourse(int courseId, int curriculaId);
 }
