@@ -102,8 +102,8 @@ public class CourseController {
         return "redirect:/allCourses";
     }
     //dejo esto en comment para arreglarlo mañana
-
-/*    @RequestMapping(path = "/courses/student", method = RequestMethod.GET)
+/*
+    @RequestMapping(path = "/courses/student", method = RequestMethod.GET)
     public List<Course> getEnrolledCourses(@PathVariable Integer studentId) {
         Course course = courseDAO.findAllEnrolled();
         return "/Student/enrolledCourses";

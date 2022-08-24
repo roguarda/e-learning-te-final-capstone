@@ -78,8 +78,6 @@ CREATE TABLE homework
     FOREIGN KEY (student_id) REFERENCES app_user (user_id),
     FOREIGN KEY (curricula_id) REFERENCES curricula (curricula_id),
     FOREIGN KEY (course_id) REFERENCES course (course_id)
-
-
 );
 
 CREATE TABLE student_homework
