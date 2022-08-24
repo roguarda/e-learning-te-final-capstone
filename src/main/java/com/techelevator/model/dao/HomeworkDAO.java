@@ -16,7 +16,9 @@ public interface HomeworkDAO {
 
 	List<Homework> getHomeworkListByStatusAndTeacherId(int userId);
 
-	List<Homework> getAllHomework();
+    List<Homework> getHomeworkListToGrade();
+
+    List<Homework> getAllHomework();
 
 	List<Homework> search (String id);
 
