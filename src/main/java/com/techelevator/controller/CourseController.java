@@ -103,7 +103,7 @@ public class CourseController {
         courseDAO.delete(courseId);
         return "redirect:/allCourses";
     }
-        @RequestMapping(path = "/courses/student", method = RequestMethod.GET)
+/*        @RequestMapping(path = "/courses/student", method = RequestMethod.GET)
     public List<Course> getEnrolledCourses( ) {
 
         return "/Student/enrolledCourses";
@@ -111,7 +111,7 @@ public class CourseController {
     @RequestMapping(path = "/courses/teacher", method = RequestMethod.GET)
     public List<Course> getAllMyCourses() {
         ;
-        return "/Teacher/myCourses";
+        return "/Teacher/myCourses";*/
 
 }
 

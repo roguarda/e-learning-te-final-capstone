@@ -90,6 +90,11 @@ public class JDBCHomeworkDAO implements HomeworkDAO {
     }
 
     @Override
+    public void add(String teacherFeedback, int homeworkGrade, String status) {
+
+    }
+
+    @Override
     public List<Homework> getHomeworkListByUserId(int userId) {
         List<Homework> homeworkList = new ArrayList<>();
         String sql = "SELECT h.homework_id,\n" +
