@@ -33,7 +33,8 @@ CREATE TABLE curricula
     FOREIGN KEY (course_id) REFERENCES course (course_id)
 );
 
-
+/*si cada curso puede tener más de una curricula (pero cada currícula un sólo curso) hay que quitar curricula_id de course.
+  y la tabla course_curricula no es necesaria*/
 CREATE TABLE course
 (
     course_id          SERIAL       NOT NULL UNIQUE PRIMARY KEY,

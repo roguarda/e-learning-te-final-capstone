@@ -61,9 +61,7 @@ public class CourseController {
             return "Teacher/Course/allCourses";
         } else
             return "Student/studentAllCourses";
-        }
-
-
+    }
 
 
     @RequestMapping(path = "/courses/details/{courseId}", method = RequestMethod.GET)
@@ -103,16 +101,20 @@ public class CourseController {
         courseDAO.delete(courseId);
         return "redirect:/allCourses";
     }
-/*        @RequestMapping(path = "/courses/student", method = RequestMethod.GET)
-    public List<Course> getEnrolledCourses( ) {
+    //dejo esto en comment para arreglarlo mañana
 
+/*    @RequestMapping(path = "/courses/student", method = RequestMethod.GET)
+    public List<Course> getEnrolledCourses(@PathVariable Integer studentId) {
+        Course course = courseDAO.findAllEnrolled();
         return "/Student/enrolledCourses";
     }
-    @RequestMapping(path = "/courses/teacher", method = RequestMethod.GET)
-    public List<Course> getAllMyCourses() {
-        ;
-        return "/Teacher/myCourses";*/
 
+    @RequestMapping(path = "/courses/teacher", method = RequestMethod.GET)
+    public List<Course> getAllMyCourses(@PathVariable Integer teacherId) {
+        Course course = courseDAO.findAllMyCourses();
+        return "/Teacher/myCourses";
+
+    }*/
 }
 
 
