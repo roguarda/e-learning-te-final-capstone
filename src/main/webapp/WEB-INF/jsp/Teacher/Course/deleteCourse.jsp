@@ -19,7 +19,7 @@
     </div>
     <div class="detail-row">
         <input type="submit" value="Delete">
-        <c:url var="curriculaUrl" value="/deleteCurricula/${course.id}" />
+        <c:url var="courseUrl" value="/allCourses" />
         <a href="${courseUrl}">Cancel</a>
     </div>
 </form>

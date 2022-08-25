@@ -156,7 +156,8 @@ public class JDBCHomeworkDAO implements HomeworkDAO {
                 "       h.status\n " +
                 "FROM homework AS h\n " +
                 "         JOIN app_user au on au.user_id = h.teacher_id \n" +
-                "WHERE  status =! 'completed';";
+                "WHERE  status =! 'completed'" +
+                "AND student_id is not null;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
             homeworkToGradeList.add(mapRowToHomework(results));
