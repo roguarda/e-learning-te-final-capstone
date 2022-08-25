@@ -55,13 +55,13 @@ public class CurriculaController {
         if (result.hasErrors()) {
             flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "createCurricula", result);
 
-            return "redirect:/CreateCurricula";
+            return "redirect:/Teacher/Curricula/CreateCurricula";
         }
 
         flash.addFlashAttribute("message", "You have successfully created the curricula.");
         curriculaDAO.add(curricula.getCurriculaName(), curricula.getDailyInstruction(), curricula.getDailyHomework());
         homeworkDAO.createHomework(curricula.getCurriculaName(), curricula.getDailyHomework(), curricula.getId());
-        return "redirect:/teacherHomePage?curriculaName=" + curricula.getCurriculaName();
+        return "redirect:/Teacher/teacherHomePage/curriculaName=" + curricula.getCurriculaName();
     }
 
         //edit GET
