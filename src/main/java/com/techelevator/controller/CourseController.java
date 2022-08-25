@@ -111,7 +111,7 @@ public class CourseController {
         courseDAO.delete(courseId);
         return "redirect:/allCourses";
     }
-    //dejo esto en comment para arreglarlo mañana
+
     @RequestMapping(path = "/courses/student/{studentId}", method = RequestMethod.GET)
     public String getEnrolledCourses(@PathVariable Integer studentId, HttpSession session, ModelMap map) {
         User currentUser = (User) session.getAttribute("currentUser");
