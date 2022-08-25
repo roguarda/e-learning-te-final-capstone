@@ -8,15 +8,22 @@
   <a href="${curriculaDetails}" class="edit-link"> </a>
 </div>
 
-<div id="curricula-details">
+<figure class="text-center">
+  <blockquote class="blockquote">
+<div class="curricula-details">
+  <h1>Curricula name: ${curricula.curriculaName} </h1>
 
-  <div class="curricula-name">
-    <h3>Curricula name:${curricula.curriculaName}</h3>
     <div class="dailyInstruction">
-      <h4>Daily Instructions: ${curricula.dailyInstruction}</h4>
+      <h4>Daily Instructions: </h4>
+      <td>
+        ${curricula.dailyInstruction}
+          </td>
     </div>
     <div class="daily-homework">
-      <h4>Daily homework: ${curricula.dailyHomework}</h4>
+      <h4>Daily homework: </h4>
+        <td>
+        ${curricula.dailyHomework}
+          </td>
     </div>
     <div>
       <c:choose>
@@ -37,4 +44,7 @@
       </c:choose>
 
   </div>
+    </blockquote>
+    </figure>
+
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />
