@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 import com.techelevator.model.dao.CurriculaDAO;
+import com.techelevator.model.dao.HomeworkDAO;
 import com.techelevator.model.dto.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,10 +22,13 @@ public class CourseController {
 
     private CurriculaDAO curriculaDAO;
 
+    private HomeworkDAO homeworkDAO;
+
     @Autowired
-    public CourseController(CourseDAO courseDAO, CurriculaDAO curriculaDAO) {
+    public CourseController(CourseDAO courseDAO, CurriculaDAO curriculaDAO, HomeworkDAO homeworkDAO) {
         this.courseDAO = courseDAO;
         this.curriculaDAO = curriculaDAO;
+        this.homeworkDAO = homeworkDAO;
 
     }
 
@@ -117,6 +121,7 @@ public class CourseController {
         User currentUser = (User) session.getAttribute("currentUser");
         List<Course> allEnrolledCourse = courseDAO.findAllEnrolled(studentId);
         map.put("courses", allEnrolledCourse);
+
         return "/Student/enrolledCourses";
     }
 
@@ -145,7 +150,7 @@ public class CourseController {
         int studentId = currentUser.getUserId();
 
         courseDAO.enroll(studentId, courseId);
-        return "redirect:/allCourses";
+        return "redirect:/courses/student/"+studentId;
     }
 
 

@@ -13,7 +13,10 @@ public interface HomeworkDAO {
 	void gradeHomework(int grade, String teacherFeedback, String status, int homeworkId);
 
 
-	void createHomework(String homeworkName, String homeworkInstruction);
+	void createHomework(String homeworkName, String homeworkInstruction,int curriculaId);
+
+	//gethomeworkbycourseid
+	Homework getHomeworkByCourse(int courseId);
 
 	List<Homework> getHomeworkListByUserId(int userId);
 

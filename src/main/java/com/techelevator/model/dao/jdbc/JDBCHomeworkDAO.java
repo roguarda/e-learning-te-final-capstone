@@ -30,9 +30,10 @@ public class JDBCHomeworkDAO implements HomeworkDAO {
         homework.setHomeworkDescription("homework_description");
         homework.setStatus(rowSet.getString("status"));
         homework.setTeacherFeedback("teacher_feedback");
-        if(homework.getStatus().equals("completed")){
+        if (homework.getStatus().equals("completed")) {
             homework.setCompleted(true);
-        } homework.setStatus("incomplete");
+        }
+        homework.setStatus("incomplete");
         homework.setCompleted(false);
 
         return homework;
@@ -61,8 +62,6 @@ public class JDBCHomeworkDAO implements HomeworkDAO {
                 grade, teacherFeedback, status, homeworkId);
 
     }
-
-
 
 
     //si el maestro devuelve la nota y esta mal, la corrige el alumno desde acá
@@ -97,13 +96,28 @@ public class JDBCHomeworkDAO implements HomeworkDAO {
     }
 
 
-
     @Override
-    public void createHomework(String homeworkName, String homeworkInstruction) {
+    public void createHomework(String homeworkName, String homeworkInstruction, int curriculaId) {
 
-        String sql = "INSERT INTO homework(homework_name, homework_instruction)\n" +
-                "VALUES (?,?);";
-        jdbcTemplate.update(sql,homeworkName, homeworkInstruction );
+        String sql = "INSERT INTO homework(homework_name, homework_instruction, curricula_id)\n" +
+                "VALUES (?,?, ?);";
+        jdbcTemplate.update(sql, homeworkName, homeworkInstruction, curriculaId);
+
+    }
+
+    //gethomeworkbycourseid
+    @Override
+    public Homework getHomeworkByCourse(int courseId) {
+            Homework homework = null;
+        String sql = "select *\n " +
+                "from homework\n " +
+                " WHERE course_id = ?;";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, courseId);
+        while (results.next()) {
+            homework = mapRowToHomework(results);
+        }
+        return homework;
 
     }
 
@@ -183,14 +197,13 @@ public class JDBCHomeworkDAO implements HomeworkDAO {
 
 
     @Override
-    public void submitHomework( String homeworkIntro, String homeworkDescription, int id) {
+    public void submitHomework(String homeworkIntro, String homeworkDescription, int id) {
         String sql = "UPDATE homework\n" +
                 "SET homework_introduction = ?\n" +
                 "  , homework_description = ?\n" +
                 "WHERE homework_id = ?;";
         jdbcTemplate.update(sql, homeworkIntro, homeworkDescription, id);
     }
-
 
 
     @Override

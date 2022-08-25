@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.model.dao.HomeworkDAO;
 import com.techelevator.model.dto.Homework;
 import com.techelevator.model.dto.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -19,6 +20,7 @@ import java.util.List;
 @Controller
 public class HomeworkController {
 
+    @Autowired
     private HomeworkDAO homeworkDAO;
 
     @RequestMapping(path = "/gradeHomework/{homeworkId}", method = RequestMethod.GET)
@@ -58,27 +60,27 @@ public class HomeworkController {
 
     }
 
-    @RequestMapping(path = "/MyHomework/{id}", method = RequestMethod.GET)
-    public String submitHomeworkForm(@PathVariable Integer id, ModelMap modelHolder) {
+    @RequestMapping(path = "/MyHomework/{courseId}", method = RequestMethod.GET)
+    public String submitHomeworkForm(@PathVariable Integer courseId, ModelMap modelHolder) {
         if (!modelHolder.containsAttribute("homework")) {
-            modelHolder.addAttribute("homework", new Homework());
+            modelHolder.addAttribute("homework", homeworkDAO.getHomeworkByCourse(courseId));
         }
         return "Student/MyHomework";
     }
 
-    @RequestMapping(path = "/MyHomework/{id}", method = RequestMethod.POST)
-    public String submitHomeworkForm(@PathVariable Integer id, @Valid @ModelAttribute("createHomework") Homework homework,
+    @RequestMapping(path = "/MyHomework/{courseId}", method = RequestMethod.POST)
+    public String submitHomeworkForm(@PathVariable Integer courseId,  @Valid @ModelAttribute("createHomework") Homework homework,
                                      BindingResult result,
-                                     RedirectAttributes flash
+                                    RedirectAttributes flash
     ) {
         if (result.hasErrors()) {
             flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "createHomework", result);
 
-            return "redirect:/MyHomework/{id}";
+            return "redirect:/MyHomework/{courseId}";
         }
 
         flash.addFlashAttribute("message", "You have successfully created the homework.");
-        homeworkDAO.submitHomework( homework.getHomeworkIntroduction(), homework.getHomeworkDescription(), id);
+        homeworkDAO.submitHomework(homework.getHomeworkName(), homework.getHomeworkIntroduction(), homework.getHomeworkDescription());
         return "redirect:/viewHomeworks";
 
         //+ homework.getHomeworkName();
