@@ -10,12 +10,12 @@ DROP TABLE IF EXISTS app_user, course, curricula, homework, curricula_course, st
 
 CREATE TABLE app_user
 (
-    user_id    SERIAL      NOT NULL UNIQUE PRIMARY KEY,
-    user_name  varchar(32) NOT NULL UNIQUE,
-    password   varchar(32) NOT NULL,
-    first_name varchar(32) NOT NULL,
-    last_name  varchar(32) NOT NULL,
-    role       varchar(32) NOT NULL,
+    user_id    SERIAL       NOT NULL UNIQUE PRIMARY KEY,
+    user_name  varchar(32)  NOT NULL UNIQUE,
+    password   varchar(32)  NOT NULL,
+    first_name varchar(32)  NOT NULL,
+    last_name  varchar(32)  NOT NULL,
+    role       varchar(32)  NOT NULL,
     is_teacher boolean,
     is_student boolean,
     salt       varchar(255) NOT NULL
@@ -66,10 +66,11 @@ CREATE TABLE student_course
 );
 CREATE TABLE homework
 (
-    homework_id           SERIAL        NOT NULL UNIQUE PRIMARY KEY,
-    homework_name         VARCHAR(20)   NOT NULL,
-    homework_introduction VARCHAR(140)  NOT NULL,
-    homework_description  VARCHAR(1000) NOT NULL,
+    homework_id           SERIAL       NOT NULL UNIQUE PRIMARY KEY,
+    homework_name         VARCHAR(140) NOT NULL,
+    homework_instruction  VARCHAR(140) NOT NULL,
+    homework_introduction VARCHAR(140),
+    homework_description  VARCHAR(1000),
     curricula_id          INT,
     course_id             INT,
     student_id            INT,

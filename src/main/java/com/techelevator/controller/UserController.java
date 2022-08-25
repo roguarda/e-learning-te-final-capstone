@@ -32,7 +32,7 @@ public class UserController {
 	}
 
 
-	@RequestMapping("/studentHomePage/profile")
+	@RequestMapping("/profile")
 	public String details(HttpSession session, ModelMap map) {
 
 		User user = (User) session.getAttribute("currentUser");

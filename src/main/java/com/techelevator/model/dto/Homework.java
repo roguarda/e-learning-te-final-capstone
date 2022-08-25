@@ -5,6 +5,8 @@ public class Homework {
 
     private int id;
 
+    private String homeworkInstruction;
+
     @NotBlank(message = "Homework's name is required")
     private String homeworkName;
 
@@ -31,6 +33,14 @@ public class Homework {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getHomeworkInstruction() {
+        return homeworkInstruction;
+    }
+
+    public void setHomeworkInstruction(String homeworkInstruction) {
+        this.homeworkInstruction = homeworkInstruction;
     }
 
     public String getStatus() {

@@ -78,7 +78,7 @@ public class HomeworkController {
         }
 
         flash.addFlashAttribute("message", "You have successfully created the homework.");
-        homeworkDAO.add(homework.getHomeworkName(), homework.getHomeworkIntroduction(), homework.getHomeworkDescription());
+        homeworkDAO.submitHomework( homework.getHomeworkIntroduction(), homework.getHomeworkDescription(), id);
         return "redirect:/viewHomeworks";
 
         //+ homework.getHomeworkName();
