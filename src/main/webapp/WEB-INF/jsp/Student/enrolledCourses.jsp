@@ -24,6 +24,7 @@
     <tbody class="table-active">
     <c:forEach var="course" items="${courses}">
         <c:url var="courseLink" value="/courses/details/${course.id}" />
+<%--        <c:url var="homework" value="/MyHomework/${homework.id}" />--%>
         <tr>
             <td>${course.id}</td>
             <td>
@@ -33,7 +34,10 @@
             <td>${course.difficultyLevel}</td>
             <td>${course.cost}</td>
             <td>
+<%--//BUG TO FIX - IT DOESN'T GO TO THE HOMEWORK SUBMIT PAGE.--%>
+                <button type="button" class="btn btn-outline-info">
 
+                    <a href="${homework}">HOMEWORK</a> </button>
             </td>
         </tr>
     </c:forEach>

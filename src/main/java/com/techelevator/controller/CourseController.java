@@ -144,7 +144,7 @@ public class CourseController {
         User currentUser = (User) session.getAttribute("currentUser");
         int studentId = currentUser.getUserId();
 
-        courseDAO.enroll(courseId, studentId);
+        courseDAO.enroll(studentId, courseId);
         return "redirect:/allCourses";
     }
 

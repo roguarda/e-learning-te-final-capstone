@@ -51,24 +51,36 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarColor02">
             <ul class="navbar-nav me-auto">
-                <c:url var="homePageHref" value="/"/>
-                <li class="nav-item"><a class="nav-link" href="${homePageHref}">Home</a></li>
+<%--                <c:url var="homePageHref" value="/"/>--%>
+<%--                <li class="nav-item"><a class="nav-link" href="${homePageHref}">Home</a></li>--%>
                 <%--                hasta aca todo bien--%>
 
 
-                    <c:if test="${not empty currentUser}">
-                    <c:url var="studentUrl" value="/profile"/>
-                    <li class="nav-item"><a class="nav-link" href="${studentUrl}">My profile</a></li>
-<%--                    <c:url var="newMessageHref"--%>
-<%--                           value="/users/${currentUser}/messages/new"/>--%>
-<%--                <li class="nav-item"><a class="nav-link" href="${newMessageHref}">New Message</a></li>--%>
-<%--                    <c:url var="sentMessagesHref"--%>
-<%--                           value="/users/${currentUser}/messages"/>--%>
-<%--                <li class="nav-item"><a class="nav-link" href="${sentMessagesHref}">Sent Messages</a></li>--%>
-<%--                    <c:url var="changePasswordHref"--%>
-<%--                           value="/users/${currentUser}/changePassword"/>--%>
-<%--                <li class="nav-item"><a class="nav-link" href="${changePasswordHref}">Change Password</a></li>--%>
-                </c:if>
+<%--                    <c:if test="${not empty currentUser}">--%>
+<%--                    <c:url var="studentUrl" value="/profile"/>--%>
+<%--                    <li class="nav-item"><a class="nav-link" href="${studentUrl}">My profile</a></li>--%>
+<%--                </c:if>--%>
+                    <ul class="navbar-nav ml-auto">
+                        <c:if test="${not empty currentUser}">
+                        <c:choose>
+
+                            <c:when test="${currentUser.student}">
+                                <c:url var="studentUrl" value="/studentHomePage"/>
+                                <li class="nav-item"><a class="nav-link" href="${studentUrl}">Home</a></li>
+
+                            </c:when>
+                            <c:otherwise>
+                                <c:url var="teacherUrl" value="/teacherHomePage"/>
+                                <li class="nav-item"><a class="nav-link" href="${teacherUrl}">Home</a></li>
+
+                            </c:otherwise>
+
+                        </c:choose>
+                            <c:url var="profileUrl" value="/profile"/>
+                            <li class="nav-item"><a class="nav-link" href="${profileUrl}">My profile</a></li>
+                        </c:if>
+
+                    </ul>
 
                 <ul class="navbar-nav ml-auto">
                     <c:choose>
@@ -83,7 +95,7 @@
                             <form id="logoutForm" action="${logoutAction}" method="POST">
                                 <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
                             </form>
-                            <li class="nav-item"><a id="logoutLink" href="#">Log Out</a></li>
+                            <li class="nav-link"><a id="logoutLink" href="#">Log Out</a></li>
                         </c:otherwise>
                     </c:choose>
                 </ul>
