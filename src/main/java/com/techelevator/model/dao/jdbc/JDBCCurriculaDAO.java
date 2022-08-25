@@ -103,15 +103,20 @@ public class JDBCCurriculaDAO implements CurriculaDAO {
                 "WHERE curricula_id = ?;";
         jdbcTemplate.update(query, curriculaId);
     }
+
+
     @Override
-    public List<Curricula> getCurriculaByCourseId(Long courseId) {
-        List<Curricula> result = new ArrayList<>();
-        String query = "";
+    public Curricula getCurriculaByCourseId(int courseId) {
+        Curricula curricula = new Curricula();
+        String query = "select *\n" +
+                "from curricula \n" +
+                "    inner join curricula_course  \n" +
+                "        on  curricula.curricula_id = curricula_course.curricula_id \n" +
+                "where curricula_course.course_id = ?;";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(query, courseId);
         while (rowSet.next()) {
-            Curricula curricula = mapRowToCurricula(rowSet);
-            result.add(curricula);
+            curricula = mapRowToCurricula(rowSet);
         }
-        return result;
+        return curricula;
     }
 }

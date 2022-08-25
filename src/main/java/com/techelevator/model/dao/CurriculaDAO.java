@@ -18,5 +18,5 @@ public interface CurriculaDAO {
 
 		public void delete(int curriculaId);
 
-    List<Curricula> getCurriculaByCourseId(Long courseId);
+    Curricula getCurriculaByCourseId(int courseId);
 }

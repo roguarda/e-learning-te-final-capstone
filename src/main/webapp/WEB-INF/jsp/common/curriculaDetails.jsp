@@ -11,7 +11,7 @@
 <div id="curricula-details">
 
   <div class="curricula-name">
-    <h3>Curricula</h3>
+    <h3>Curricula name:${curricula.curriculaName}</h3>
     <div class="dailyInstruction">
       <h4>Daily Instructions: ${curricula.dailyInstruction}</h4>
     </div>
