@@ -4,8 +4,8 @@
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
 
 <div class="detail-row">
-    <c:url var="addLink" value="/allCourses" />
-    <a href="${addLink}" class="edit-link"> </a>
+    <c:url var="mycoursesLink" value="/courses/teacher/{teacherId}" />
+    <a href="${mycoursesLink}" class="edit-link"> </a>
 </div>
 
 <h1>Courses</h1>
@@ -25,7 +25,7 @@
     </thead>
     <tbody class="table-active">
     <c:forEach var="course" items="${courses}">
-        <c:url var="courseLink" value="/course/details/${course.id}" />
+        <c:url var="courseLink" value="/courses/details/${course.id}" />
         <tr>
             <td>${course.id}</td>
             <td>

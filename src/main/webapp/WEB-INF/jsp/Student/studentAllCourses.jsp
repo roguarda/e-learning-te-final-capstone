@@ -32,7 +32,7 @@
     </thead>
     <tbody class="table-active">
     <c:forEach var="course" items="${courses}">
-        <c:url var="courseLink" value="/course/details/${course.id}" />
+        <c:url var="courseLink" value="/courses/details/${course.id}" />
         <tr>
             <td>${course.id}</td>
             <td>

@@ -18,7 +18,8 @@
                 <a href="CreateCourse" class="btn btn-primary">Add course</a>
             </div>
             <div class="divbutton">
-                <a href="TeacherCurrentCourses" class="btn btn-primary">See my Courses</a>
+                <c:url var="myCourses" value="/courses/teacher/${currentUser.userId}"></c:url>
+                <a href="${myCourses}" class="btn btn-primary">My courses</a>
             </div>
             <div class="divbutton">
                 <a href="allCourses" class="btn btn-primary">See all courses</a>

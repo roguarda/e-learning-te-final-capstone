@@ -9,24 +9,23 @@
 <div class="card" style="width: 18rem;">
     <div class="card-body">
         <h5 class="card-title">Profile</h5>
-        <%-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>--%>
-        <c:url value="/studentHomePage/profile" var="Profile" />
-        <a href="/studentHomePage/profile" class="btn btn-primary">Go to my profile</a>
+        <c:url var="profile" value="/studentHomePage/profile"  />
+        <a href="${profile}" class="btn btn-primary">Go to my profile</a>
     </div>
 </div>
 <div class="card" style="width: 18rem;">
     <div class="card-body">
         <h5 class="card-title">My current courses</h5>
-        <%-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>--%>
-        <a href="StudentCurrentCourses" class="btn btn-primary">current courses</a>
+        <c:url var="currentCourses" value="/courses/student/${currentUser.userId}"></c:url>
+        <a href="${currentCourses}" class="btn btn-primary">current courses</a>
     </div>
 </div>
 
 <div class="card" style="width: 18rem;">
     <div class="card-body">
         <h5 class="card-title">All courses</h5>
-        <%--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>--%>
-        <a href="allCourses" class="btn btn-primary">See all courses</a>
+        <c:url var="allCourses" value="/allCourses"></c:url>
+        <a href="${allCourses}" class="btn btn-primary">See all courses</a>
     </div>
 </div>
 </div>
