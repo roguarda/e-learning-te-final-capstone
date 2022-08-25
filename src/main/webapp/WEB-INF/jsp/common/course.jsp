@@ -33,7 +33,8 @@
             <c:choose>
 
                 <c:when test="${currentUser.student}">
-                    <a class="btn btn-primary">Enroll</a>
+                    <c:url var="enrollLink" value="/course/enroll/${course.id}" />
+                    <a class="btn btn-primary" href="${enrollLink}" >Enroll</a>
                 </c:when>
 
 

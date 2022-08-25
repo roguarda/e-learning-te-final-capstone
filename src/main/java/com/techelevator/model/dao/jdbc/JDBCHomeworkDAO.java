@@ -102,7 +102,6 @@ public class JDBCHomeworkDAO implements HomeworkDAO {
         String sql = "INSERT INTO homework(homework_name, homework_instruction, curricula_id)\n" +
                 "VALUES (?,?, ?);";
         jdbcTemplate.update(sql, homeworkName, homeworkInstruction, curriculaId);
-
     }
 
     //gethomeworkbycourseid

@@ -82,7 +82,7 @@ CREATE TABLE homework
 
     FOREIGN KEY (teacher_id) REFERENCES app_user (user_id),
     FOREIGN KEY (student_id) REFERENCES app_user (user_id),
-    FOREIGN KEY (curricula_id) REFERENCES curricula (curricula_id),
+  /*  FOREIGN KEY (curricula_id) REFERENCES curricula (curricula_id),*/
     FOREIGN KEY (course_id) REFERENCES course (course_id)
 );
 
@@ -114,5 +114,8 @@ ALTER TABLE student_homework
     Add constraint fk_student_homework_homework
         foreign key (homework_id) references homework (homework_id);
 
+/*ALTER TABLE homework
+    Add constraint fk_homework_curriculaId
+        foreign key (curricula_id) references curricula (curricula_id);*/
 
 COMMIT;
