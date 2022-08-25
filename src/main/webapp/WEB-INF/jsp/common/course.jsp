@@ -16,7 +16,7 @@
             <h4>Course difficulty level: ${course.difficultyLevel}</h4>
         </div>
         <div>
-            <c:url var="curriculaURL" value="/curricula"></c:url>
+            <c:url var="curriculaURL" value="/curricula/details/${curriculaId}"></c:url>
             <a href="${curriculaUrl}" class="btn btn-primary">Go to curricula</a>
         </div>
         <div>
@@ -42,4 +42,4 @@
 
 </div>
 
-
+  <c:import url="/WEB-INF/jsp/common/footer.jsp" />

@@ -10,7 +10,7 @@
         <blockquote class="blockquote">
 <h1>Your profile</h1>
 
-<c:url value="/profile" var="Profile" />
+<c:url value="/profile/${currentUser.userId}" var="Profile" />
 <%--@elvariable id="YourProfile" type=""--%>
 
 <%--<form:form action="${register}" method="POST" modelAttribute="RegisterProfile">--%>
@@ -24,7 +24,7 @@
     </div>
     <div class="detail-value">
           <td>
-          ${user.userId}
+          ${currentUser.userId}
           </td>
     </div>
   </div>
@@ -33,7 +33,7 @@
         <h4> First Name: </h4>
       </div>
       <div class="detail-value">
-          ${user.firstName}
+          ${currentUser.firstName}
       </div>
     </div>
     <div class="detail-row">
@@ -41,7 +41,7 @@
        <h4>Last Name:</h4>
       </div>
       <div class="detail-value">
-          ${user.lastName}
+          ${currentUser.lastName}
       </div>
     </div>
   <div class="detail-row">

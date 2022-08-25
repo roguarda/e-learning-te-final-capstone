@@ -32,31 +32,46 @@ public class UserController {
 	}
 
 
-	@RequestMapping("/profile")
-	public String details(HttpSession session, ModelMap map) {
+	@RequestMapping("/profile/{userId}")
+	public String details(@PathVariable int userId, HttpSession session, ModelMap map) {
 
 		User user = (User) session.getAttribute("currentUser");
 		map.put("user", user);
 
-		return "profile";
+		return "common/profile";
 	}
 
 
 
 	@RequestMapping(value = "Profile/edit/{userName}")
-	public String editProfile(@PathVariable String userName, ModelMap map) {
+	public String editProfile(@PathVariable String userName, ModelMap map, HttpSession session) {
 		User user = userDAO.getUserByUserName(userName);
-
+		User currentUser = (User) session.getAttribute("currentUser");
 		map.put("user", user);
-
+		map.put("currentUser", currentUser);
 		return "common/Edit";
 	}
 
 	@RequestMapping(value = "Profile/edit/{userName}", method = RequestMethod.POST)
-	public String editProfileForm(@PathVariable String userName, String updateUser, String newValue) {
-		userDAO.update(updateUser, newValue, userName);
+	public String editProfileForm(@PathVariable String userName, String updateUser, String newValue, HttpSession session, @Valid @ModelAttribute("editUser") User user, BindingResult result, RedirectAttributes flash) {
 
-		return "redirect:/profile";
+
+			if (result.hasErrors()) {
+				flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "editUser", result);
+
+				return "redirect:/profile/edit/{userName}";
+			}
+
+			flash.addFlashAttribute("message", "You have successfully edited your profile.");
+			userDAO.update(updateUser, newValue, userName);
+
+			session.setAttribute("currentUser",userDAO.getUserByUserName(userName));
+
+			User currentUser = (User) session.getAttribute("currentUser");
+			int currentId = currentUser.getUserId();
+
+
+		return "redirect:/profile/"+currentId;
 	}
 
 

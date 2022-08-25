@@ -76,7 +76,7 @@
                             </c:otherwise>
 
                         </c:choose>
-                            <c:url var="profileUrl" value="/profile"/>
+                            <c:url var="profileUrl" value="/profile/${currentUser.userId}"/>
                             <li class="nav-item"><a class="nav-link" href="${profileUrl}">My profile</a></li>
                         </c:if>
 
