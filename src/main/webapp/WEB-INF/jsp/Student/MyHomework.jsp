@@ -6,6 +6,7 @@
 <c:url var="validationJs" value="/js/user-validation.js"/>
 <script src="${validationJs}"></script>
 
+
 <c:url var="formAction" value="/MyHomework/{homework.id}"/>
 <form method="POST" action="${formAction}">
     <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>

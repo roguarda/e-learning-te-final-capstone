@@ -52,7 +52,7 @@ public class HomeworkController {
     public String showAllHomeworksToReview(ModelMap modelHolder, HttpSession session) {
 
         User currentUser = (User) session.getAttribute("currentUser");
-        List<Homework> homeworks = homeworkDAO.getHomeworkListByStatusAndTeacherId(currentUser.getUserId());
+        List<Homework> homeworks = homeworkDAO.getHomeworkListToGrade();
         modelHolder.addAttribute("homeworks", homeworks);
         return "Teacher/Homework/viewHomework";
 

@@ -128,6 +128,27 @@ public class CourseController {
         return "/Teacher/Course/myCourses";
 
     }
+
+    //enroll GET
+    @RequestMapping("/course/enroll/{courseId}")
+    public String enroll(@PathVariable Integer courseId, ModelMap map, HttpSession session) {
+        Course course = courseDAO.getById(courseId);
+        User currentUser = (User) session.getAttribute("currentUser");
+        map.put("course", course);
+        return "Student/enrollToCourse";
+    }
+
+    //enroll POST
+    @RequestMapping(value = "/course/enroll/{courseId}", method = RequestMethod.POST)
+    public String enroll(@PathVariable Integer courseId, HttpSession session) {
+        User currentUser = (User) session.getAttribute("currentUser");
+        int studentId = currentUser.getUserId();
+
+        courseDAO.enroll(studentId, courseId);
+        return "redirect:/allCourses";
+    }
+
+
 }
 
 

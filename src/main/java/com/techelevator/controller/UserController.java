@@ -38,7 +38,7 @@ public class UserController {
 		User user = (User) session.getAttribute("currentUser");
 		map.put("user", user);
 
-		return "/Student/studentProfile";
+		return "profile";
 	}
 
 
@@ -49,14 +49,14 @@ public class UserController {
 
 		map.put("user", user);
 
-		return "/Student/Edit";
+		return "common/Edit";
 	}
 
 	@RequestMapping(value = "Profile/edit/{userName}", method = RequestMethod.POST)
 	public String editProfileForm(@PathVariable String userName, String updateUser, String newValue) {
 		userDAO.update(updateUser, newValue, userName);
 
-		return "redirect:/studentHomePage/profile";
+		return "redirect:/profile";
 	}
 
 
