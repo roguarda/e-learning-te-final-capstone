@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 import com.techelevator.model.dao.HomeworkDAO;
+import com.techelevator.model.dto.Course;
 import com.techelevator.model.dto.Homework;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -94,6 +95,12 @@ public class CurriculaController {
     {
         curriculaDAO.delete(curriculaId);
         return "redirect:/Curricula";
+    }
+    @RequestMapping(path = "/curricula/details/{curriculaId}", method = RequestMethod.GET)
+    public String showCurriculaDetail(ModelMap modelMap, @PathVariable int curriculaId) {
+        Curricula curricula = curriculaDAO.getById(curriculaId);
+        modelMap.addAttribute("curricula", curricula);
+        return "/common/curriculaDetails";
     }
 }
 
