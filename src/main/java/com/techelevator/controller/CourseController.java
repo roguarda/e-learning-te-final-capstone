@@ -121,10 +121,11 @@ public class CourseController {
     }
 
     @RequestMapping(path = "/courses/teacher/{teacherId}", method = RequestMethod.GET)
-    public String getAllMyCourses(@PathVariable Integer teacherId, HttpSession session) {
+    public String getAllMyCourses(@PathVariable Integer teacherId, HttpSession session, ModelMap map) {
         User currentUser = (User) session.getAttribute("currentUser");
         List<Course> findAllMyCourses = courseDAO.findAllMyCourses(teacherId);
-        return "/Teacher/myCourses";
+        map.put("courses", findAllMyCourses);
+        return "/Teacher/Course/myCourses";
 
     }
 }

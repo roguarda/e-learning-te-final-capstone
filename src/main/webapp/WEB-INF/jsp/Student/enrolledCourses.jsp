@@ -23,7 +23,7 @@
     </thead>
     <tbody class="table-active">
     <c:forEach var="course" items="${courses}">
-        <c:url var="courseLink" value="/course/details/${course.id}" />
+        <c:url var="courseLink" value="/courses/details/${course.id}" />
         <tr>
             <td>${course.id}</td>
             <td>
@@ -33,15 +33,7 @@
             <td>${course.difficultyLevel}</td>
             <td>${course.cost}</td>
             <td>
-                <button type="button" class="btn btn-outline-info">
-                    <c:url var="editLink" value="/course/edit/${course.id}" />
-                    <a href="${editLink}">edit</a> </button>
 
-            </td>
-            <td>
-                <button type="button" class="btn btn-outline-danger">
-                    <c:url var="deleteLink" value="/course/delete/${course.id}" />
-                    <a href="${deleteLink}">delete</a></button>
             </td>
         </tr>
     </c:forEach>
