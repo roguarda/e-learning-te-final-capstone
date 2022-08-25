@@ -53,10 +53,24 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "Profile/edit/{userName}", method = RequestMethod.POST)
-	public String editProfileForm(@PathVariable String userName, String updateUser, String newValue, HttpSession session) {
-		userDAO.update(updateUser, newValue, userName);
-		User currentUser = (User) session.getAttribute("currentUser");
-		int currentId = currentUser.getUserId();
+	public String editProfileForm(@PathVariable String userName, String updateUser, String newValue, HttpSession session, @Valid @ModelAttribute("editUser") User user, BindingResult result, RedirectAttributes flash) {
+
+
+			if (result.hasErrors()) {
+				flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "editUser", result);
+
+				return "redirect:/profile/edit/{userName}";
+			}
+
+			flash.addFlashAttribute("message", "You have successfully edited your profile.");
+			userDAO.update(updateUser, newValue, userName);
+
+			session.setAttribute("currentUser",userDAO.getUserByUserName(userName));
+
+			User currentUser = (User) session.getAttribute("currentUser");
+			int currentId = currentUser.getUserId();
+
+
 		return "redirect:/profile/"+currentId;
 	}
 
