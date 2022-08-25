@@ -96,9 +96,9 @@ public class CurriculaController {
         curriculaDAO.delete(curriculaId);
         return "redirect:/Curricula";
     }
-    @RequestMapping(path = "/curricula/details/{curriculaId}", method = RequestMethod.GET)
-    public String showCurriculaDetail(ModelMap modelMap, @PathVariable int curriculaId) {
-        Curricula curricula = curriculaDAO.getById(curriculaId);
+    @RequestMapping(path = "/curricula/details/{courseId}", method = RequestMethod.GET)
+    public String showCurriculaDetail(ModelMap modelMap, @PathVariable int courseId) {
+        Curricula curricula = curriculaDAO.getCurriculaByCourseId(courseId);
         modelMap.addAttribute("curricula", curricula);
         return "/common/curriculaDetails";
     }
