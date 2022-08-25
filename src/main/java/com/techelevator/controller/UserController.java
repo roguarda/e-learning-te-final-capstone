@@ -32,31 +32,32 @@ public class UserController {
 	}
 
 
-	@RequestMapping("/profile")
-	public String details(HttpSession session, ModelMap map) {
+	@RequestMapping("/profile/{userId}")
+	public String details(@PathVariable int userId, HttpSession session, ModelMap map) {
 
 		User user = (User) session.getAttribute("currentUser");
 		map.put("user", user);
 
-		return "profile";
+		return "common/profile";
 	}
 
 
 
 	@RequestMapping(value = "Profile/edit/{userName}")
-	public String editProfile(@PathVariable String userName, ModelMap map) {
+	public String editProfile(@PathVariable String userName, ModelMap map, HttpSession session) {
 		User user = userDAO.getUserByUserName(userName);
-
+		User currentUser = (User) session.getAttribute("currentUser");
 		map.put("user", user);
-
+		map.put("currentUser", currentUser);
 		return "common/Edit";
 	}
 
 	@RequestMapping(value = "Profile/edit/{userName}", method = RequestMethod.POST)
-	public String editProfileForm(@PathVariable String userName, String updateUser, String newValue) {
+	public String editProfileForm(@PathVariable String userName, String updateUser, String newValue, HttpSession session) {
 		userDAO.update(updateUser, newValue, userName);
-
-		return "redirect:/profile";
+		User currentUser = (User) session.getAttribute("currentUser");
+		int currentId = currentUser.getUserId();
+		return "redirect:/profile/"+currentId;
 	}
 
 

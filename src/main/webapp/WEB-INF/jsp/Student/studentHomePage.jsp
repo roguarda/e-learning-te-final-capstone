@@ -9,7 +9,7 @@
 <div class="card" style="width: 18rem;">
     <div class="card-body">
         <h5 class="card-title">Profile</h5>
-        <c:url var="profile" value="/studentHomePage/profile"  />
+        <c:url var="profile" value="/profile/${currentUser.userId}"></c:url>
         <a href="${profile}" class="btn btn-primary">Go to my profile</a>
     </div>
 </div>
