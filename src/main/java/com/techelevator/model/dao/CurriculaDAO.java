@@ -12,7 +12,7 @@ public interface CurriculaDAO {
 
 		public Curricula getById(int curriculaId);
 
-		public void add(String curriculaName, String dailyInstruction, String dailyHomework);
+		public Curricula add(String curriculaName, String dailyInstruction, String dailyHomework);
 
 		public void update(String updateCriteria, String newValue, int curriculaId);
 

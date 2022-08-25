@@ -10,7 +10,7 @@
         <blockquote class="blockquote">
 <h1>Your profile</h1>
 
-<c:url value="/studentHomePage/profile" var="Profile" />
+<c:url value="/profile" var="Profile" />
 <%--@elvariable id="YourProfile" type=""--%>
 
 <%--<form:form action="${register}" method="POST" modelAttribute="RegisterProfile">--%>

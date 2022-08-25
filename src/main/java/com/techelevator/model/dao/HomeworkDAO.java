@@ -12,6 +12,9 @@ public interface HomeworkDAO {
 	// metodo que usa el maestro para corregir y dar devolucion
 	void gradeHomework(int grade, String teacherFeedback, String status, int homeworkId);
 
+
+	void createHomework(String homeworkName, String homeworkInstruction);
+
 	List<Homework> getHomeworkListByUserId(int userId);
 
 	List<Homework> getHomeworkListByStatusAndTeacherId(int userId);
@@ -24,21 +27,14 @@ public interface HomeworkDAO {
 
 	Homework getById(int id);
 
-	Homework add(Homework homework);
 
-	void update(int id, Homework homework);
+	void submitHomework( String homeworkIntro, String homeworkDescription, int id);
 
 	//si el maestro devuelve la nota y esta mal, la corrige el alumno desde acá
 	void rectifyHomework(int homeworkId, String newValue);
 
 	void delete(int id);
 
-	public void add(String homeworkName, String homeworkIntroduction, String homeworkDescription);
-
-
-
-
 	List<Homework> getHomeworkListByCourseId(int courseId);
 
-	public void add(String teacherFeedback, int homeworkGrade, String status);
 }

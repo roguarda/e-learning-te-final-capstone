@@ -1,5 +1,7 @@
 package com.techelevator.controller;
 
+import com.techelevator.model.dao.HomeworkDAO;
+import com.techelevator.model.dto.Homework;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,10 +19,12 @@ public class CurriculaController {
 
 
     private CurriculaDAO curriculaDAO;
+    private HomeworkDAO homeworkDAO;
 
     @Autowired
-    public CurriculaController(CurriculaDAO curriculaDAO) {
+    public CurriculaController(CurriculaDAO curriculaDAO, HomeworkDAO homeworkDAO) {
         this.curriculaDAO = curriculaDAO;
+        this.homeworkDAO = homeworkDAO;
     }
 
     @RequestMapping(path = "/Curricula", method = RequestMethod.GET)
@@ -55,6 +59,7 @@ public class CurriculaController {
 
         flash.addFlashAttribute("message", "You have successfully created the curricula.");
         curriculaDAO.add(curricula.getCurriculaName(), curricula.getDailyInstruction(), curricula.getDailyHomework());
+        homeworkDAO.createHomework(curricula.getCurriculaName(), curricula.getDailyHomework());
         return "redirect:/teacherHomePage?curriculaName=" + curricula.getCurriculaName();
     }
 

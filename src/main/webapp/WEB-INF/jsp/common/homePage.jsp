@@ -3,8 +3,6 @@
 
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
 
-
-<html>
 <figure class="text-center">
     <blockquote class="blockquote">
 <div class="image-header">
