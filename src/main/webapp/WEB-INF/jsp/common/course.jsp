@@ -3,17 +3,27 @@
 
 <c:import url="/WEB-INF/jsp/common/header.jsp"/>
 
+<form method="POST" action="${formAction}">
+    <input type="hidden" name="TOKEN" value="${TOKEN}"/>
+    <figure class="text-center">
+        <blockquote class="blockquote">
 <div id="course-detail">
        <%-- <c:url var="courseImageURL"
                value="/img/course-images/pexels-christina-morillo-1181290.jpg" />
         <img class="courseImage" src="${courseImageURL}">--%>
             <div class="course-name">
-                <h3>${course.name}</h3>
+                <h1>${course.name}</h1>
         <div class="course-description">
-            <h4>Description: ${course.description}</h4>
+            <h4>Description: </h4>
+            <td>
+            ${course.description}
+            </td>
         </div>
         <div class="dificulty-level">
-            <h4>Course difficulty level: ${course.difficultyLevel}</h4>
+            <h4>Course difficulty level: </h4>
+            <td>
+            ${course.difficultyLevel}
+            </td>
         </div>
         <div>
             <c:url var="curriculaURL" value="/curricula/details/${course.id}"></c:url>
@@ -25,6 +35,7 @@
                 <c:when test="${currentUser.student}">
                     <a class="btn btn-primary">Enroll</a>
                 </c:when>
+
 
                 <c:otherwise>
 
@@ -41,5 +52,8 @@
         </div>
 
 </div>
+        </blockquote>
+    </figure>
+
 
   <c:import url="/WEB-INF/jsp/common/footer.jsp" />
