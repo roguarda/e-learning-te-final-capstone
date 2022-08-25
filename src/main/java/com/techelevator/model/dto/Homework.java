@@ -1,6 +1,8 @@
 package com.techelevator.model.dto;
 import org.hibernate.validator.constraints.NotBlank;
 
+import javax.validation.constraints.NotNull;
+
 public class Homework {
 
     private int id;
@@ -16,10 +18,10 @@ public class Homework {
     @NotBlank(message = "Homework's Description is required")
     private String homeworkDescription;
 
-    @NotBlank(message = "Homework's feedback is required")
+
     private String teacherFeedback;
 
-    @NotBlank(message = "Grade is required")
+
     private int homeworkGrade;
 
 

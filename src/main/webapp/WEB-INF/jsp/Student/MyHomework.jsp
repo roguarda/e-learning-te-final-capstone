@@ -7,7 +7,7 @@
 <script src="${validationJs}"></script>
 
 
-<c:url var="formAction" value="/MyHomework/{homework.id}"/>
+<c:url var="formAction" value="/MyHomework/${courseId}"/>
 <form method="POST" action="${formAction}">
     <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
     <div class="row">
