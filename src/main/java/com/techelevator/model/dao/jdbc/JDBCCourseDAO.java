@@ -140,6 +140,8 @@ public class JDBCCourseDAO implements CourseDAO {
         jdbcTemplate.update("INSERT INTO curricula_course (course_id, curricula_id) \n" +
                 "values (?, ?); ", courseId, curriculaId);
 
+        jdbcTemplate.update("UPDATE homework SET course_id = ? WHERE curricula_id = ?;", courseId, curriculaId);
+
 
     }
 
