@@ -4,10 +4,9 @@
 <c:import url="/WEB-INF/jsp/common/header.jsp"/>
 
 <div id="course-detail">
-
-        <c:url var="courseImageURL"
+       <%-- <c:url var="courseImageURL"
                value="/img/course-images/pexels-christina-morillo-1181290.jpg" />
-        <img class="courseImage" src="${courseImageURL}">
+        <img class="courseImage" src="${courseImageURL}">--%>
             <div class="course-name">
                 <h4>Description: ${course.name}</h4>
         <div class="course-description">
