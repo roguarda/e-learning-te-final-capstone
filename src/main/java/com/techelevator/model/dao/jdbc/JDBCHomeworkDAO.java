@@ -151,7 +151,7 @@ public class JDBCHomeworkDAO implements HomeworkDAO {
                 "         JOIN student_homework as sh on h.homework_id = sh.homework_id\n" +
                 "         JOIN app_user au on au.user_id = h.teacher_id \n" +
                 "WHERE user_id = ?\n" +
-                "  AND status =! 'completed';";
+                "  AND status != 'completed';";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
         while (results.next()) {
             homeworkList.add(mapRowToHomework(results));
@@ -169,7 +169,7 @@ public class JDBCHomeworkDAO implements HomeworkDAO {
                 "       h.status\n " +
                 "FROM homework AS h\n " +
                 "         JOIN app_user au on au.user_id = h.teacher_id \n" +
-                "WHERE  status =! 'completed'" +
+                "WHERE  status != 'completed'" +
                 "AND student_id is not null;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
