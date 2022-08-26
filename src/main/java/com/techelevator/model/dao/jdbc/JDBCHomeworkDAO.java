@@ -185,10 +185,10 @@ public class JDBCHomeworkDAO implements HomeworkDAO {
         return null;
     }
 
-    @Override
-    public List<Homework> search(String id) {
-        return null;
-    }
+//    @Override
+//    public List<Homework> search(String id) {
+//        return null;
+//    }
 
     @Override
     public Homework getById(int id) {
