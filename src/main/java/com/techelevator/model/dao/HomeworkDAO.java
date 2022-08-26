@@ -26,7 +26,7 @@ public interface HomeworkDAO {
 
     List<Homework> getAllHomework();
 
-	List<Homework> search (String id);
+//	List<Homework> search (String id);
 
 	Homework getById(int id);
 
