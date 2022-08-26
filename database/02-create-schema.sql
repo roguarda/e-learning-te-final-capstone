@@ -67,8 +67,8 @@ CREATE TABLE student_course
 CREATE TABLE homework
 (
     homework_id           SERIAL       NOT NULL UNIQUE PRIMARY KEY,
-    homework_name         VARCHAR(140) NOT NULL,
-    homework_instruction  VARCHAR(140) NOT NULL,
+    homework_name         VARCHAR(140) ,
+    homework_instruction  VARCHAR(140) ,
     homework_introduction VARCHAR(140),
     homework_description  VARCHAR(1000),
     curricula_id          INT,
@@ -82,7 +82,7 @@ CREATE TABLE homework
 
     FOREIGN KEY (teacher_id) REFERENCES app_user (user_id),
     FOREIGN KEY (student_id) REFERENCES app_user (user_id),
-  /*  FOREIGN KEY (curricula_id) REFERENCES curricula (curricula_id),*/
+    FOREIGN KEY (curricula_id) REFERENCES curricula (curricula_id),
     FOREIGN KEY (course_id) REFERENCES course (course_id)
 );
 

@@ -11,7 +11,8 @@
 <c:import url="/WEB-INF/jsp/common/header.jsp"/>
 <c:url var="validationJs" value="/js/user-validation.js" />
 <script src="${validationJs}"></script>
-
+<c:url var="popup" value="/js/popup.js"/>
+<script src="${popup}"></script>
 
 <div class="detail-row">
     <c:url var="addLink" value="/Curricula"/>

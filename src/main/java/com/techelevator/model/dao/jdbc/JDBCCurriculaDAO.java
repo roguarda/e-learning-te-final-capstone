@@ -70,12 +70,13 @@ public class JDBCCurriculaDAO implements CurriculaDAO {
     @Override
     public Curricula add(String curriculaName, String dailyInstruction, String dailyHomework) {
         Curricula curricula = new Curricula();
-        jdbcTemplate.queryForObject("INSERT INTO curricula ( curricula_name\n " +
+        int curriculaId = jdbcTemplate.queryForObject("INSERT INTO curricula ( curricula_name\n " +
                         "                      , daily_instruction\n " +
                         "                      , daily_homework)\n " +
                         "       values (?, ?, ?)" +
-                        " RETURNING daily_homework;",String.class,
-                curriculaName, dailyInstruction, dailyHomework).toString();
+                        " RETURNING  curricula_id;",Integer.class,
+                curriculaName, dailyInstruction, dailyHomework).intValue();
+        curricula.setId(curriculaId);
         curricula.setCurriculaName(curriculaName);
         curricula.setDailyInstruction(dailyInstruction);
         curricula.setDailyHomework(dailyHomework);

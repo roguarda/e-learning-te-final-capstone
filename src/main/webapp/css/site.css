@@ -2,3 +2,15 @@
     display: flex;
     justify-content: center;
 }
+.center {
+    margin: auto;
+    width: 70%;
+    padding: 10px;
+}
+.float-left {
+    float: left;
+}
+
+.height-teacher {
+    height: 240px;
+}

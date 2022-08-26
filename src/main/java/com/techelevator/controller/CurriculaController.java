@@ -59,9 +59,9 @@ public class CurriculaController {
         }
 
         flash.addFlashAttribute("message", "You have successfully created the curricula.");
-        curriculaDAO.add(curricula.getCurriculaName(), curricula.getDailyInstruction(), curricula.getDailyHomework());
+        curricula = curriculaDAO.add(curricula.getCurriculaName(), curricula.getDailyInstruction(), curricula.getDailyHomework());
         homeworkDAO.createHomework(curricula.getCurriculaName(), curricula.getDailyHomework(), curricula.getId());
-        return "redirect:/teacherHomePage/curriculaName=" + curricula.getCurriculaName();
+        return "redirect:/Curricula?curriculaName=" + curricula.getCurriculaName();
     }
 
         //edit GET
